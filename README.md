@@ -1,1 +1,3 @@
-# core
+<h1 align='center'>✨🌊 Flowi 🌊✨</h1>
+
+More to come...
