@@ -1,6 +1,4 @@
-name: "Bump Version"
-
-on: 
+on:
   push:
     branches:
       - main
