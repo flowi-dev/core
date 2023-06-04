@@ -1,12 +1,12 @@
 name: "Bump Version"
 
-on:
+on: 
   push:
     branches:
-      - "master"
-    paths-ignore:
-      - 'package.json'
-      - 'CHANGELOG.md'
+      - main
+  paths-ignore:
+    - 'package.json'
+    - 'CHANGELOG.md'
 
 jobs:
   test:
