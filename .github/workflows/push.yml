@@ -1,48 +1,43 @@
-name: 'Bump Version'
+name: "Bump Version"
 
 on:
   push:
     branches:
-      - 'master'
+      - "master"
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: Install modules
-      run: npm install
-    - name: Run tests
-      run: npm test
-  compile:
+      - uses: actions/checkout@v2
+      - name: Install modules
+        run: npm install
+      - name: Run tests
+        run: npm test
+  tsc:
+    name: tsc
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: Install modules
-      run: npm install
-    - name: Compile typescript
-      run: npm build
-  bump-version:
-    name: 'Bump Version on master'
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: 'Checkout source code'
-        uses: 'actions/checkout@v2'
+      - uses: actions/checkout@v1
+      - name: install node v12
+        uses: actions/setup-node@v1
         with:
-          ref: ${{ github.ref }}
-      - name: 'cat package.json'
-        run: cat ./package.json
-      - name: 'Automated Version Bump'
-        id: version-bump
-        uses: 'phips28/gh-action-bump-version@master'
-        with:
-          tag-prefix: 'v'
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'cat package.json'
-        run: cat ./package.json
-      - name: 'Output Step'
-        env:
-          NEW_TAG: ${{ steps.version-bump.outputs.newTag }}
-        run: echo "new tag $NEW_TAG"
+          node-version: 12
+      - name: yarn install
+        run: yarn install
+      - name: tsc
+        uses: icrawl/action-tsc@v1
+  publish:
+    name: "Automated Version Bump"
+    uses: "phips28/gh-action-bump-version@master"
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    with:
+      minor-wording: "add,Adds,new"
+      major-wording: "MAJOR,cut-major"
+      patch-wording:
+        "patch,fixes" # Providing patch-wording will override commits
+        # defaulting to a patch bump.
+      rc-wording: "RELEASE,alpha"
+    permissions:
+      contents: write
