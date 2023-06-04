@@ -1,0 +1,19 @@
+{
+  "name": "@flowi-dev/core",
+  "version": "1.0.0-alpha",
+  "description": "<h1 align='center'>✨🌊 Flowi 🌊✨</h1>",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/flowi-dev/core.git"
+  },
+  "author": "JanuZz",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/flowi-dev/core/issues"
+  },
+  "homepage": "https://github.com/flowi-dev/core#readme"
+}
