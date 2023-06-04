@@ -21,7 +21,7 @@ jobs:
     - name: Install modules
       run: npm install
     - name: Compile typescript
-      run: npm build
+      run: npm run build
   bump-version:
     name: 'Bump Version on master'
     runs-on: ubuntu-latest
