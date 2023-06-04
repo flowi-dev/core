@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - "master"
+    paths-ignore:
+      - 'package.json'
+      - 'CHANGELOG.md'
 
 jobs:
   test:
@@ -27,17 +30,3 @@ jobs:
         run: yarn install
       - name: tsc
         uses: icrawl/action-tsc@v1
-  publish:
-    name: "Automated Version Bump"
-    uses: "phips28/gh-action-bump-version@master"
-    env:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    with:
-      minor-wording: "add,Adds,new"
-      major-wording: "MAJOR,cut-major"
-      patch-wording:
-        "patch,fixes" # Providing patch-wording will override commits
-        # defaulting to a patch bump.
-      rc-wording: "RELEASE,alpha"
-    permissions:
-      contents: write
