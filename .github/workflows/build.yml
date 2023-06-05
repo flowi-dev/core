@@ -19,7 +19,7 @@ jobs:
       CI_COMMIT_MESSAGE: Continuous Integration Build Artifacts
       CI_COMMIT_AUTHOR: Continuous Integration
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v2
 
     # Build steps
     - uses: actions/setup-node@v3
