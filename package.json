@@ -1,6 +1,6 @@
 {
   "name": "@flowi-dev/core",
-  "version": "1.0.1",
+  "version": "0.0.0",
   "description": "",
   "main": "lib/index.js",
   "scripts": {
@@ -10,7 +10,9 @@
     "build:compile": "babel src --out-dir lib --extensions \".ts,.tsx\" --ignore \"**/*.test.tsx\" --copy-files",
     "build:types": "tsc --emitDeclarationOnly --declaration --declarationMap --outDir lib --project tsconfig.json",
     "build": "concurrently npm:build:*",
-    "bump": "npm version patch"
+    "bump:patch": "npm version patch",
+    "bump:minor": "npm version minor",
+    "bump:major": "npm version major"
   },
   "repository": {
     "type": "git",
