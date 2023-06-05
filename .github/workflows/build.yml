@@ -1,5 +1,7 @@
 # Source: https://joht.github.io/johtizen/build/2022/01/20/github-actions-push-into-repository.html#example-1
 
+name: Continuous Integration
+permissions: read-all|write-all
 on:
   push:
     branches:
