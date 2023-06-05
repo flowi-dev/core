@@ -1,2 +1,3 @@
-console
-	.log('does pre-commit work?')
+export class Block {
+  constructor(public x: number, public y: number) {}
+}
