@@ -10,42 +10,42 @@
 
 ### Properties
 
-- [x](Block.md#x)
-- [y](Block.md#y)
+- [position](Block.md#position)
+- [size](Block.md#size)
 
 ## Constructors
 
 ### constructor
 
-• **new Block**(`x`, `y`)
+• **new Block**(`position`, `size`)
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `x` | `number` |
-| `y` | `number` |
+| `position` | [`Vector`](Vector.md) |
+| `size` | [`Vector`](Vector.md) |
 
 #### Defined in
 
-[index.ts:2](https://github.com/flowi-dev/core/blob/aef1e0d/src/index.ts#L2)
+[index.ts:6](https://github.com/flowi-dev/core/blob/a514ab4/src/index.ts#L6)
 
 ## Properties
 
-### x
+### position
 
-• **x**: `number`
+• **position**: [`Vector`](Vector.md)
 
 #### Defined in
 
-[index.ts:2](https://github.com/flowi-dev/core/blob/aef1e0d/src/index.ts#L2)
+[index.ts:6](https://github.com/flowi-dev/core/blob/a514ab4/src/index.ts#L6)
 
 ___
 
-### y
+### size
 
-• **y**: `number`
+• **size**: [`Vector`](Vector.md)
 
 #### Defined in
 
-[index.ts:2](https://github.com/flowi-dev/core/blob/aef1e0d/src/index.ts#L2)
+[index.ts:6](https://github.com/flowi-dev/core/blob/a514ab4/src/index.ts#L6)

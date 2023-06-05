@@ -7,3 +7,4 @@
 ### Classes
 
 - [Block](classes/Block.md)
+- [Vector](classes/Vector.md)
