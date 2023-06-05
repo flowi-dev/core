@@ -28,7 +28,7 @@
 
 #### Defined in
 
-[index.ts:2](https://github.com/flowi-dev/core/blob/40935da/src/index.ts#L2)
+[index.ts:2](https://github.com/flowi-dev/core/blob/9498063/src/index.ts#L2)
 
 ## Properties
 
@@ -38,7 +38,7 @@
 
 #### Defined in
 
-[index.ts:2](https://github.com/flowi-dev/core/blob/40935da/src/index.ts#L2)
+[index.ts:2](https://github.com/flowi-dev/core/blob/9498063/src/index.ts#L2)
 
 ___
 
@@ -48,4 +48,4 @@ ___
 
 #### Defined in
 
-[index.ts:2](https://github.com/flowi-dev/core/blob/40935da/src/index.ts#L2)
+[index.ts:2](https://github.com/flowi-dev/core/blob/9498063/src/index.ts#L2)
