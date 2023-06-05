@@ -27,4 +27,4 @@
 
 #### Defined in
 
-[index.ts:1](https://github.com/flowi-dev/core/blob/d65522f/src/index.ts#L1)
+[index.ts:1](https://github.com/flowi-dev/core/blob/4856d62/src/index.ts#L1)
