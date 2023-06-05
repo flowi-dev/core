@@ -4,8 +4,8 @@
   "description": "",
   "main": "lib/index.js",
   "scripts": {
-    "test": "jest",
-    "lint": "eslint --cache --fix .",
+    "test": "jest --coverage",
+    "lint": "eslint --cache --fix  .",
     "docs": "typedoc --plugin typedoc-plugin-markdown --out docs src/**/*",
     "prebuild": "rimraf lib && npm run lint && npm run test",
     "postbuild": "npm run docs",
