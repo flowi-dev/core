@@ -1,11 +1,2 @@
-export declare class Vector {
-    x: number;
-    y: number;
-    constructor(x: number, y: number);
-}
-export declare class Block {
-    position: Vector;
-    size: Vector;
-    constructor(position: Vector, size: Vector);
-}
+export declare function add(a: number, b: number): number;
 //# sourceMappingURL=index.d.ts.map
