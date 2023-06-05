@@ -4,6 +4,7 @@
   "description": "",
   "main": "lib/index.js",
   "scripts": {
+    "precommit-msg": "echo 'Pre-commit checks...' && exit 0",
     "test": "jest",
     "lint": "eslint --cache --fix .",
     "prebuild": "rimraf lib && npm run lint && npm run test",
