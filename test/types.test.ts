@@ -331,6 +331,14 @@ test("Union intersections", () => {
 
 })
 
+test("Union extension", () => {
+  const A = new UnionType('A', [STRING, NUMBER]);
+  const B = A.extend(BOOLEAN);
+
+  expect(B.types).toEqual([STRING, NUMBER, BOOLEAN]);
+  expect(B.extend(NULL).types).toEqual([STRING, NUMBER, BOOLEAN, NULL]);
+})
+
 test("Object intersections", () => {
 
   expect(ObjectType.fromIntersect('A&B', [new ObjectType('A', {
