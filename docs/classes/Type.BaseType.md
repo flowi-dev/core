@@ -4,6 +4,9 @@
 
 [Type](../modules/Type.md).BaseType
 
+The base class that all types extend from, this provides the basic functionality that all types need. Such as serialization and deserialization and type checking.
+This class is abstract and should not be used directly.
+
 ## Hierarchy
 
 - [`Serializable`](Serializable.Serializable.md)
@@ -57,7 +60,7 @@
 
 #### Defined in
 
-[Serializable.ts:39](https://github.com/flowi-dev/core/blob/4d374fd/src/classes/Serializable.ts#L39)
+[Serializable.ts:39](https://github.com/flowi-dev/core/blob/cc87ffe/src/classes/Serializable.ts#L39)
 
 ## Properties
 
@@ -67,7 +70,7 @@
 
 #### Defined in
 
-[Type.ts:4](https://github.com/flowi-dev/core/blob/4d374fd/src/classes/Type.ts#L4)
+[Type.ts:8](https://github.com/flowi-dev/core/blob/cc87ffe/src/classes/Type.ts#L8)
 
 ___
 
@@ -77,7 +80,7 @@ ___
 
 #### Defined in
 
-[Type.ts:5](https://github.com/flowi-dev/core/blob/4d374fd/src/classes/Type.ts#L5)
+[Type.ts:9](https://github.com/flowi-dev/core/blob/cc87ffe/src/classes/Type.ts#L9)
 
 ___
 
@@ -91,7 +94,7 @@ ___
 
 #### Defined in
 
-[Serializable.ts:4](https://github.com/flowi-dev/core/blob/4d374fd/src/classes/Serializable.ts#L4)
+[Serializable.ts:4](https://github.com/flowi-dev/core/blob/cc87ffe/src/classes/Serializable.ts#L4)
 
 ## Methods
 
@@ -111,7 +114,7 @@ ___
 
 #### Defined in
 
-[Type.ts:7](https://github.com/flowi-dev/core/blob/4d374fd/src/classes/Type.ts#L7)
+[Type.ts:11](https://github.com/flowi-dev/core/blob/cc87ffe/src/classes/Type.ts#L11)
 
 ___
 
@@ -131,7 +134,7 @@ ___
 
 #### Defined in
 
-[Type.ts:6](https://github.com/flowi-dev/core/blob/4d374fd/src/classes/Type.ts#L6)
+[Type.ts:10](https://github.com/flowi-dev/core/blob/cc87ffe/src/classes/Type.ts#L10)
 
 ___
 
@@ -154,7 +157,7 @@ ___
 
 #### Defined in
 
-[Serializable.ts:43](https://github.com/flowi-dev/core/blob/4d374fd/src/classes/Serializable.ts#L43)
+[Serializable.ts:43](https://github.com/flowi-dev/core/blob/cc87ffe/src/classes/Serializable.ts#L43)
 
 ___
 
@@ -180,4 +183,4 @@ ___
 
 #### Defined in
 
-[Serializable.ts:6](https://github.com/flowi-dev/core/blob/4d374fd/src/classes/Serializable.ts#L6)
+[Serializable.ts:6](https://github.com/flowi-dev/core/blob/cc87ffe/src/classes/Serializable.ts#L6)

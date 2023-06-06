@@ -4,13 +4,33 @@
 
 [Type](../modules/Type.md).UnionType
 
+This class defines unions, just like in TypeScript, a union is a type that can be one of the types in the union.
+
+**`Example`**
+
+```ts
+const union = new UnionType('union', [STRING, NUMBER]);
+union.check('hello'); // true
+union.check(1); // true
+union.check(true); // false
+```
+
+You can also create an intersection of two unions, this will create a new union that contains all the types that are in both unions.
+
+**`Example`**
+
+```ts
+const a = new UnionType('union1', [STRING, NUMBER]);
+const b = new UnionType('union2', [NUMBER, BOOLEAN]);
+const intersection = UnionType.fromIntersection('intersection', [a, b]);
+console.log(intersection.types); // [NUMBER]
+```
+
 ## Hierarchy
 
 - [`BaseType`](Type.BaseType.md)
 
   ↳ **`UnionType`**
-
-  ↳↳ [`UnionIntersectionType`](Type.UnionIntersectionType.md)
 
 ## Table of contents
 
@@ -51,7 +71,7 @@
 
 #### Defined in
 
-[Type.ts:38](https://github.com/flowi-dev/core/blob/4d374fd/src/classes/Type.ts#L38)
+[Type.ts:64](https://github.com/flowi-dev/core/blob/cc87ffe/src/classes/Type.ts#L64)
 
 ## Properties
 
@@ -65,7 +85,7 @@
 
 #### Defined in
 
-[Type.ts:37](https://github.com/flowi-dev/core/blob/4d374fd/src/classes/Type.ts#L37)
+[Type.ts:63](https://github.com/flowi-dev/core/blob/cc87ffe/src/classes/Type.ts#L63)
 
 ___
 
@@ -79,7 +99,7 @@ ___
 
 #### Defined in
 
-[Type.ts:39](https://github.com/flowi-dev/core/blob/4d374fd/src/classes/Type.ts#L39)
+[Type.ts:65](https://github.com/flowi-dev/core/blob/cc87ffe/src/classes/Type.ts#L65)
 
 ___
 
@@ -89,7 +109,7 @@ ___
 
 #### Defined in
 
-[Type.ts:40](https://github.com/flowi-dev/core/blob/4d374fd/src/classes/Type.ts#L40)
+[Type.ts:66](https://github.com/flowi-dev/core/blob/cc87ffe/src/classes/Type.ts#L66)
 
 ___
 
@@ -103,7 +123,7 @@ ___
 
 #### Defined in
 
-[Serializable.ts:4](https://github.com/flowi-dev/core/blob/4d374fd/src/classes/Serializable.ts#L4)
+[Serializable.ts:4](https://github.com/flowi-dev/core/blob/cc87ffe/src/classes/Serializable.ts#L4)
 
 ## Methods
 
@@ -127,7 +147,7 @@ ___
 
 #### Defined in
 
-[Type.ts:54](https://github.com/flowi-dev/core/blob/4d374fd/src/classes/Type.ts#L54)
+[Type.ts:80](https://github.com/flowi-dev/core/blob/cc87ffe/src/classes/Type.ts#L80)
 
 ___
 
@@ -151,7 +171,7 @@ ___
 
 #### Defined in
 
-[Type.ts:45](https://github.com/flowi-dev/core/blob/4d374fd/src/classes/Type.ts#L45)
+[Type.ts:71](https://github.com/flowi-dev/core/blob/cc87ffe/src/classes/Type.ts#L71)
 
 ___
 
@@ -174,7 +194,7 @@ ___
 
 #### Defined in
 
-[Serializable.ts:43](https://github.com/flowi-dev/core/blob/4d374fd/src/classes/Serializable.ts#L43)
+[Serializable.ts:43](https://github.com/flowi-dev/core/blob/cc87ffe/src/classes/Serializable.ts#L43)
 
 ___
 
@@ -200,4 +220,4 @@ ___
 
 #### Defined in
 
-[Serializable.ts:6](https://github.com/flowi-dev/core/blob/4d374fd/src/classes/Serializable.ts#L6)
+[Serializable.ts:6](https://github.com/flowi-dev/core/blob/cc87ffe/src/classes/Serializable.ts#L6)
