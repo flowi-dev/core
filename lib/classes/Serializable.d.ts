@@ -11,22 +11,22 @@ export declare class Serializable {
      *
      * ```json
      {
-    name: 'object',
-    _: 'ObjectType',
-    properties: {
-      username: {
-        name: 'string',
-        _: 'PrimitiveType',
+    "name": "object",
+    "_": "ObjectType",
+    "properties": {
+      "username": {
+        "name": "string",
+        "_": "PrimitiveType",
       },
-      password: {
-        name: 'string',
-        _: 'PrimitiveType',
+      "password": {
+        "name": "string",
+        "_": "PrimitiveType",
       },
-      age: {
-        name: 'integer',
-        _: 'PrimitiveType',
+      "age": {
+        "name": "integer",
+        "_": "PrimitiveType",
       },
-      address: { ... }
+      "address": { ... }
    }
      *```
      *

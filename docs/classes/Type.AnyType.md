@@ -59,7 +59,7 @@ type.check({ name: 'John', job: 1 }); // true
 
 #### Defined in
 
-[Type.ts:240](https://github.com/flowi-dev/core/blob/92e489f/src/classes/Type.ts#L240)
+[Type.ts:240](https://github.com/flowi-dev/core/blob/0433a82/src/classes/Type.ts#L240)
 
 ## Properties
 
@@ -73,7 +73,7 @@ type.check({ name: 'John', job: 1 }); // true
 
 #### Defined in
 
-[Type.ts:237](https://github.com/flowi-dev/core/blob/92e489f/src/classes/Type.ts#L237)
+[Type.ts:237](https://github.com/flowi-dev/core/blob/0433a82/src/classes/Type.ts#L237)
 
 ___
 
@@ -87,7 +87,7 @@ ___
 
 #### Defined in
 
-[Type.ts:238](https://github.com/flowi-dev/core/blob/92e489f/src/classes/Type.ts#L238)
+[Type.ts:238](https://github.com/flowi-dev/core/blob/0433a82/src/classes/Type.ts#L238)
 
 ___
 
@@ -101,7 +101,7 @@ ___
 
 #### Defined in
 
-[Serializable.ts:97](https://github.com/flowi-dev/core/blob/92e489f/src/classes/Serializable.ts#L97)
+[Serializable.ts:97](https://github.com/flowi-dev/core/blob/0433a82/src/classes/Serializable.ts#L97)
 
 ## Methods
 
@@ -135,7 +135,7 @@ BOOLEAN.check('hello'); // false
 
 #### Defined in
 
-[Type.ts:244](https://github.com/flowi-dev/core/blob/92e489f/src/classes/Type.ts#L244)
+[Type.ts:244](https://github.com/flowi-dev/core/blob/0433a82/src/classes/Type.ts#L244)
 
 ___
 
@@ -167,7 +167,7 @@ BOOLEAN.extends(TRUE); // false
 
 #### Defined in
 
-[Type.ts:248](https://github.com/flowi-dev/core/blob/92e489f/src/classes/Type.ts#L248)
+[Type.ts:248](https://github.com/flowi-dev/core/blob/0433a82/src/classes/Type.ts#L248)
 
 ___
 
@@ -192,7 +192,7 @@ The fallback function for serialization. Most types will override this function.
 
 #### Defined in
 
-[Serializable.ts:106](https://github.com/flowi-dev/core/blob/92e489f/src/classes/Serializable.ts#L106)
+[Serializable.ts:106](https://github.com/flowi-dev/core/blob/0433a82/src/classes/Serializable.ts#L106)
 
 ___
 
@@ -204,22 +204,22 @@ Deserialize a type from a serialized object.
 
 ```json
 {
- 	name: 'object',
- 	_: 'ObjectType',
- 	properties: {
- 	  username: {
- 	    name: 'string',
- 	    _: 'PrimitiveType',
- 	  },
- 	  password: {
- 	    name: 'string',
- 	    _: 'PrimitiveType',
- 	  },
- 	  age: {
- 	    name: 'integer',
- 	    _: 'PrimitiveType',
- 	  },
- 	  address: { ... }
+	"name": "object",
+	"_": "ObjectType",
+	"properties": {
+	  "username": {
+	    "name": "string",
+	    "_": "PrimitiveType",
+	  },
+	  "password": {
+	    "name": "string",
+	    "_": "PrimitiveType",
+	  },
+	  "age": {
+	    "name": "integer",
+	    "_": "PrimitiveType",
+	  },
+	  "address": { ... }
  }
 ```
 
@@ -265,7 +265,7 @@ console.log(deserialized);
 
 #### Defined in
 
-[Serializable.ts:60](https://github.com/flowi-dev/core/blob/92e489f/src/classes/Serializable.ts#L60)
+[Serializable.ts:60](https://github.com/flowi-dev/core/blob/0433a82/src/classes/Serializable.ts#L60)
 
 ___
 
@@ -289,4 +289,4 @@ ___
 
 #### Defined in
 
-[Serializable.ts:93](https://github.com/flowi-dev/core/blob/92e489f/src/classes/Serializable.ts#L93)
+[Serializable.ts:93](https://github.com/flowi-dev/core/blob/0433a82/src/classes/Serializable.ts#L93)

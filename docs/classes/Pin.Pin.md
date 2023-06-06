@@ -1,57 +1,97 @@
-[@flowi-dev/core](../README.md) / [Modules](../modules.md) / [Serializable](../modules/Serializable.md) / Serializable
+[@flowi-dev/core](../README.md) / [Modules](../modules.md) / [Pin](../modules/Pin.md) / Pin
 
-# Class: Serializable
+# Class: Pin
 
-[Serializable](../modules/Serializable.md).Serializable
+[Pin](../modules/Pin.md).Pin
 
 This class is used to serialize and deserialize types.
 It stores a cache of all types that have been serialized and deserialized to easily retrieve them.
 
 ## Hierarchy
 
-- **`Serializable`**
+- [`Serializable`](Serializable.Serializable.md)
 
-  ↳ [`Pin`](Pin.Pin.md)
-
-  ↳ [`BaseType`](Type.BaseType.md)
+  ↳ **`Pin`**
 
 ## Table of contents
 
 ### Constructors
 
-- [constructor](Serializable.Serializable.md#constructor)
+- [constructor](Pin.Pin.md#constructor)
 
 ### Properties
 
-- [cache](Serializable.Serializable.md#cache)
+- [\_](Pin.Pin.md#_)
+- [name](Pin.Pin.md#name)
+- [type](Pin.Pin.md#type)
+- [cache](Pin.Pin.md#cache)
 
 ### Methods
 
-- [serialize](Serializable.Serializable.md#serialize)
-- [deserialize](Serializable.Serializable.md#deserialize)
-- [remove](Serializable.Serializable.md#remove)
+- [serialize](Pin.Pin.md#serialize)
+- [deserialize](Pin.Pin.md#deserialize)
+- [remove](Pin.Pin.md#remove)
 
 ## Constructors
 
 ### constructor
 
-• **new Serializable**(`name`)
+• **new Pin**(`name`, `type`)
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `name` | `string` |
+| `name` | `Lowercase`<`string`\> |
+| `type` | [`BaseType`](Type.BaseType.md) |
+
+#### Overrides
+
+[Serializable](Serializable.Serializable.md).[constructor](Serializable.Serializable.md#constructor)
 
 #### Defined in
 
-[Serializable.ts:99](https://github.com/flowi-dev/core/blob/0433a82/src/classes/Serializable.ts#L99)
+[Pin.ts:10](https://github.com/flowi-dev/core/blob/0433a82/src/classes/Pin.ts#L10)
 
 ## Properties
+
+### \_
+
+• **\_**: `string` = `Pin.name`
+
+#### Defined in
+
+[Pin.ts:6](https://github.com/flowi-dev/core/blob/0433a82/src/classes/Pin.ts#L6)
+
+___
+
+### name
+
+• `Readonly` **name**: `Lowercase`<`string`\>
+
+#### Defined in
+
+[Pin.ts:8](https://github.com/flowi-dev/core/blob/0433a82/src/classes/Pin.ts#L8)
+
+___
+
+### type
+
+• `Readonly` **type**: [`BaseType`](Type.BaseType.md)
+
+#### Defined in
+
+[Pin.ts:10](https://github.com/flowi-dev/core/blob/0433a82/src/classes/Pin.ts#L10)
+
+___
 
 ### cache
 
 ▪ `Static` `Protected` **cache**: `Map`<`string`, [`Serializable`](Serializable.Serializable.md)\>
+
+#### Inherited from
+
+[Serializable](Serializable.Serializable.md).[cache](Serializable.Serializable.md#cache)
 
 #### Defined in
 
@@ -73,6 +113,10 @@ The fallback function for serialization. Most types will override this function.
 | :------ | :------ |
 | `_` | `string` |
 | `name` | `string` |
+
+#### Inherited from
+
+[Serializable](Serializable.Serializable.md).[serialize](Serializable.Serializable.md#serialize)
 
 #### Defined in
 
@@ -143,6 +187,10 @@ console.log(deserialized);
 
 [`Serializable`](Serializable.Serializable.md)
 
+#### Inherited from
+
+[Serializable](Serializable.Serializable.md).[deserialize](Serializable.Serializable.md#deserialize)
+
 #### Defined in
 
 [Serializable.ts:60](https://github.com/flowi-dev/core/blob/0433a82/src/classes/Serializable.ts#L60)
@@ -162,6 +210,10 @@ ___
 #### Returns
 
 `void`
+
+#### Inherited from
+
+[Serializable](Serializable.Serializable.md).[remove](Serializable.Serializable.md#remove)
 
 #### Defined in
 
