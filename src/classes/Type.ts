@@ -227,7 +227,7 @@ export class ArrayType extends BaseType {
  * ```ts
  * const type = new ObjectType('type', {
  * 	name: STRING,
- *  job: new AnyType(),
+ * 	job: new AnyType(),
  * });
  * type.check({ name: 'John', job: 'Developer' }); // true
  * type.check({ name: 'John', job: 1 }); // true
@@ -351,6 +351,7 @@ export class ObjectType extends BaseType {
 	 * // 	age: NUMBER,
 	 * // 	job: STRING,
 	 * // }
+	 * ```
 	 */
 	public extend(name: string, properties: Record<string, BaseType>): ObjectType {
 		return new ObjectType(name, {

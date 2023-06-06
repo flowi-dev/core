@@ -8,3 +8,8 @@
 
 # ✨🌊 Flowi 🌊✨
 More to come...
+
+
+## Documentation
+
+[Index](/docs/modules.md)

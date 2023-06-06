@@ -167,9 +167,9 @@ describe("Serializing and deserializing nested objects", () => {
 
   const serialized = OBJECT.serialize();
   console.log(serialized);
-  Serializable.cache.delete(OBJECT.name); // Remove the object from the cache
-  Serializable.cache.delete('address'); // Remove the object from the cache
-  Serializable.cache.delete('coordinates'); // Remove the object from the cache
+  Serializable.remove(OBJECT.name); // Remove the object from the cache
+  Serializable.remove('address'); // Remove the object from the cache
+  Serializable.remove('coordinates'); // Remove the object from the cache
   const deserialized = Serializable.deserialize(serialized) as ObjectType;
 
   it('should be the same', () => {
@@ -204,7 +204,7 @@ describe("Serializing and deserializing objects that aren't saved", () => {
     age: INTEGER,
   });
 
-  Serializable.cache.delete(OBJECT.name); // Remove the object from the cache
+  Serializable.remove(OBJECT.name); // Remove the object from the cache
 
   const serialized = OBJECT.serialize();
   const deserialized = Serializable.deserialize(serialized) as ObjectType;
@@ -217,7 +217,7 @@ describe("Serializing and deserializing objects that aren't saved", () => {
 describe("Serializing and deserializing unions that aren't saved", () => {
   const UNION = new UnionType('unsaved-union', [STRING, INTEGER]);
 
-  Serializable.cache.delete(UNION.name); // Remove the union from the cache
+  Serializable.remove(UNION.name); // Remove the union from the cache
 
   const serialized = UNION.serialize();
   const deserialized = Serializable.deserialize(serialized) as UnionType;
@@ -236,8 +236,8 @@ describe("Serializing and deserializing arrays that aren't saved", () => {
     }),
   );
 
-  Serializable.cache.delete(ARRAY.name); // Remove the array from the cache
-  Serializable.cache.delete(ARRAY.elementType.name); // Remove the element type from the cache
+  Serializable.remove(ARRAY.name); // Remove the array from the cache
+  Serializable.remove(ARRAY.elementType.name); // Remove the element type from the cache
 
 	const serialized = ARRAY.serialize();
 	const deserialized = Serializable.deserialize(serialized); // Should not throw an error
@@ -251,7 +251,7 @@ describe("Serializing and deserializing arrays that aren't saved", () => {
 describe("Serializing and deserializing primitives that aren't saved should fail", () => {
   const UNSAVED = new PrimitiveType('unsaved', (data: any) => true);
 
-  Serializable.cache.delete(UNSAVED.name); // Remove the primitive from the cache;
+  Serializable.remove(UNSAVED.name); // Remove the primitive from the cache;
 
   const serialized = UNSAVED.serialize();
 

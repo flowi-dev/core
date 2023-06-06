@@ -8,60 +8,55 @@ export class Serializable {
 	/**
 	 * The cache of all types that have been serialized and deserialized.
 	 */
-	static cache = new Map<string, Serializable>();
-
 	/**
 	 * Deserialize a type from a serialized object.
 	 *
 	 * ```json
-	 * # Serialized object
-	 * {
-   * 	name: 'object',
-   * 	_: 'ObjectType',
-   * 	properties: {
-   * 	  username: {
-   * 	    name: 'string',
-   * 	    _: 'PrimitiveType',
-   * 	    validator: [Function (anonymous)]
-   * 	  },
-   * 	  password: {
-   * 	    name: 'string',
-   * 	    _: 'PrimitiveType',
-   * 	    validator: [Function (anonymous)]
-   * 	  },
-   * 	  age: {
-   * 	    name: 'integer',
-   * 	    _: 'PrimitiveType',
-   * 	    validator: [Function (anonymous)]
-   * 	  },
-   * 	  address: { name: 'address', _: 'ObjectType', properties: [Object] }
-   * }
+	 {
+   	name: 'object',
+   	_: 'ObjectType',
+   	properties: {
+   	  username: {
+   	    name: 'string',
+   	    _: 'PrimitiveType',
+   	  },
+   	  password: {
+   	    name: 'string',
+   	    _: 'PrimitiveType',
+   	  },
+   	  age: {
+   	    name: 'integer',
+   	    _: 'PrimitiveType',
+   	  },
+   	  address: { ... }
+   }
 	 *```
 	 *
 	 * ```ts
-	 * const deserialized = Serializable.deserialize({...});
-	 * console.log(deserialized);
-	 * // ObjectType {
-	 * //   name: 'object',
-	 * //   properties: {
-	 * //     username: PrimitiveType { name: 'string', validator: [Function (anonymous)] },
-	 * //     password: PrimitiveType { name: 'string', validator: [Function (anonymous)] },
-	 * //     age: PrimitiveType { name: 'integer', validator: [Function (anonymous)] },
-	 * //     address: ObjectType {
-	 * //       name: 'address',
-	 * //       properties: {
-	 * //         street: PrimitiveType { name: 'string', validator: [Function (anonymous)] },
-	 * //         city: PrimitiveType { name: 'string', validator: [Function (anonymous)] },
-	 * //         coordinates: ArrayType {
-	 * //           name: 'coordinates',
-	 * //           elementType: PrimitiveType { name: 'number', validator: [Function (anonymous)] }
-	 * //         }
-	 * //       }
-	 * //     }
-	 * //   }
-	 * // }
+	 const deserialized = Serializable.deserialize({...});
+	 console.log(deserialized);
+	 // ObjectType {
+	 //   name: 'object',
+	 //   properties: {
+	 //     username: PrimitiveType { name: 'string', validator: [Function (anonymous)] },
+	 //     password: PrimitiveType { name: 'string', validator: [Function (anonymous)] },
+	 //     age: PrimitiveType { name: 'integer', validator: [Function (anonymous)] },
+	 //     address: ObjectType {
+	 //       name: 'address',
+	 //       properties: {
+	 //         street: PrimitiveType { name: 'string', validator: [Function (anonymous)] },
+	 //         city: PrimitiveType { name: 'string', validator: [Function (anonymous)] },
+	 //         coordinates: ArrayType {
+	 //           name: 'coordinates',
+	 //           elementType: PrimitiveType { name: 'number', validator: [Function (anonymous)] }
+	 //         }
+	 //       }
+	 //     }
+	 //   }
+	 // }
 	 * ```
 	 */
+
 	public static deserialize(data: {name: string; _: string}): Serializable {
 		const saved = Serializable.cache.get(data.name);
 
@@ -94,6 +89,12 @@ export class Serializable {
 
 		return saved;
 	}
+
+	public static remove(name: string): void {
+		Serializable.cache.delete(name);
+	}
+
+	protected static cache = new Map<string, Serializable>();
 
 	constructor(name: string) {
 		Serializable.cache.set(name, this);
