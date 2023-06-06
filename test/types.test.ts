@@ -1,6 +1,6 @@
 import { TRUE, FALSE, BOOLEAN, NUMBER, NULL, INTEGER, STRING, ANY } from '../src/primitives';
 import { expect, test } from "@jest/globals";
-import { ArrayType, IntersectionType, ObjectType, UnionType } from "../src/classes/Type";
+import { ArrayType, ObjectIntersectionType, ObjectType, UnionIntersectionType, UnionType } from "../src/classes/Type";
 
 
 test("Check that primitive types extend correctly", () => {
@@ -237,7 +237,7 @@ test("Check that objects can be extended correctly", () => {
 test("Test intersection types", () => { 
 
 	expect(() => {
-		new IntersectionType("AB", [
+		new ObjectIntersectionType("AB", [
 			new ObjectType("ObjA", {
 				a: new UnionType('A', [STRING, NUMBER]),
 			}),
@@ -248,7 +248,7 @@ test("Test intersection types", () => {
 	}).not.toThrow();
 
 	expect(
-		new IntersectionType("AB", [
+		new ObjectIntersectionType("AB", [
 			new ObjectType("ObjA", {
 				a: new UnionType('A', [STRING, NUMBER]),
 			}),
@@ -263,7 +263,7 @@ test("Test intersection types", () => {
 	})
 
 	expect(
-		new IntersectionType("AB", [
+		new ObjectIntersectionType("AB", [
 			new ObjectType("ObjA", {
 				a: NUMBER,
 			}),
@@ -278,7 +278,7 @@ test("Test intersection types", () => {
 	})
 
 	expect(() => {
-		new IntersectionType("AB", [
+		new ObjectIntersectionType("AB", [
 			new ObjectType("ObjA", {
 				a: new UnionType('A', [STRING, NUMBER]),
 			}),
@@ -348,4 +348,15 @@ test("Test the 'any' type", () => {
 	expect(NUMBER.extends(ANY)).toBe(false);
 	expect(BOOLEAN.extends(ANY)).toBe(false);
 		
+})
+
+test("Test the union intersection type", () => {
+	const A = new UnionType('A', [STRING, NUMBER]);
+	const B = new UnionType('B', [NUMBER, BOOLEAN, NUMBER]);
+	const INTERSECTION = new UnionIntersectionType('A&B', [A, B]);
+
+	expect(INTERSECTION.types).toStrictEqual([NUMBER]);
+	expect(INTERSECTION.check(1)).toBe(true);
+	expect(INTERSECTION.check("1")).toBe(false);
+	expect(INTERSECTION.check(true)).toBe(false);
 })

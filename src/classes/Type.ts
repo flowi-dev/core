@@ -103,7 +103,7 @@ export class ObjectType extends Type {
 	}
 }
 
-export class IntersectionType extends ObjectType {
+export class ObjectIntersectionType extends ObjectType {
 	constructor(
 		public name: string,
 		types: ObjectType[],
@@ -127,6 +127,26 @@ export class IntersectionType extends ObjectType {
 		}
 
 		super(name, properties);
+	}
+}
+
+export class UnionIntersectionType extends UnionType {
+	constructor(
+		public name: string,
+		types: UnionType[],
+	) {
+		const newTypes: Type[] = [];
+		for (const union of types) {
+			for (const type of union.types) {
+				if (types.every(u => u.types.some(t => type.extends(t)))) {
+					if (!newTypes.includes(type)) {
+						newTypes.push(type);
+					}
+				}
+			}
+		}
+
+		super(name, newTypes);
 	}
 }
 
