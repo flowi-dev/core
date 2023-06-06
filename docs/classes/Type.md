@@ -43,7 +43,7 @@
 
 #### Defined in
 
-[Type.ts:3](https://github.com/flowi-dev/core/blob/dca7728/src/classes/Type.ts#L3)
+[Type.ts:3](https://github.com/flowi-dev/core/blob/f9c2b6d/src/classes/Type.ts#L3)
 
 ## Methods
 
@@ -63,7 +63,7 @@
 
 #### Defined in
 
-[Type.ts:5](https://github.com/flowi-dev/core/blob/dca7728/src/classes/Type.ts#L5)
+[Type.ts:5](https://github.com/flowi-dev/core/blob/f9c2b6d/src/classes/Type.ts#L5)
 
 ___
 
@@ -83,4 +83,4 @@ ___
 
 #### Defined in
 
-[Type.ts:4](https://github.com/flowi-dev/core/blob/dca7728/src/classes/Type.ts#L4)
+[Type.ts:4](https://github.com/flowi-dev/core/blob/f9c2b6d/src/classes/Type.ts#L4)
