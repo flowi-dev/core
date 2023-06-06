@@ -59,7 +59,7 @@ array.check(['hello', 1]); // false
 
 #### Defined in
 
-[Type.ts:96](https://github.com/flowi-dev/core/blob/cc87ffe/src/classes/Type.ts#L96)
+[Type.ts:87](https://github.com/flowi-dev/core/blob/0537423/src/classes/Type.ts#L87)
 
 ## Properties
 
@@ -73,7 +73,7 @@ array.check(['hello', 1]); // false
 
 #### Defined in
 
-[Type.ts:95](https://github.com/flowi-dev/core/blob/cc87ffe/src/classes/Type.ts#L95)
+[Type.ts:86](https://github.com/flowi-dev/core/blob/0537423/src/classes/Type.ts#L86)
 
 ___
 
@@ -83,7 +83,7 @@ ___
 
 #### Defined in
 
-[Type.ts:98](https://github.com/flowi-dev/core/blob/cc87ffe/src/classes/Type.ts#L98)
+[Type.ts:89](https://github.com/flowi-dev/core/blob/0537423/src/classes/Type.ts#L89)
 
 ___
 
@@ -97,7 +97,7 @@ ___
 
 #### Defined in
 
-[Type.ts:97](https://github.com/flowi-dev/core/blob/cc87ffe/src/classes/Type.ts#L97)
+[Type.ts:88](https://github.com/flowi-dev/core/blob/0537423/src/classes/Type.ts#L88)
 
 ___
 
@@ -111,7 +111,7 @@ ___
 
 #### Defined in
 
-[Serializable.ts:4](https://github.com/flowi-dev/core/blob/cc87ffe/src/classes/Serializable.ts#L4)
+[Serializable.ts:4](https://github.com/flowi-dev/core/blob/0537423/src/classes/Serializable.ts#L4)
 
 ## Methods
 
@@ -135,7 +135,7 @@ ___
 
 #### Defined in
 
-[Type.ts:103](https://github.com/flowi-dev/core/blob/cc87ffe/src/classes/Type.ts#L103)
+[Type.ts:94](https://github.com/flowi-dev/core/blob/0537423/src/classes/Type.ts#L94)
 
 ___
 
@@ -159,7 +159,7 @@ ___
 
 #### Defined in
 
-[Type.ts:111](https://github.com/flowi-dev/core/blob/cc87ffe/src/classes/Type.ts#L111)
+[Type.ts:102](https://github.com/flowi-dev/core/blob/0537423/src/classes/Type.ts#L102)
 
 ___
 
@@ -185,7 +185,7 @@ ___
 
 #### Defined in
 
-[Type.ts:123](https://github.com/flowi-dev/core/blob/cc87ffe/src/classes/Type.ts#L123)
+[Type.ts:114](https://github.com/flowi-dev/core/blob/0537423/src/classes/Type.ts#L114)
 
 ___
 
@@ -211,4 +211,4 @@ ___
 
 #### Defined in
 
-[Serializable.ts:6](https://github.com/flowi-dev/core/blob/cc87ffe/src/classes/Serializable.ts#L6)
+[Serializable.ts:6](https://github.com/flowi-dev/core/blob/0537423/src/classes/Serializable.ts#L6)

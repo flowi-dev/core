@@ -51,7 +51,7 @@ This class defines primitive types, such as string, number, boolean, etc.
 
 #### Defined in
 
-[Type.ts:19](https://github.com/flowi-dev/core/blob/cc87ffe/src/classes/Type.ts#L19)
+[Type.ts:19](https://github.com/flowi-dev/core/blob/0537423/src/classes/Type.ts#L19)
 
 ## Properties
 
@@ -65,7 +65,7 @@ This class defines primitive types, such as string, number, boolean, etc.
 
 #### Defined in
 
-[Type.ts:18](https://github.com/flowi-dev/core/blob/cc87ffe/src/classes/Type.ts#L18)
+[Type.ts:18](https://github.com/flowi-dev/core/blob/0537423/src/classes/Type.ts#L18)
 
 ___
 
@@ -79,7 +79,7 @@ ___
 
 #### Defined in
 
-[Type.ts:20](https://github.com/flowi-dev/core/blob/cc87ffe/src/classes/Type.ts#L20)
+[Type.ts:20](https://github.com/flowi-dev/core/blob/0537423/src/classes/Type.ts#L20)
 
 ___
 
@@ -103,7 +103,7 @@ ___
 
 #### Defined in
 
-[Type.ts:21](https://github.com/flowi-dev/core/blob/cc87ffe/src/classes/Type.ts#L21)
+[Type.ts:21](https://github.com/flowi-dev/core/blob/0537423/src/classes/Type.ts#L21)
 
 ___
 
@@ -117,7 +117,7 @@ ___
 
 #### Defined in
 
-[Serializable.ts:4](https://github.com/flowi-dev/core/blob/cc87ffe/src/classes/Serializable.ts#L4)
+[Serializable.ts:4](https://github.com/flowi-dev/core/blob/0537423/src/classes/Serializable.ts#L4)
 
 ## Methods
 
@@ -141,7 +141,7 @@ ___
 
 #### Defined in
 
-[Type.ts:26](https://github.com/flowi-dev/core/blob/cc87ffe/src/classes/Type.ts#L26)
+[Type.ts:26](https://github.com/flowi-dev/core/blob/0537423/src/classes/Type.ts#L26)
 
 ___
 
@@ -165,7 +165,7 @@ ___
 
 #### Defined in
 
-[Type.ts:30](https://github.com/flowi-dev/core/blob/cc87ffe/src/classes/Type.ts#L30)
+[Type.ts:30](https://github.com/flowi-dev/core/blob/0537423/src/classes/Type.ts#L30)
 
 ___
 
@@ -188,7 +188,7 @@ ___
 
 #### Defined in
 
-[Serializable.ts:43](https://github.com/flowi-dev/core/blob/cc87ffe/src/classes/Serializable.ts#L43)
+[Serializable.ts:43](https://github.com/flowi-dev/core/blob/0537423/src/classes/Serializable.ts#L43)
 
 ___
 
@@ -214,4 +214,4 @@ ___
 
 #### Defined in
 
-[Serializable.ts:6](https://github.com/flowi-dev/core/blob/cc87ffe/src/classes/Serializable.ts#L6)
+[Serializable.ts:6](https://github.com/flowi-dev/core/blob/0537423/src/classes/Serializable.ts#L6)

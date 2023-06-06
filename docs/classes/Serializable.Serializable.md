@@ -39,7 +39,7 @@
 
 #### Defined in
 
-[Serializable.ts:39](https://github.com/flowi-dev/core/blob/cc87ffe/src/classes/Serializable.ts#L39)
+[Serializable.ts:39](https://github.com/flowi-dev/core/blob/0537423/src/classes/Serializable.ts#L39)
 
 ## Properties
 
@@ -49,7 +49,7 @@
 
 #### Defined in
 
-[Serializable.ts:4](https://github.com/flowi-dev/core/blob/cc87ffe/src/classes/Serializable.ts#L4)
+[Serializable.ts:4](https://github.com/flowi-dev/core/blob/0537423/src/classes/Serializable.ts#L4)
 
 ## Methods
 
@@ -68,7 +68,7 @@
 
 #### Defined in
 
-[Serializable.ts:43](https://github.com/flowi-dev/core/blob/cc87ffe/src/classes/Serializable.ts#L43)
+[Serializable.ts:43](https://github.com/flowi-dev/core/blob/0537423/src/classes/Serializable.ts#L43)
 
 ___
 
@@ -90,4 +90,4 @@ ___
 
 #### Defined in
 
-[Serializable.ts:6](https://github.com/flowi-dev/core/blob/cc87ffe/src/classes/Serializable.ts#L6)
+[Serializable.ts:6](https://github.com/flowi-dev/core/blob/0537423/src/classes/Serializable.ts#L6)

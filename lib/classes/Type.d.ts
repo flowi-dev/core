@@ -29,15 +29,6 @@ export declare class PrimitiveType extends BaseType {
  * union.check(1); // true
  * union.check(true); // false
  * ```
- *
- * You can also create an intersection of two unions, this will create a new union that contains all the types that are in both unions.
- * @example
- * ```ts
- * const a = new UnionType('union1', [STRING, NUMBER]);
- * const b = new UnionType('union2', [NUMBER, BOOLEAN]);
- * const intersection = UnionType.fromIntersection('intersection', [a, b]);
- * console.log(intersection.types); // [NUMBER]
- * ```
  */
 export declare class UnionType extends BaseType {
     name: string;
@@ -85,7 +76,7 @@ export declare class ArrayType extends BaseType {
  * @example
  * ```ts
  * const type = new ObjectType('type', {
- *  name: STRING,
+ * 	name: STRING,
  *  job: new AnyType(),
  * });
  * type.check({ name: 'John', job: 'Developer' }); // true
@@ -104,8 +95,8 @@ export declare class AnyType extends BaseType {
  * @example
  * ```ts
  * const UserObjType = new ObjectType('User', {
- * name: STRING,
- * age: NUMBER,
+ * 	name: STRING,
+ * 	age: NUMBER,
  * });
  *
  * UserObjType.check({ name: 'John', age: 1 }); // true
@@ -116,30 +107,13 @@ export declare class AnyType extends BaseType {
  * @example
  * ```ts
  * const UserObjType = new ObjectType('User', {
- * name: STRING,
- * age: NUMBER,
- * job: new ObjectType('Job', {
- * title: STRING,
- * salary: NUMBER,
- * }),
+ * 	name: STRING,
+ * 	age: NUMBER,
+ * 	job: new ObjectType('Job', {
+ * 		title: STRING,
+ * 		salary: NUMBER,
+ * 	}),
  * });
- * ```
- *
- * You can also create an intersection of two objects
- * @example
- * ```ts
- * const a = new ObjectType('a', {
- * name: STRING,
- * age: NUMBER,
- * });
- *
- * const b = new ObjectType('b', {
- * name: STRING,
- * job: STRING,
- * });
- *
- * const intersection = ObjectType.fromIntersection('intersection', [a, b]);
- * console.log(intersection.properties); // { name: STRING }
  * ```
  */
 export declare class ObjectType extends BaseType {

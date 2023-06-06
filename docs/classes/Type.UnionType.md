@@ -15,17 +15,6 @@ union.check(1); // true
 union.check(true); // false
 ```
 
-You can also create an intersection of two unions, this will create a new union that contains all the types that are in both unions.
-
-**`Example`**
-
-```ts
-const a = new UnionType('union1', [STRING, NUMBER]);
-const b = new UnionType('union2', [NUMBER, BOOLEAN]);
-const intersection = UnionType.fromIntersection('intersection', [a, b]);
-console.log(intersection.types); // [NUMBER]
-```
-
 ## Hierarchy
 
 - [`BaseType`](Type.BaseType.md)
@@ -71,7 +60,7 @@ console.log(intersection.types); // [NUMBER]
 
 #### Defined in
 
-[Type.ts:64](https://github.com/flowi-dev/core/blob/cc87ffe/src/classes/Type.ts#L64)
+[Type.ts:55](https://github.com/flowi-dev/core/blob/0537423/src/classes/Type.ts#L55)
 
 ## Properties
 
@@ -85,7 +74,7 @@ console.log(intersection.types); // [NUMBER]
 
 #### Defined in
 
-[Type.ts:63](https://github.com/flowi-dev/core/blob/cc87ffe/src/classes/Type.ts#L63)
+[Type.ts:54](https://github.com/flowi-dev/core/blob/0537423/src/classes/Type.ts#L54)
 
 ___
 
@@ -99,7 +88,7 @@ ___
 
 #### Defined in
 
-[Type.ts:65](https://github.com/flowi-dev/core/blob/cc87ffe/src/classes/Type.ts#L65)
+[Type.ts:56](https://github.com/flowi-dev/core/blob/0537423/src/classes/Type.ts#L56)
 
 ___
 
@@ -109,7 +98,7 @@ ___
 
 #### Defined in
 
-[Type.ts:66](https://github.com/flowi-dev/core/blob/cc87ffe/src/classes/Type.ts#L66)
+[Type.ts:57](https://github.com/flowi-dev/core/blob/0537423/src/classes/Type.ts#L57)
 
 ___
 
@@ -123,7 +112,7 @@ ___
 
 #### Defined in
 
-[Serializable.ts:4](https://github.com/flowi-dev/core/blob/cc87ffe/src/classes/Serializable.ts#L4)
+[Serializable.ts:4](https://github.com/flowi-dev/core/blob/0537423/src/classes/Serializable.ts#L4)
 
 ## Methods
 
@@ -147,7 +136,7 @@ ___
 
 #### Defined in
 
-[Type.ts:80](https://github.com/flowi-dev/core/blob/cc87ffe/src/classes/Type.ts#L80)
+[Type.ts:71](https://github.com/flowi-dev/core/blob/0537423/src/classes/Type.ts#L71)
 
 ___
 
@@ -171,7 +160,7 @@ ___
 
 #### Defined in
 
-[Type.ts:71](https://github.com/flowi-dev/core/blob/cc87ffe/src/classes/Type.ts#L71)
+[Type.ts:62](https://github.com/flowi-dev/core/blob/0537423/src/classes/Type.ts#L62)
 
 ___
 
@@ -194,7 +183,7 @@ ___
 
 #### Defined in
 
-[Serializable.ts:43](https://github.com/flowi-dev/core/blob/cc87ffe/src/classes/Serializable.ts#L43)
+[Serializable.ts:43](https://github.com/flowi-dev/core/blob/0537423/src/classes/Serializable.ts#L43)
 
 ___
 
@@ -220,4 +209,4 @@ ___
 
 #### Defined in
 
-[Serializable.ts:6](https://github.com/flowi-dev/core/blob/cc87ffe/src/classes/Serializable.ts#L6)
+[Serializable.ts:6](https://github.com/flowi-dev/core/blob/0537423/src/classes/Serializable.ts#L6)

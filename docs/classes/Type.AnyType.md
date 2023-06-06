@@ -20,7 +20,7 @@ This type is useful when you want to allow any type of data.
 
 ```ts
 const type = new ObjectType('type', {
- name: STRING,
+	name: STRING,
  job: new AnyType(),
 });
 type.check({ name: 'John', job: 'Developer' }); // true
@@ -64,7 +64,7 @@ type.check({ name: 'John', job: 1 }); // true
 
 #### Defined in
 
-[Type.ts:162](https://github.com/flowi-dev/core/blob/cc87ffe/src/classes/Type.ts#L162)
+[Type.ts:153](https://github.com/flowi-dev/core/blob/0537423/src/classes/Type.ts#L153)
 
 ## Properties
 
@@ -78,7 +78,7 @@ type.check({ name: 'John', job: 1 }); // true
 
 #### Defined in
 
-[Type.ts:159](https://github.com/flowi-dev/core/blob/cc87ffe/src/classes/Type.ts#L159)
+[Type.ts:150](https://github.com/flowi-dev/core/blob/0537423/src/classes/Type.ts#L150)
 
 ___
 
@@ -92,7 +92,7 @@ ___
 
 #### Defined in
 
-[Type.ts:160](https://github.com/flowi-dev/core/blob/cc87ffe/src/classes/Type.ts#L160)
+[Type.ts:151](https://github.com/flowi-dev/core/blob/0537423/src/classes/Type.ts#L151)
 
 ___
 
@@ -106,7 +106,7 @@ ___
 
 #### Defined in
 
-[Serializable.ts:4](https://github.com/flowi-dev/core/blob/cc87ffe/src/classes/Serializable.ts#L4)
+[Serializable.ts:4](https://github.com/flowi-dev/core/blob/0537423/src/classes/Serializable.ts#L4)
 
 ## Methods
 
@@ -130,7 +130,7 @@ ___
 
 #### Defined in
 
-[Type.ts:166](https://github.com/flowi-dev/core/blob/cc87ffe/src/classes/Type.ts#L166)
+[Type.ts:157](https://github.com/flowi-dev/core/blob/0537423/src/classes/Type.ts#L157)
 
 ___
 
@@ -154,7 +154,7 @@ ___
 
 #### Defined in
 
-[Type.ts:170](https://github.com/flowi-dev/core/blob/cc87ffe/src/classes/Type.ts#L170)
+[Type.ts:161](https://github.com/flowi-dev/core/blob/0537423/src/classes/Type.ts#L161)
 
 ___
 
@@ -177,7 +177,7 @@ ___
 
 #### Defined in
 
-[Serializable.ts:43](https://github.com/flowi-dev/core/blob/cc87ffe/src/classes/Serializable.ts#L43)
+[Serializable.ts:43](https://github.com/flowi-dev/core/blob/0537423/src/classes/Serializable.ts#L43)
 
 ___
 
@@ -203,4 +203,4 @@ ___
 
 #### Defined in
 
-[Serializable.ts:6](https://github.com/flowi-dev/core/blob/cc87ffe/src/classes/Serializable.ts#L6)
+[Serializable.ts:6](https://github.com/flowi-dev/core/blob/0537423/src/classes/Serializable.ts#L6)

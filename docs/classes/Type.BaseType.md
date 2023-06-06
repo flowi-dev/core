@@ -60,7 +60,7 @@ This class is abstract and should not be used directly.
 
 #### Defined in
 
-[Serializable.ts:39](https://github.com/flowi-dev/core/blob/cc87ffe/src/classes/Serializable.ts#L39)
+[Serializable.ts:39](https://github.com/flowi-dev/core/blob/0537423/src/classes/Serializable.ts#L39)
 
 ## Properties
 
@@ -70,7 +70,7 @@ This class is abstract and should not be used directly.
 
 #### Defined in
 
-[Type.ts:8](https://github.com/flowi-dev/core/blob/cc87ffe/src/classes/Type.ts#L8)
+[Type.ts:8](https://github.com/flowi-dev/core/blob/0537423/src/classes/Type.ts#L8)
 
 ___
 
@@ -80,7 +80,7 @@ ___
 
 #### Defined in
 
-[Type.ts:9](https://github.com/flowi-dev/core/blob/cc87ffe/src/classes/Type.ts#L9)
+[Type.ts:9](https://github.com/flowi-dev/core/blob/0537423/src/classes/Type.ts#L9)
 
 ___
 
@@ -94,7 +94,7 @@ ___
 
 #### Defined in
 
-[Serializable.ts:4](https://github.com/flowi-dev/core/blob/cc87ffe/src/classes/Serializable.ts#L4)
+[Serializable.ts:4](https://github.com/flowi-dev/core/blob/0537423/src/classes/Serializable.ts#L4)
 
 ## Methods
 
@@ -114,7 +114,7 @@ ___
 
 #### Defined in
 
-[Type.ts:11](https://github.com/flowi-dev/core/blob/cc87ffe/src/classes/Type.ts#L11)
+[Type.ts:11](https://github.com/flowi-dev/core/blob/0537423/src/classes/Type.ts#L11)
 
 ___
 
@@ -134,7 +134,7 @@ ___
 
 #### Defined in
 
-[Type.ts:10](https://github.com/flowi-dev/core/blob/cc87ffe/src/classes/Type.ts#L10)
+[Type.ts:10](https://github.com/flowi-dev/core/blob/0537423/src/classes/Type.ts#L10)
 
 ___
 
@@ -157,7 +157,7 @@ ___
 
 #### Defined in
 
-[Serializable.ts:43](https://github.com/flowi-dev/core/blob/cc87ffe/src/classes/Serializable.ts#L43)
+[Serializable.ts:43](https://github.com/flowi-dev/core/blob/0537423/src/classes/Serializable.ts#L43)
 
 ___
 
@@ -183,4 +183,4 @@ ___
 
 #### Defined in
 
-[Serializable.ts:6](https://github.com/flowi-dev/core/blob/cc87ffe/src/classes/Serializable.ts#L6)
+[Serializable.ts:6](https://github.com/flowi-dev/core/blob/0537423/src/classes/Serializable.ts#L6)
