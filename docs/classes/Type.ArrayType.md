@@ -4,6 +4,16 @@
 
 [Type](../modules/Type.md).ArrayType
 
+This class defines arrays, an array is a type that contains a list of elements of a certain type.
+
+**`Example`**
+
+```ts
+const array = new ArrayType('array', STRING);
+array.check(['hello', 'world']); // true
+array.check(['hello', 1]); // false
+```
+
 ## Hierarchy
 
 - [`BaseType`](Type.BaseType.md)
@@ -49,7 +59,7 @@
 
 #### Defined in
 
-[Type.ts:61](https://github.com/flowi-dev/core/blob/4d374fd/src/classes/Type.ts#L61)
+[Type.ts:96](https://github.com/flowi-dev/core/blob/cc87ffe/src/classes/Type.ts#L96)
 
 ## Properties
 
@@ -63,7 +73,7 @@
 
 #### Defined in
 
-[Type.ts:60](https://github.com/flowi-dev/core/blob/4d374fd/src/classes/Type.ts#L60)
+[Type.ts:95](https://github.com/flowi-dev/core/blob/cc87ffe/src/classes/Type.ts#L95)
 
 ___
 
@@ -73,7 +83,7 @@ ___
 
 #### Defined in
 
-[Type.ts:63](https://github.com/flowi-dev/core/blob/4d374fd/src/classes/Type.ts#L63)
+[Type.ts:98](https://github.com/flowi-dev/core/blob/cc87ffe/src/classes/Type.ts#L98)
 
 ___
 
@@ -87,7 +97,7 @@ ___
 
 #### Defined in
 
-[Type.ts:62](https://github.com/flowi-dev/core/blob/4d374fd/src/classes/Type.ts#L62)
+[Type.ts:97](https://github.com/flowi-dev/core/blob/cc87ffe/src/classes/Type.ts#L97)
 
 ___
 
@@ -101,7 +111,7 @@ ___
 
 #### Defined in
 
-[Serializable.ts:4](https://github.com/flowi-dev/core/blob/4d374fd/src/classes/Serializable.ts#L4)
+[Serializable.ts:4](https://github.com/flowi-dev/core/blob/cc87ffe/src/classes/Serializable.ts#L4)
 
 ## Methods
 
@@ -125,7 +135,7 @@ ___
 
 #### Defined in
 
-[Type.ts:68](https://github.com/flowi-dev/core/blob/4d374fd/src/classes/Type.ts#L68)
+[Type.ts:103](https://github.com/flowi-dev/core/blob/cc87ffe/src/classes/Type.ts#L103)
 
 ___
 
@@ -149,7 +159,7 @@ ___
 
 #### Defined in
 
-[Type.ts:76](https://github.com/flowi-dev/core/blob/4d374fd/src/classes/Type.ts#L76)
+[Type.ts:111](https://github.com/flowi-dev/core/blob/cc87ffe/src/classes/Type.ts#L111)
 
 ___
 
@@ -175,7 +185,7 @@ ___
 
 #### Defined in
 
-[Type.ts:88](https://github.com/flowi-dev/core/blob/4d374fd/src/classes/Type.ts#L88)
+[Type.ts:123](https://github.com/flowi-dev/core/blob/cc87ffe/src/classes/Type.ts#L123)
 
 ___
 
@@ -201,4 +211,4 @@ ___
 
 #### Defined in
 
-[Serializable.ts:6](https://github.com/flowi-dev/core/blob/4d374fd/src/classes/Serializable.ts#L6)
+[Serializable.ts:6](https://github.com/flowi-dev/core/blob/cc87ffe/src/classes/Serializable.ts#L6)

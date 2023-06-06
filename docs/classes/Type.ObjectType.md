@@ -4,13 +4,59 @@
 
 [Type](../modules/Type.md).ObjectType
 
+This type defines an object, an object is a type that contains a list of properties, each property has a name and a type.
+
+**`Example`**
+
+```ts
+const UserObjType = new ObjectType('User', {
+name: STRING,
+age: NUMBER,
+});
+
+UserObjType.check({ name: 'John', age: 1 }); // true
+UserObjType.check({ name: 'John', age: '1' }); // false
+```
+
+Objects can also be nested.
+
+**`Example`**
+
+```ts
+const UserObjType = new ObjectType('User', {
+name: STRING,
+age: NUMBER,
+job: new ObjectType('Job', {
+title: STRING,
+salary: NUMBER,
+}),
+});
+```
+
+You can also create an intersection of two objects
+
+**`Example`**
+
+```ts
+const a = new ObjectType('a', {
+name: STRING,
+age: NUMBER,
+});
+
+const b = new ObjectType('b', {
+name: STRING,
+job: STRING,
+});
+
+const intersection = ObjectType.fromIntersection('intersection', [a, b]);
+console.log(intersection.properties); // { name: STRING }
+```
+
 ## Hierarchy
 
 - [`BaseType`](Type.BaseType.md)
 
   ↳ **`ObjectType`**
-
-  ↳↳ [`ObjectIntersectionType`](Type.ObjectIntersectionType.md)
 
 ## Table of contents
 
@@ -52,7 +98,7 @@
 
 #### Defined in
 
-[Type.ts:124](https://github.com/flowi-dev/core/blob/4d374fd/src/classes/Type.ts#L124)
+[Type.ts:222](https://github.com/flowi-dev/core/blob/cc87ffe/src/classes/Type.ts#L222)
 
 ## Properties
 
@@ -66,7 +112,7 @@
 
 #### Defined in
 
-[Type.ts:122](https://github.com/flowi-dev/core/blob/4d374fd/src/classes/Type.ts#L122)
+[Type.ts:220](https://github.com/flowi-dev/core/blob/cc87ffe/src/classes/Type.ts#L220)
 
 ___
 
@@ -80,7 +126,7 @@ ___
 
 #### Defined in
 
-[Type.ts:125](https://github.com/flowi-dev/core/blob/4d374fd/src/classes/Type.ts#L125)
+[Type.ts:223](https://github.com/flowi-dev/core/blob/cc87ffe/src/classes/Type.ts#L223)
 
 ___
 
@@ -90,7 +136,7 @@ ___
 
 #### Defined in
 
-[Type.ts:121](https://github.com/flowi-dev/core/blob/4d374fd/src/classes/Type.ts#L121)
+[Type.ts:219](https://github.com/flowi-dev/core/blob/cc87ffe/src/classes/Type.ts#L219)
 
 ___
 
@@ -104,7 +150,7 @@ ___
 
 #### Defined in
 
-[Serializable.ts:4](https://github.com/flowi-dev/core/blob/4d374fd/src/classes/Serializable.ts#L4)
+[Serializable.ts:4](https://github.com/flowi-dev/core/blob/cc87ffe/src/classes/Serializable.ts#L4)
 
 ## Methods
 
@@ -128,7 +174,7 @@ ___
 
 #### Defined in
 
-[Type.ts:160](https://github.com/flowi-dev/core/blob/4d374fd/src/classes/Type.ts#L160)
+[Type.ts:258](https://github.com/flowi-dev/core/blob/cc87ffe/src/classes/Type.ts#L258)
 
 ___
 
@@ -149,7 +195,7 @@ ___
 
 #### Defined in
 
-[Type.ts:132](https://github.com/flowi-dev/core/blob/4d374fd/src/classes/Type.ts#L132)
+[Type.ts:230](https://github.com/flowi-dev/core/blob/cc87ffe/src/classes/Type.ts#L230)
 
 ___
 
@@ -173,7 +219,7 @@ ___
 
 #### Defined in
 
-[Type.ts:139](https://github.com/flowi-dev/core/blob/4d374fd/src/classes/Type.ts#L139)
+[Type.ts:237](https://github.com/flowi-dev/core/blob/cc87ffe/src/classes/Type.ts#L237)
 
 ___
 
@@ -197,7 +243,7 @@ ___
 
 #### Defined in
 
-[Type.ts:174](https://github.com/flowi-dev/core/blob/4d374fd/src/classes/Type.ts#L174)
+[Type.ts:272](https://github.com/flowi-dev/core/blob/cc87ffe/src/classes/Type.ts#L272)
 
 ___
 
@@ -223,4 +269,4 @@ ___
 
 #### Defined in
 
-[Serializable.ts:6](https://github.com/flowi-dev/core/blob/4d374fd/src/classes/Serializable.ts#L6)
+[Serializable.ts:6](https://github.com/flowi-dev/core/blob/cc87ffe/src/classes/Serializable.ts#L6)
