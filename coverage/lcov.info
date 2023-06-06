@@ -1,5 +1,5 @@
 TN:
-SF:src\primitives.ts
+SF:src/primitives.ts
 FN:4,(anonymous_0)
 FN:5,(anonymous_1)
 FN:8,(anonymous_2)
@@ -33,7 +33,7 @@ BRF:5
 BRH:5
 end_of_record
 TN:
-SF:src\classes\Type.ts
+SF:src/classes/Type.ts
 FN:9,(anonymous_0)
 FN:16,(anonymous_1)
 FN:20,(anonymous_2)

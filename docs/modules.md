@@ -4,20 +4,11 @@
 
 ## Table of contents
 
-### Functions
+### Classes
 
-- [a](modules.md#a)
-
-## Functions
-
-### a
-
-▸ **a**(): `void`
-
-#### Returns
-
-`void`
-
-#### Defined in
-
-[index.ts:1](https://github.com/flowi-dev/core/blob/8354fb1/src/index.ts#L1)
+- [ArrayType](classes/ArrayType.md)
+- [IntersectionType](classes/IntersectionType.md)
+- [ObjectType](classes/ObjectType.md)
+- [PrimitiveType](classes/PrimitiveType.md)
+- [Type](classes/Type.md)
+- [UnionType](classes/UnionType.md)
