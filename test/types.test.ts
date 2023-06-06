@@ -1,4 +1,4 @@
-import { TRUE, FALSE, BOOLEAN, NUMBER, NULL, INTEGER, STRING } from '../src/primitives';
+import { TRUE, FALSE, BOOLEAN, NUMBER, NULL, INTEGER, STRING, ANY } from '../src/primitives';
 import { expect, test } from "@jest/globals";
 import { ArrayType, IntersectionType, ObjectType, UnionType } from "../src/classes/Type";
 
@@ -325,3 +325,27 @@ test("Test array types", () => {
 	expect(STR_ARRAY.extends(NULL)).toBe(false);
 	expect(UNION_ARRAY.extends(STR_ARRAY)).toBe(false);
 });
+
+test("Test the 'any' type", () => {
+	expect(ANY.check("Hello world!")).toBe(true);
+	expect(ANY.check(1)).toBe(true);
+	expect(ANY.check(1.5)).toBe(true);
+	expect(ANY.check(true)).toBe(true);
+	expect(ANY.check(null)).toBe(true);
+	expect(ANY.check(undefined)).toBe(true);
+	expect(ANY.check([])).toBe(true);
+	expect(ANY.check({})).toBe(true);
+	expect(ANY.check(new Date())).toBe(true);
+	expect(ANY.check(() => {})).toBe(true);
+	expect(ANY.check(Symbol("Hello world!"))).toBe(true);
+	
+	expect(ANY.extends(ANY)).toBe(true);
+	expect(ANY.extends(STRING)).toBe(true);
+	expect(ANY.extends(NUMBER)).toBe(true);
+	expect(ANY.extends(BOOLEAN)).toBe(true);
+
+	expect(STRING.extends(ANY)).toBe(false);
+	expect(NUMBER.extends(ANY)).toBe(false);
+	expect(BOOLEAN.extends(ANY)).toBe(false);
+		
+})

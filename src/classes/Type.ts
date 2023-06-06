@@ -158,3 +158,15 @@ export class ArrayType extends Type {
 		return false;
 	}
 }
+
+export class AnyType extends Type {
+	public name = 'any';
+
+	public check(data: any): boolean {
+		return true;
+	}
+
+	public extends(type: Type): boolean {
+		return true;
+	}
+}

@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-import {PrimitiveType, UnionType} from './classes/Type';
+import {AnyType, PrimitiveType, UnionType} from './classes/Type';
 
 export const TRUE = new PrimitiveType('true', (data: any) => data === true);
 export const FALSE = new PrimitiveType('false', (data: any) => data === false);
@@ -10,3 +10,5 @@ export const NUMBER = new UnionType('number', [new PrimitiveType('float', (data:
 
 export const STRING = new PrimitiveType('string', (data: any) => typeof data === 'string');
 export const NULL = new PrimitiveType('null', (data: any) => data === null);
+
+export const ANY = new AnyType();
