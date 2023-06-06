@@ -1,0 +1,1 @@
+{"version":3,"file":"Serializable.d.ts","sourceRoot":"","sources":["../../src/classes/Serializable.ts"],"names":[],"mappings":"AAEA,qBAAa,YAAY;IACxB,MAAM,CAAC,OAAO,4BAAmC;WAEnC,WAAW,CAAC,IAAI,EAAE;QAAC,IAAI,EAAE,MAAM,CAAC;QAAC,CAAC,EAAE,MAAM,CAAA;KAAC,GAAG,YAAY;gBAiC5D,IAAI,EAAE,MAAM;IAIjB,SAAS,IAAI;QACnB,IAAI,EAAE,MAAM,CAAC;QACb,CAAC,EAAE,MAAM,CAAC;KACV;CAQD"}

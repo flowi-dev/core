@@ -1,16 +1,10 @@
-[@flowi-dev/core](README.md) / Exports
+[@flowi-dev/core](README.md) / Modules
 
 # @flowi-dev/core
 
 ## Table of contents
 
-### Classes
+### Modules
 
-- [AnyType](classes/AnyType.md)
-- [ArrayType](classes/ArrayType.md)
-- [ObjectIntersectionType](classes/ObjectIntersectionType.md)
-- [ObjectType](classes/ObjectType.md)
-- [PrimitiveType](classes/PrimitiveType.md)
-- [Type](classes/Type.md)
-- [UnionIntersectionType](classes/UnionIntersectionType.md)
-- [UnionType](classes/UnionType.md)
+- [Serializable](modules/Serializable.md)
+- [Type](modules/Type.md)

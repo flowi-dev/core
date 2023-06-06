@@ -1,29 +1,65 @@
-export declare abstract class Type {
+import { Serializable } from './Serializable';
+export declare abstract class BaseType extends Serializable {
+    abstract _: string;
     abstract name: string;
-    abstract extends(type: Type): boolean;
+    abstract extends(type: BaseType): boolean;
     abstract check(data: any): boolean;
 }
-export declare class PrimitiveType extends Type {
+export declare class PrimitiveType extends BaseType {
     name: string;
     private readonly validator;
+    _: string;
     constructor(name: string, validator: (data: any) => boolean);
     check(data: any): boolean;
-    extends(type: Type): boolean;
+    extends(type: BaseType): boolean;
 }
-export declare class UnionType extends Type {
+export declare class UnionType extends BaseType {
     name: string;
-    readonly types: Type[];
-    constructor(name: string, types: Type[]);
-    extends(type: Type): boolean;
+    readonly types: BaseType[];
+    _: string;
+    constructor(name: string, types: BaseType[]);
+    extends(type: BaseType): boolean;
     check(data: any): boolean;
 }
-export declare class ObjectType extends Type {
+export declare class ArrayType extends BaseType {
     name: string;
-    readonly properties: Record<string, Type>;
-    constructor(name: string, properties: Record<string, Type>);
-    extend(name: string, properties: Record<string, Type>): ObjectType;
-    extends(type: Type): boolean;
+    readonly elementType: BaseType;
+    _: string;
+    constructor(name: string, elementType: BaseType);
     check(data: any): boolean;
+    extends(type: BaseType): boolean;
+    serialize(): {
+        name: string;
+        _: string;
+        elementType: {
+            name: string;
+            _: string;
+        };
+    };
+}
+export declare class AnyType extends BaseType {
+    _: string;
+    name: string;
+    constructor();
+    check(data: any): boolean;
+    extends(type: BaseType): boolean;
+}
+export declare class ObjectType extends BaseType {
+    name: string;
+    properties: Record<string, BaseType>;
+    _: string;
+    constructor(name: string, properties: Record<string, BaseType>);
+    extend(name: string, properties: Record<string, BaseType>): ObjectType;
+    extends(type: BaseType): boolean;
+    check(data: any): boolean;
+    serialize(): {
+        name: string;
+        _: string;
+        properties: Record<string, {
+            name: string;
+            _: string;
+        }>;
+    };
 }
 export declare class ObjectIntersectionType extends ObjectType {
     name: string;
@@ -32,17 +68,5 @@ export declare class ObjectIntersectionType extends ObjectType {
 export declare class UnionIntersectionType extends UnionType {
     name: string;
     constructor(name: string, types: UnionType[]);
-}
-export declare class ArrayType extends Type {
-    name: string;
-    private readonly type;
-    constructor(name: string, type: Type);
-    check(data: any): boolean;
-    extends(type: Type): boolean;
-}
-export declare class AnyType extends Type {
-    name: string;
-    check(data: any): boolean;
-    extends(type: Type): boolean;
 }
 //# sourceMappingURL=Type.d.ts.map
