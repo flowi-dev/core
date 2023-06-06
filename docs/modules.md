@@ -6,6 +6,7 @@
 
 ### Classes
 
+- [AnyType](classes/AnyType.md)
 - [ArrayType](classes/ArrayType.md)
 - [IntersectionType](classes/IntersectionType.md)
 - [ObjectType](classes/ObjectType.md)

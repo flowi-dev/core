@@ -36,4 +36,9 @@ export declare class ArrayType extends Type {
     check(data: any): boolean;
     extends(type: Type): boolean;
 }
+export declare class AnyType extends Type {
+    name: string;
+    check(data: any): boolean;
+    extends(type: Type): boolean;
+}
 //# sourceMappingURL=Type.d.ts.map

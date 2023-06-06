@@ -14,6 +14,8 @@
 
   ↳ [`ArrayType`](ArrayType.md)
 
+  ↳ [`AnyType`](AnyType.md)
+
 ## Table of contents
 
 ### Constructors
@@ -43,7 +45,7 @@
 
 #### Defined in
 
-[Type.ts:3](https://github.com/flowi-dev/core/blob/b837f04/src/classes/Type.ts#L3)
+[Type.ts:3](https://github.com/flowi-dev/core/blob/6a60da7/src/classes/Type.ts#L3)
 
 ## Methods
 
@@ -63,7 +65,7 @@
 
 #### Defined in
 
-[Type.ts:5](https://github.com/flowi-dev/core/blob/b837f04/src/classes/Type.ts#L5)
+[Type.ts:5](https://github.com/flowi-dev/core/blob/6a60da7/src/classes/Type.ts#L5)
 
 ___
 
@@ -83,4 +85,4 @@ ___
 
 #### Defined in
 
-[Type.ts:4](https://github.com/flowi-dev/core/blob/b837f04/src/classes/Type.ts#L4)
+[Type.ts:4](https://github.com/flowi-dev/core/blob/6a60da7/src/classes/Type.ts#L4)
