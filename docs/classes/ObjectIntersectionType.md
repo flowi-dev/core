@@ -1,35 +1,35 @@
-[@flowi-dev/core](../README.md) / [Exports](../modules.md) / IntersectionType
+[@flowi-dev/core](../README.md) / [Exports](../modules.md) / ObjectIntersectionType
 
-# Class: IntersectionType
+# Class: ObjectIntersectionType
 
 ## Hierarchy
 
 - [`ObjectType`](ObjectType.md)
 
-  ↳ **`IntersectionType`**
+  ↳ **`ObjectIntersectionType`**
 
 ## Table of contents
 
 ### Constructors
 
-- [constructor](IntersectionType.md#constructor)
+- [constructor](ObjectIntersectionType.md#constructor)
 
 ### Properties
 
-- [name](IntersectionType.md#name)
-- [properties](IntersectionType.md#properties)
+- [name](ObjectIntersectionType.md#name)
+- [properties](ObjectIntersectionType.md#properties)
 
 ### Methods
 
-- [check](IntersectionType.md#check)
-- [extend](IntersectionType.md#extend)
-- [extends](IntersectionType.md#extends)
+- [check](ObjectIntersectionType.md#check)
+- [extend](ObjectIntersectionType.md#extend)
+- [extends](ObjectIntersectionType.md#extends)
 
 ## Constructors
 
 ### constructor
 
-• **new IntersectionType**(`name`, `types`)
+• **new ObjectIntersectionType**(`name`, `types`)
 
 #### Parameters
 
@@ -44,7 +44,7 @@
 
 #### Defined in
 
-[Type.ts:107](https://github.com/flowi-dev/core/blob/6a60da7/src/classes/Type.ts#L107)
+[Type.ts:107](https://github.com/flowi-dev/core/blob/51677ec/src/classes/Type.ts#L107)
 
 ## Properties
 
@@ -58,7 +58,7 @@
 
 #### Defined in
 
-[Type.ts:108](https://github.com/flowi-dev/core/blob/6a60da7/src/classes/Type.ts#L108)
+[Type.ts:108](https://github.com/flowi-dev/core/blob/51677ec/src/classes/Type.ts#L108)
 
 ___
 
@@ -72,7 +72,7 @@ ___
 
 #### Defined in
 
-[Type.ts:58](https://github.com/flowi-dev/core/blob/6a60da7/src/classes/Type.ts#L58)
+[Type.ts:58](https://github.com/flowi-dev/core/blob/51677ec/src/classes/Type.ts#L58)
 
 ## Methods
 
@@ -96,7 +96,7 @@ ___
 
 #### Defined in
 
-[Type.ts:91](https://github.com/flowi-dev/core/blob/6a60da7/src/classes/Type.ts#L91)
+[Type.ts:91](https://github.com/flowi-dev/core/blob/51677ec/src/classes/Type.ts#L91)
 
 ___
 
@@ -121,7 +121,7 @@ ___
 
 #### Defined in
 
-[Type.ts:63](https://github.com/flowi-dev/core/blob/6a60da7/src/classes/Type.ts#L63)
+[Type.ts:63](https://github.com/flowi-dev/core/blob/51677ec/src/classes/Type.ts#L63)
 
 ___
 
@@ -145,4 +145,4 @@ ___
 
 #### Defined in
 
-[Type.ts:70](https://github.com/flowi-dev/core/blob/6a60da7/src/classes/Type.ts#L70)
+[Type.ts:70](https://github.com/flowi-dev/core/blob/51677ec/src/classes/Type.ts#L70)

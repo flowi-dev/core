@@ -1,51 +1,49 @@
-[@flowi-dev/core](../README.md) / [Exports](../modules.md) / UnionType
+[@flowi-dev/core](../README.md) / [Exports](../modules.md) / UnionIntersectionType
 
-# Class: UnionType
+# Class: UnionIntersectionType
 
 ## Hierarchy
 
-- [`Type`](Type.md)
+- [`UnionType`](UnionType.md)
 
-  ↳ **`UnionType`**
-
-  ↳↳ [`UnionIntersectionType`](UnionIntersectionType.md)
+  ↳ **`UnionIntersectionType`**
 
 ## Table of contents
 
 ### Constructors
 
-- [constructor](UnionType.md#constructor)
+- [constructor](UnionIntersectionType.md#constructor)
 
 ### Properties
 
-- [name](UnionType.md#name)
-- [types](UnionType.md#types)
+- [name](UnionIntersectionType.md#name)
+- [types](UnionIntersectionType.md#types)
 
 ### Methods
 
-- [check](UnionType.md#check)
-- [extends](UnionType.md#extends)
+- [check](UnionIntersectionType.md#check)
+- [extends](UnionIntersectionType.md#extends)
 
 ## Constructors
 
 ### constructor
 
-• **new UnionType**(`name`, `types`)
+• **new UnionIntersectionType**(`name`, `types`)
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
 | `name` | `string` |
-| `types` | [`Type`](Type.md)[] |
+| `types` | [`UnionType`](UnionType.md)[] |
 
 #### Overrides
 
-[Type](Type.md).[constructor](Type.md#constructor)
+[UnionType](UnionType.md).[constructor](UnionType.md#constructor)
 
 #### Defined in
 
-[Type.ts:34](https://github.com/flowi-dev/core/blob/51677ec/src/classes/Type.ts#L34)
+[Type.ts:134](https://github.com/flowi-dev/core/blob/51677ec/src/classes/Type.ts#L134)
 
 ## Properties
 
@@ -55,17 +53,21 @@
 
 #### Inherited from
 
-[Type](Type.md).[name](Type.md#name)
+[UnionType](UnionType.md).[name](UnionType.md#name)
 
 #### Defined in
 
-[Type.ts:35](https://github.com/flowi-dev/core/blob/51677ec/src/classes/Type.ts#L35)
+[Type.ts:135](https://github.com/flowi-dev/core/blob/51677ec/src/classes/Type.ts#L135)
 
 ___
 
 ### types
 
 • `Readonly` **types**: [`Type`](Type.md)[]
+
+#### Inherited from
+
+[UnionType](UnionType.md).[types](UnionType.md#types)
 
 #### Defined in
 
@@ -87,9 +89,9 @@ ___
 
 `boolean`
 
-#### Overrides
+#### Inherited from
 
-[Type](Type.md).[check](Type.md#check)
+[UnionType](UnionType.md).[check](UnionType.md#check)
 
 #### Defined in
 
@@ -111,9 +113,9 @@ ___
 
 `boolean`
 
-#### Overrides
+#### Inherited from
 
-[Type](Type.md).[extends](Type.md#extends)
+[UnionType](UnionType.md).[extends](UnionType.md#extends)
 
 #### Defined in
 

@@ -43,7 +43,7 @@
 
 #### Defined in
 
-[Type.ts:9](https://github.com/flowi-dev/core/blob/6a60da7/src/classes/Type.ts#L9)
+[Type.ts:9](https://github.com/flowi-dev/core/blob/51677ec/src/classes/Type.ts#L9)
 
 ## Properties
 
@@ -57,7 +57,7 @@
 
 #### Defined in
 
-[Type.ts:10](https://github.com/flowi-dev/core/blob/6a60da7/src/classes/Type.ts#L10)
+[Type.ts:10](https://github.com/flowi-dev/core/blob/51677ec/src/classes/Type.ts#L10)
 
 ___
 
@@ -81,7 +81,7 @@ ___
 
 #### Defined in
 
-[Type.ts:11](https://github.com/flowi-dev/core/blob/6a60da7/src/classes/Type.ts#L11)
+[Type.ts:11](https://github.com/flowi-dev/core/blob/51677ec/src/classes/Type.ts#L11)
 
 ## Methods
 
@@ -105,7 +105,7 @@ ___
 
 #### Defined in
 
-[Type.ts:16](https://github.com/flowi-dev/core/blob/6a60da7/src/classes/Type.ts#L16)
+[Type.ts:16](https://github.com/flowi-dev/core/blob/51677ec/src/classes/Type.ts#L16)
 
 ___
 
@@ -129,4 +129,4 @@ ___
 
 #### Defined in
 
-[Type.ts:20](https://github.com/flowi-dev/core/blob/6a60da7/src/classes/Type.ts#L20)
+[Type.ts:20](https://github.com/flowi-dev/core/blob/51677ec/src/classes/Type.ts#L20)

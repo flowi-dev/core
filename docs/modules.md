@@ -8,8 +8,9 @@
 
 - [AnyType](classes/AnyType.md)
 - [ArrayType](classes/ArrayType.md)
-- [IntersectionType](classes/IntersectionType.md)
+- [ObjectIntersectionType](classes/ObjectIntersectionType.md)
 - [ObjectType](classes/ObjectType.md)
 - [PrimitiveType](classes/PrimitiveType.md)
 - [Type](classes/Type.md)
+- [UnionIntersectionType](classes/UnionIntersectionType.md)
 - [UnionType](classes/UnionType.md)

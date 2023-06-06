@@ -25,9 +25,13 @@ export declare class ObjectType extends Type {
     extends(type: Type): boolean;
     check(data: any): boolean;
 }
-export declare class IntersectionType extends ObjectType {
+export declare class ObjectIntersectionType extends ObjectType {
     name: string;
     constructor(name: string, types: ObjectType[]);
+}
+export declare class UnionIntersectionType extends UnionType {
+    name: string;
+    constructor(name: string, types: UnionType[]);
 }
 export declare class ArrayType extends Type {
     name: string;
