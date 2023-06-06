@@ -6,6 +6,5 @@
 
 ### Modules
 
-- [Pin](modules/Pin.md)
 - [Serializable](modules/Serializable.md)
 - [Type](modules/Type.md)

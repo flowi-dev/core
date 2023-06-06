@@ -11,8 +11,6 @@ It stores a cache of all types that have been serialized and deserialized to eas
 
 - **`Serializable`**
 
-  ↳ [`Pin`](Pin.Pin.md)
-
   ↳ [`BaseType`](Type.BaseType.md)
 
 ## Table of contents
@@ -45,7 +43,7 @@ It stores a cache of all types that have been serialized and deserialized to eas
 
 #### Defined in
 
-[Serializable.ts:99](https://github.com/flowi-dev/core/blob/0433a82/src/classes/Serializable.ts#L99)
+[Serializable.ts:99](https://github.com/flowi-dev/core/blob/59a2721/src/classes/Serializable.ts#L99)
 
 ## Properties
 
@@ -55,7 +53,7 @@ It stores a cache of all types that have been serialized and deserialized to eas
 
 #### Defined in
 
-[Serializable.ts:97](https://github.com/flowi-dev/core/blob/0433a82/src/classes/Serializable.ts#L97)
+[Serializable.ts:97](https://github.com/flowi-dev/core/blob/59a2721/src/classes/Serializable.ts#L97)
 
 ## Methods
 
@@ -76,7 +74,7 @@ The fallback function for serialization. Most types will override this function.
 
 #### Defined in
 
-[Serializable.ts:106](https://github.com/flowi-dev/core/blob/0433a82/src/classes/Serializable.ts#L106)
+[Serializable.ts:106](https://github.com/flowi-dev/core/blob/59a2721/src/classes/Serializable.ts#L106)
 
 ___
 
@@ -145,7 +143,7 @@ console.log(deserialized);
 
 #### Defined in
 
-[Serializable.ts:60](https://github.com/flowi-dev/core/blob/0433a82/src/classes/Serializable.ts#L60)
+[Serializable.ts:60](https://github.com/flowi-dev/core/blob/59a2721/src/classes/Serializable.ts#L60)
 
 ___
 
@@ -165,4 +163,4 @@ ___
 
 #### Defined in
 
-[Serializable.ts:93](https://github.com/flowi-dev/core/blob/0433a82/src/classes/Serializable.ts#L93)
+[Serializable.ts:93](https://github.com/flowi-dev/core/blob/59a2721/src/classes/Serializable.ts#L93)

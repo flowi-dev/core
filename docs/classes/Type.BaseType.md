@@ -61,7 +61,7 @@ This class is abstract and should not be used directly.
 
 #### Defined in
 
-[Serializable.ts:99](https://github.com/flowi-dev/core/blob/0433a82/src/classes/Serializable.ts#L99)
+[Serializable.ts:99](https://github.com/flowi-dev/core/blob/59a2721/src/classes/Serializable.ts#L99)
 
 ## Properties
 
@@ -71,7 +71,7 @@ This class is abstract and should not be used directly.
 
 #### Defined in
 
-[Type.ts:8](https://github.com/flowi-dev/core/blob/0433a82/src/classes/Type.ts#L8)
+[Type.ts:8](https://github.com/flowi-dev/core/blob/59a2721/src/classes/Type.ts#L8)
 
 ___
 
@@ -81,7 +81,7 @@ ___
 
 #### Defined in
 
-[Type.ts:9](https://github.com/flowi-dev/core/blob/0433a82/src/classes/Type.ts#L9)
+[Type.ts:9](https://github.com/flowi-dev/core/blob/59a2721/src/classes/Type.ts#L9)
 
 ___
 
@@ -95,7 +95,7 @@ ___
 
 #### Defined in
 
-[Serializable.ts:97](https://github.com/flowi-dev/core/blob/0433a82/src/classes/Serializable.ts#L97)
+[Serializable.ts:97](https://github.com/flowi-dev/core/blob/59a2721/src/classes/Serializable.ts#L97)
 
 ## Methods
 
@@ -125,7 +125,7 @@ BOOLEAN.check('hello'); // false
 
 #### Defined in
 
-[Type.ts:33](https://github.com/flowi-dev/core/blob/0433a82/src/classes/Type.ts#L33)
+[Type.ts:33](https://github.com/flowi-dev/core/blob/59a2721/src/classes/Type.ts#L33)
 
 ___
 
@@ -153,7 +153,7 @@ BOOLEAN.extends(TRUE); // false
 
 #### Defined in
 
-[Type.ts:20](https://github.com/flowi-dev/core/blob/0433a82/src/classes/Type.ts#L20)
+[Type.ts:20](https://github.com/flowi-dev/core/blob/59a2721/src/classes/Type.ts#L20)
 
 ___
 
@@ -178,7 +178,7 @@ The fallback function for serialization. Most types will override this function.
 
 #### Defined in
 
-[Serializable.ts:106](https://github.com/flowi-dev/core/blob/0433a82/src/classes/Serializable.ts#L106)
+[Serializable.ts:106](https://github.com/flowi-dev/core/blob/59a2721/src/classes/Serializable.ts#L106)
 
 ___
 
@@ -251,7 +251,7 @@ console.log(deserialized);
 
 #### Defined in
 
-[Serializable.ts:60](https://github.com/flowi-dev/core/blob/0433a82/src/classes/Serializable.ts#L60)
+[Serializable.ts:60](https://github.com/flowi-dev/core/blob/59a2721/src/classes/Serializable.ts#L60)
 
 ___
 
@@ -275,4 +275,4 @@ ___
 
 #### Defined in
 
-[Serializable.ts:93](https://github.com/flowi-dev/core/blob/0433a82/src/classes/Serializable.ts#L93)
+[Serializable.ts:93](https://github.com/flowi-dev/core/blob/59a2721/src/classes/Serializable.ts#L93)

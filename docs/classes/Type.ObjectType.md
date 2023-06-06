@@ -75,7 +75,7 @@ const UserObjType = new ObjectType('User', {
 
 #### Defined in
 
-[Type.ts:328](https://github.com/flowi-dev/core/blob/0433a82/src/classes/Type.ts#L328)
+[Type.ts:328](https://github.com/flowi-dev/core/blob/59a2721/src/classes/Type.ts#L328)
 
 ## Properties
 
@@ -89,7 +89,7 @@ const UserObjType = new ObjectType('User', {
 
 #### Defined in
 
-[Type.ts:326](https://github.com/flowi-dev/core/blob/0433a82/src/classes/Type.ts#L326)
+[Type.ts:326](https://github.com/flowi-dev/core/blob/59a2721/src/classes/Type.ts#L326)
 
 ___
 
@@ -103,7 +103,7 @@ ___
 
 #### Defined in
 
-[Type.ts:329](https://github.com/flowi-dev/core/blob/0433a82/src/classes/Type.ts#L329)
+[Type.ts:329](https://github.com/flowi-dev/core/blob/59a2721/src/classes/Type.ts#L329)
 
 ___
 
@@ -113,7 +113,7 @@ ___
 
 #### Defined in
 
-[Type.ts:325](https://github.com/flowi-dev/core/blob/0433a82/src/classes/Type.ts#L325)
+[Type.ts:325](https://github.com/flowi-dev/core/blob/59a2721/src/classes/Type.ts#L325)
 
 ___
 
@@ -127,7 +127,7 @@ ___
 
 #### Defined in
 
-[Serializable.ts:97](https://github.com/flowi-dev/core/blob/0433a82/src/classes/Serializable.ts#L97)
+[Serializable.ts:97](https://github.com/flowi-dev/core/blob/59a2721/src/classes/Serializable.ts#L97)
 
 ## Methods
 
@@ -161,7 +161,7 @@ BOOLEAN.check('hello'); // false
 
 #### Defined in
 
-[Type.ts:384](https://github.com/flowi-dev/core/blob/0433a82/src/classes/Type.ts#L384)
+[Type.ts:384](https://github.com/flowi-dev/core/blob/59a2721/src/classes/Type.ts#L384)
 
 ___
 
@@ -201,7 +201,7 @@ console.log(WorkingUserObjType.properties);
 
 #### Defined in
 
-[Type.ts:356](https://github.com/flowi-dev/core/blob/0433a82/src/classes/Type.ts#L356)
+[Type.ts:356](https://github.com/flowi-dev/core/blob/59a2721/src/classes/Type.ts#L356)
 
 ___
 
@@ -233,7 +233,7 @@ BOOLEAN.extends(TRUE); // false
 
 #### Defined in
 
-[Type.ts:363](https://github.com/flowi-dev/core/blob/0433a82/src/classes/Type.ts#L363)
+[Type.ts:363](https://github.com/flowi-dev/core/blob/59a2721/src/classes/Type.ts#L363)
 
 ___
 
@@ -259,7 +259,7 @@ The fallback function for serialization. Most types will override this function.
 
 #### Defined in
 
-[Type.ts:398](https://github.com/flowi-dev/core/blob/0433a82/src/classes/Type.ts#L398)
+[Type.ts:398](https://github.com/flowi-dev/core/blob/59a2721/src/classes/Type.ts#L398)
 
 ___
 
@@ -332,7 +332,7 @@ console.log(deserialized);
 
 #### Defined in
 
-[Serializable.ts:60](https://github.com/flowi-dev/core/blob/0433a82/src/classes/Serializable.ts#L60)
+[Serializable.ts:60](https://github.com/flowi-dev/core/blob/59a2721/src/classes/Serializable.ts#L60)
 
 ___
 
@@ -372,7 +372,7 @@ console.log(c.properties);
 
 #### Defined in
 
-[Type.ts:298](https://github.com/flowi-dev/core/blob/0433a82/src/classes/Type.ts#L298)
+[Type.ts:298](https://github.com/flowi-dev/core/blob/59a2721/src/classes/Type.ts#L298)
 
 ___
 
@@ -396,4 +396,4 @@ ___
 
 #### Defined in
 
-[Serializable.ts:93](https://github.com/flowi-dev/core/blob/0433a82/src/classes/Serializable.ts#L93)
+[Serializable.ts:93](https://github.com/flowi-dev/core/blob/59a2721/src/classes/Serializable.ts#L93)
