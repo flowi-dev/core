@@ -27,6 +27,7 @@ It stores a cache of all types that have been serialized and deserialized to eas
 
 - [serialize](Serializable.Serializable.md#serialize)
 - [deserialize](Serializable.Serializable.md#deserialize)
+- [remove](Serializable.Serializable.md#remove)
 
 ## Constructors
 
@@ -42,19 +43,17 @@ It stores a cache of all types that have been serialized and deserialized to eas
 
 #### Defined in
 
-[Serializable.ts:98](https://github.com/flowi-dev/core/blob/1e17ede/src/classes/Serializable.ts#L98)
+[Serializable.ts:99](https://github.com/flowi-dev/core/blob/92e489f/src/classes/Serializable.ts#L99)
 
 ## Properties
 
 ### cache
 
-▪ `Static` **cache**: `Map`<`string`, [`Serializable`](Serializable.Serializable.md)\>
-
-The cache of all types that have been serialized and deserialized.
+▪ `Static` `Protected` **cache**: `Map`<`string`, [`Serializable`](Serializable.Serializable.md)\>
 
 #### Defined in
 
-[Serializable.ts:11](https://github.com/flowi-dev/core/blob/1e17ede/src/classes/Serializable.ts#L11)
+[Serializable.ts:97](https://github.com/flowi-dev/core/blob/92e489f/src/classes/Serializable.ts#L97)
 
 ## Methods
 
@@ -75,7 +74,7 @@ The fallback function for serialization. Most types will override this function.
 
 #### Defined in
 
-[Serializable.ts:105](https://github.com/flowi-dev/core/blob/1e17ede/src/classes/Serializable.ts#L105)
+[Serializable.ts:106](https://github.com/flowi-dev/core/blob/92e489f/src/classes/Serializable.ts#L106)
 
 ___
 
@@ -86,28 +85,24 @@ ___
 Deserialize a type from a serialized object.
 
 ```json
-# Serialized object
 {
- * 	name: 'object',
- * 	_: 'ObjectType',
- * 	properties: {
- * 	  username: {
- * 	    name: 'string',
- * 	    _: 'PrimitiveType',
- * 	    validator: [Function (anonymous)]
- * 	  },
- * 	  password: {
- * 	    name: 'string',
- * 	    _: 'PrimitiveType',
- * 	    validator: [Function (anonymous)]
- * 	  },
- * 	  age: {
- * 	    name: 'integer',
- * 	    _: 'PrimitiveType',
- * 	    validator: [Function (anonymous)]
- * 	  },
- * 	  address: { name: 'address', _: 'ObjectType', properties: [Object] }
- * }
+ 	name: 'object',
+ 	_: 'ObjectType',
+ 	properties: {
+ 	  username: {
+ 	    name: 'string',
+ 	    _: 'PrimitiveType',
+ 	  },
+ 	  password: {
+ 	    name: 'string',
+ 	    _: 'PrimitiveType',
+ 	  },
+ 	  age: {
+ 	    name: 'integer',
+ 	    _: 'PrimitiveType',
+ 	  },
+ 	  address: { ... }
+ }
 ```
 
 ```ts
@@ -148,4 +143,24 @@ console.log(deserialized);
 
 #### Defined in
 
-[Serializable.ts:65](https://github.com/flowi-dev/core/blob/1e17ede/src/classes/Serializable.ts#L65)
+[Serializable.ts:60](https://github.com/flowi-dev/core/blob/92e489f/src/classes/Serializable.ts#L60)
+
+___
+
+### remove
+
+▸ `Static` **remove**(`name`): `void`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `name` | `string` |
+
+#### Returns
+
+`void`
+
+#### Defined in
+
+[Serializable.ts:93](https://github.com/flowi-dev/core/blob/92e489f/src/classes/Serializable.ts#L93)
