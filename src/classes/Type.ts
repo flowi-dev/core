@@ -1,5 +1,9 @@
 import {Serializable} from './Serializable';
 
+/**
+ * The base class that all types extend from, this provides the basic functionality that all types need. Such as serialization and deserialization and type checking.
+ * This class is abstract and should not be used directly.
+ */
 export abstract class BaseType extends Serializable {
 	public abstract _: string;
 	public abstract name: string;
@@ -7,6 +11,9 @@ export abstract class BaseType extends Serializable {
 	public abstract check(data: any): boolean;
 }
 
+/**
+ * This class defines primitive types, such as string, number, boolean, etc.
+ */
 export class PrimitiveType extends BaseType {
 	_ = PrimitiveType.name;
 	constructor(
@@ -33,6 +40,25 @@ export class PrimitiveType extends BaseType {
 	}
 }
 
+/**
+ * This class defines unions, just like in TypeScript, a union is a type that can be one of the types in the union.
+ * @example
+ * ```ts
+ * const union = new UnionType('union', [STRING, NUMBER]);
+ * union.check('hello'); // true
+ * union.check(1); // true
+ * union.check(true); // false
+ * ```
+ *
+ * You can also create an intersection of two unions, this will create a new union that contains all the types that are in both unions.
+ * @example
+ * ```ts
+ * const a = new UnionType('union1', [STRING, NUMBER]);
+ * const b = new UnionType('union2', [NUMBER, BOOLEAN]);
+ * const intersection = UnionType.fromIntersection('intersection', [a, b]);
+ * console.log(intersection.types); // [NUMBER]
+ * ```
+ */
 export class UnionType extends BaseType {
 	_ = UnionType.name;
 	constructor(
@@ -56,6 +82,15 @@ export class UnionType extends BaseType {
 	}
 }
 
+/**
+ * This class defines arrays, an array is a type that contains a list of elements of a certain type.
+ * @example
+ * ```ts
+ * const array = new ArrayType('array', STRING);
+ * array.check(['hello', 'world']); // true
+ * array.check(['hello', 1]); // false
+ * ```
+ */
 export class ArrayType extends BaseType {
 	_ = ArrayType.name;
 	constructor(
@@ -100,6 +135,26 @@ export class ArrayType extends BaseType {
 	}
 }
 
+/**
+ * This type simply acts as the `any` type in typescript, it will always return true when checking data.
+ * @example
+ * ```ts
+ * const any = new AnyType();
+ * any.check('hello'); // true
+ * any.check(1); // true
+ * any.check(true); // true
+ * ```
+ * This type is useful when you want to allow any type of data.
+ * @example
+ * ```ts
+ * const type = new ObjectType('type', {
+ *  name: STRING,
+ *  job: new AnyType(),
+ * });
+ * type.check({ name: 'John', job: 'Developer' }); // true
+ * type.check({ name: 'John', job: 1 }); // true
+ * ```
+ */
 export class AnyType extends BaseType {
 	_ = AnyType.name;
 	public name = 'any';
@@ -117,6 +172,49 @@ export class AnyType extends BaseType {
 	}
 }
 
+/**
+ * This type defines an object, an object is a type that contains a list of properties, each property has a name and a type.
+ * @example
+ * ```ts
+ * const UserObjType = new ObjectType('User', {
+ * name: STRING,
+ * age: NUMBER,
+ * });
+ *
+ * UserObjType.check({ name: 'John', age: 1 }); // true
+ * UserObjType.check({ name: 'John', age: '1' }); // false
+ * ```
+ *
+ * Objects can also be nested.
+ * @example
+ * ```ts
+ * const UserObjType = new ObjectType('User', {
+ * name: STRING,
+ * age: NUMBER,
+ * job: new ObjectType('Job', {
+ * title: STRING,
+ * salary: NUMBER,
+ * }),
+ * });
+ * ```
+ *
+ * You can also create an intersection of two objects
+ * @example
+ * ```ts
+ * const a = new ObjectType('a', {
+ * name: STRING,
+ * age: NUMBER,
+ * });
+ *
+ * const b = new ObjectType('b', {
+ * name: STRING,
+ * job: STRING,
+ * });
+ *
+ * const intersection = ObjectType.fromIntersection('intersection', [a, b]);
+ * console.log(intersection.properties); // { name: STRING }
+ * ```
+ */
 export class ObjectType extends BaseType {
 	properties: Record<string, BaseType>;
 	_ = ObjectType.name;
@@ -183,52 +281,5 @@ export class ObjectType extends BaseType {
 			...super.serialize(),
 			properties: Object.fromEntries(Object.entries(this.properties).map(([key, value]) => [key, value.serialize()])),
 		};
-	}
-}
-
-export class ObjectIntersectionType extends ObjectType {
-	constructor(
-		public name: string,
-		types: ObjectType[],
-	) {
-		const properties: Record<string, BaseType> = {};
-		for (const type of types) {
-			for (const key of Object.keys(type.properties)) {
-				const property = type.properties[key];
-				const existingProperty = properties[key];
-				if (existingProperty) {
-					if (!property.extends(existingProperty) && !existingProperty.extends(property)) {
-						// If neither extends the other, then we have a problem
-						throw new Error(`Property ${key} is defined as both ${existingProperty.name} and ${property.name} and neither extends the other`);
-					}
-
-					properties[key] = existingProperty.extends(property) ? existingProperty : property;
-				} else {
-					properties[key] = property;
-				}
-			}
-		}
-
-		super(name, properties);
-	}
-}
-
-export class UnionIntersectionType extends UnionType {
-	constructor(
-		public name: string,
-		types: UnionType[],
-	) {
-		const newTypes: BaseType[] = [];
-		for (const union of types) {
-			for (const type of union.types) {
-				if (types.every(u => u.types.some(t => type.extends(t)))) {
-					if (!newTypes.includes(type)) {
-						newTypes.push(type);
-					}
-				}
-			}
-		}
-
-		super(name, newTypes);
 	}
 }

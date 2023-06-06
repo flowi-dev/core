@@ -1,9 +1,7 @@
 import { expect, test } from '@jest/globals';
 import {
   ArrayType,
-  ObjectIntersectionType,
   ObjectType,
-  UnionIntersectionType,
   UnionType,
   TRUE,
   FALSE,
@@ -261,61 +259,6 @@ test('Check that objects can be extended correctly', () => {
   expect(AdminObj.extends(NULL)).toBe(false);
 });
 
-test('Test intersection types', () => {
-  expect(() => {
-    new ObjectIntersectionType('AB', [
-      new ObjectType('ObjA', {
-        a: new UnionType('A', [STRING, NUMBER]),
-      }),
-      new ObjectType('ObjB', {
-        a: NUMBER,
-      }),
-    ]);
-  }).not.toThrow();
-
-  expect(
-    new ObjectIntersectionType('AB', [
-      new ObjectType('ObjA', {
-        a: new UnionType('A', [STRING, NUMBER]),
-      }),
-      new ObjectType('ObjB', {
-        a: NUMBER,
-        b: STRING,
-      }),
-    ]).properties,
-  ).toStrictEqual({
-    a: NUMBER,
-    b: STRING,
-  });
-
-  expect(
-    new ObjectIntersectionType('AB', [
-      new ObjectType('ObjA', {
-        a: NUMBER,
-      }),
-      new ObjectType('ObjB', {
-        a: new UnionType('A', [STRING, NUMBER]),
-        b: STRING,
-      }),
-    ]).properties,
-  ).toStrictEqual({
-    a: NUMBER,
-    b: STRING,
-  });
-
-  expect(() => {
-    new ObjectIntersectionType('AB', [
-      new ObjectType('ObjA', {
-        a: new UnionType('A', [STRING, NUMBER]),
-      }),
-      new ObjectType('ObjB', {
-        a: BOOLEAN,
-        b: STRING,
-      }),
-    ]);
-  }).toThrow();
-});
-
 test('Test array types', () => {
   const NUM_ARRAY = new ArrayType('number[]', NUMBER);
   expect(NUM_ARRAY.check([1, 2, 3])).toBe(true);
@@ -374,15 +317,4 @@ test("Test the 'any' type", () => {
   expect(STRING.extends(ANY)).toBe(false);
   expect(NUMBER.extends(ANY)).toBe(false);
   expect(BOOLEAN.extends(ANY)).toBe(false);
-});
-
-test('Test the union intersection type', () => {
-  const A = new UnionType('A', [STRING, NUMBER]);
-  const B = new UnionType('B', [NUMBER, BOOLEAN, NUMBER]);
-  const INTERSECTION = new UnionIntersectionType('A&B', [A, B]);
-
-  expect(INTERSECTION.types).toStrictEqual([NUMBER]);
-  expect(INTERSECTION.check(1)).toBe(true);
-  expect(INTERSECTION.check('1')).toBe(false);
-  expect(INTERSECTION.check(true)).toBe(false);
 });
