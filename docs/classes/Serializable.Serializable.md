@@ -4,6 +4,9 @@
 
 [Serializable](../modules/Serializable.md).Serializable
 
+This class is used to serialize and deserialize types.
+It stores a cache of all types that have been serialized and deserialized to easily retrieve them.
+
 ## Hierarchy
 
 - **`Serializable`**
@@ -18,7 +21,7 @@
 
 ### Properties
 
-- [catalog](Serializable.Serializable.md#catalog)
+- [cache](Serializable.Serializable.md#cache)
 
 ### Methods
 
@@ -39,23 +42,27 @@
 
 #### Defined in
 
-[Serializable.ts:39](https://github.com/flowi-dev/core/blob/0ba00f6/src/classes/Serializable.ts#L39)
+[Serializable.ts:98](https://github.com/flowi-dev/core/blob/1e17ede/src/classes/Serializable.ts#L98)
 
 ## Properties
 
-### catalog
+### cache
 
-▪ `Static` **catalog**: `Map`<`string`, [`Serializable`](Serializable.Serializable.md)\>
+▪ `Static` **cache**: `Map`<`string`, [`Serializable`](Serializable.Serializable.md)\>
+
+The cache of all types that have been serialized and deserialized.
 
 #### Defined in
 
-[Serializable.ts:4](https://github.com/flowi-dev/core/blob/0ba00f6/src/classes/Serializable.ts#L4)
+[Serializable.ts:11](https://github.com/flowi-dev/core/blob/1e17ede/src/classes/Serializable.ts#L11)
 
 ## Methods
 
 ### serialize
 
 ▸ **serialize**(): `Object`
+
+The fallback function for serialization. Most types will override this function.
 
 #### Returns
 
@@ -68,13 +75,64 @@
 
 #### Defined in
 
-[Serializable.ts:43](https://github.com/flowi-dev/core/blob/0ba00f6/src/classes/Serializable.ts#L43)
+[Serializable.ts:105](https://github.com/flowi-dev/core/blob/1e17ede/src/classes/Serializable.ts#L105)
 
 ___
 
 ### deserialize
 
 ▸ `Static` **deserialize**(`data`): [`Serializable`](Serializable.Serializable.md)
+
+Deserialize a type from a serialized object.
+
+```json
+# Serialized object
+{
+ * 	name: 'object',
+ * 	_: 'ObjectType',
+ * 	properties: {
+ * 	  username: {
+ * 	    name: 'string',
+ * 	    _: 'PrimitiveType',
+ * 	    validator: [Function (anonymous)]
+ * 	  },
+ * 	  password: {
+ * 	    name: 'string',
+ * 	    _: 'PrimitiveType',
+ * 	    validator: [Function (anonymous)]
+ * 	  },
+ * 	  age: {
+ * 	    name: 'integer',
+ * 	    _: 'PrimitiveType',
+ * 	    validator: [Function (anonymous)]
+ * 	  },
+ * 	  address: { name: 'address', _: 'ObjectType', properties: [Object] }
+ * }
+```
+
+```ts
+const deserialized = Serializable.deserialize({...});
+console.log(deserialized);
+// ObjectType {
+//   name: 'object',
+//   properties: {
+//     username: PrimitiveType { name: 'string', validator: [Function (anonymous)] },
+//     password: PrimitiveType { name: 'string', validator: [Function (anonymous)] },
+//     age: PrimitiveType { name: 'integer', validator: [Function (anonymous)] },
+//     address: ObjectType {
+//       name: 'address',
+//       properties: {
+//         street: PrimitiveType { name: 'string', validator: [Function (anonymous)] },
+//         city: PrimitiveType { name: 'string', validator: [Function (anonymous)] },
+//         coordinates: ArrayType {
+//           name: 'coordinates',
+//           elementType: PrimitiveType { name: 'number', validator: [Function (anonymous)] }
+//         }
+//       }
+//     }
+//   }
+// }
+```
 
 #### Parameters
 
@@ -90,4 +148,4 @@ ___
 
 #### Defined in
 
-[Serializable.ts:6](https://github.com/flowi-dev/core/blob/0ba00f6/src/classes/Serializable.ts#L6)
+[Serializable.ts:65](https://github.com/flowi-dev/core/blob/1e17ede/src/classes/Serializable.ts#L65)

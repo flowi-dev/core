@@ -6,7 +6,27 @@ import { Serializable } from './Serializable';
 export declare abstract class BaseType extends Serializable {
     abstract _: string;
     abstract name: string;
+    /**
+     * Checks if this type extends the given type.
+     *
+     * ```ts
+     * // Example, TRUE is in BOOLEAN, but BOOLEAN is not in TRUE.
+     * TRUE.extends(BOOLEAN); // true
+     * BOOLEAN.extends(TRUE); // false
+     * ```
+     */
     abstract extends(type: BaseType): boolean;
+    /**
+     * Checks if the given data is of this type.
+     * ```ts
+     * STRING.check('hello'); // true
+     * STRING.check(1); // false
+     *
+     * BOOLEAN.check(true); // true
+     * BOOLEAN.check(1); // false
+     * BOOLEAN.check('hello'); // false
+     * ```
+     */
     abstract check(data: any): boolean;
 }
 /**
@@ -45,9 +65,48 @@ export declare class PrimitiveType extends BaseType {
 export declare class UnionType extends BaseType {
     name: string;
     readonly types: BaseType[];
+    /**
+     * Creates a union from the intersection of two unions.
+     * ```ts
+     * const a = new UnionType('a', [STRING, TRUE]);
+     * const b = new UnionType('b', [STRING, FALSE]);
+     *
+     * const c = UnionType.fromIntersect('c', [a, b]);
+     * c.check('hello'); // true
+     * c.check(true); // false
+     * c.check(false); // false
+     *
+     * console.log(c.types); // [STRING] because TRUE and FALSE do not extend each other
+     * ```
+     *
+     * ```ts
+     * const a = new UnionType('a', [STRING, BOOLEAN, NUMBER]);
+     * const b = new UnionType('b', [TRUE, NULL]);
+     *
+     * const c = UnionType.fromIntersect('c', [a, b]);
+     * c.check('hello'); // false
+     * c.check(true); // true
+     * c.check(null); // false
+     * c.check(1); // false
+     *
+     * console.log(c.types); // [TRUE] because TRUE extends BOOLEAN
+     * ```
+     */
     static fromIntersect(name: string, unions: [UnionType, UnionType]): UnionType;
     _: string;
     constructor(name: string, types: BaseType[]);
+    /**
+     * Extends the union with a new type, this will return a new union with the new type added.
+     * ```ts
+     * const union = new UnionType('union', [STRING, NUMBER]);
+     * const extended = union.extend(BOOLEAN);
+     *
+     * extended.check('hello'); // true
+     * extended.check(1); // true
+     * extended.check(true); // true
+     * ```
+     */
+    extend(type: BaseType): UnionType;
     extends(type: BaseType): boolean;
     check(data: any): boolean;
 }
@@ -126,10 +185,49 @@ export declare class AnyType extends BaseType {
  */
 export declare class ObjectType extends BaseType {
     name: string;
+    /**
+     * Create an object type from an intersection between two objects.
+     * ```ts
+     * const a = new ObjectType('a', {
+     * 	name: STRING,
+     * 	age: NUMBER,
+     * });
+     *
+     * const b = new ObjectType('b', {
+     * 	name: STRING,
+     * 	job: STRING,
+     * });
+     *
+     * const c = ObjectType.fromIntersect('c', [a, b]);
+     * console.log(c.properties);
+     * // {
+     * // 	name: STRING,
+     * // }
+     * ```
+     */
     static fromIntersect(name: string, objects: [ObjectType, ObjectType]): ObjectType;
     properties: Record<string, BaseType>;
     _: string;
     constructor(name: string, properties: Record<string, BaseType>);
+    /**
+     * Extend an object type with new properties.
+     * ```ts
+     * const UserObjType = new ObjectType('User', {
+     * 	name: STRING,
+     * 	age: NUMBER,
+     * });
+     *
+     * const WorkingUserObjType = UserObjType.extend('WorkingUser', {
+     * 	job: STRING,
+     * });
+     *
+     * console.log(WorkingUserObjType.properties);
+     * // {
+     * // 	name: STRING,
+     * // 	age: NUMBER,
+     * // 	job: STRING,
+     * // }
+     */
     extend(name: string, properties: Record<string, BaseType>): ObjectType;
     extends(type: BaseType): boolean;
     check(data: any): boolean;

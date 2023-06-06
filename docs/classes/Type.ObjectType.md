@@ -44,7 +44,7 @@ const UserObjType = new ObjectType('User', {
 - [\_](Type.ObjectType.md#_)
 - [name](Type.ObjectType.md#name)
 - [properties](Type.ObjectType.md#properties)
-- [catalog](Type.ObjectType.md#catalog)
+- [cache](Type.ObjectType.md#cache)
 
 ### Methods
 
@@ -74,7 +74,7 @@ const UserObjType = new ObjectType('User', {
 
 #### Defined in
 
-[Type.ts:244](https://github.com/flowi-dev/core/blob/0ba00f6/src/classes/Type.ts#L244)
+[Type.ts:328](https://github.com/flowi-dev/core/blob/1e17ede/src/classes/Type.ts#L328)
 
 ## Properties
 
@@ -88,7 +88,7 @@ const UserObjType = new ObjectType('User', {
 
 #### Defined in
 
-[Type.ts:242](https://github.com/flowi-dev/core/blob/0ba00f6/src/classes/Type.ts#L242)
+[Type.ts:326](https://github.com/flowi-dev/core/blob/1e17ede/src/classes/Type.ts#L326)
 
 ___
 
@@ -102,7 +102,7 @@ ___
 
 #### Defined in
 
-[Type.ts:245](https://github.com/flowi-dev/core/blob/0ba00f6/src/classes/Type.ts#L245)
+[Type.ts:329](https://github.com/flowi-dev/core/blob/1e17ede/src/classes/Type.ts#L329)
 
 ___
 
@@ -112,27 +112,39 @@ ___
 
 #### Defined in
 
-[Type.ts:241](https://github.com/flowi-dev/core/blob/0ba00f6/src/classes/Type.ts#L241)
+[Type.ts:325](https://github.com/flowi-dev/core/blob/1e17ede/src/classes/Type.ts#L325)
 
 ___
 
-### catalog
+### cache
 
-▪ `Static` **catalog**: `Map`<`string`, [`Serializable`](Serializable.Serializable.md)\>
+▪ `Static` **cache**: `Map`<`string`, [`Serializable`](Serializable.Serializable.md)\>
+
+The cache of all types that have been serialized and deserialized.
 
 #### Inherited from
 
-[BaseType](Type.BaseType.md).[catalog](Type.BaseType.md#catalog)
+[BaseType](Type.BaseType.md).[cache](Type.BaseType.md#cache)
 
 #### Defined in
 
-[Serializable.ts:4](https://github.com/flowi-dev/core/blob/0ba00f6/src/classes/Serializable.ts#L4)
+[Serializable.ts:11](https://github.com/flowi-dev/core/blob/1e17ede/src/classes/Serializable.ts#L11)
 
 ## Methods
 
 ### check
 
 ▸ **check**(`data`): `boolean`
+
+Checks if the given data is of this type.
+```ts
+STRING.check('hello'); // true
+STRING.check(1); // false
+
+BOOLEAN.check(true); // true
+BOOLEAN.check(1); // false
+BOOLEAN.check('hello'); // false
+```
 
 #### Parameters
 
@@ -150,13 +162,31 @@ ___
 
 #### Defined in
 
-[Type.ts:280](https://github.com/flowi-dev/core/blob/0ba00f6/src/classes/Type.ts#L280)
+[Type.ts:383](https://github.com/flowi-dev/core/blob/1e17ede/src/classes/Type.ts#L383)
 
 ___
 
 ### extend
 
 ▸ **extend**(`name`, `properties`): [`ObjectType`](Type.ObjectType.md)
+
+Extend an object type with new properties.
+```ts
+const UserObjType = new ObjectType('User', {
+	name: STRING,
+	age: NUMBER,
+});
+
+const WorkingUserObjType = UserObjType.extend('WorkingUser', {
+	job: STRING,
+});
+
+console.log(WorkingUserObjType.properties);
+// {
+// 	name: STRING,
+// 	age: NUMBER,
+// 	job: STRING,
+// }
 
 #### Parameters
 
@@ -171,13 +201,21 @@ ___
 
 #### Defined in
 
-[Type.ts:252](https://github.com/flowi-dev/core/blob/0ba00f6/src/classes/Type.ts#L252)
+[Type.ts:355](https://github.com/flowi-dev/core/blob/1e17ede/src/classes/Type.ts#L355)
 
 ___
 
 ### extends
 
 ▸ **extends**(`type`): `boolean`
+
+Checks if this type extends the given type.
+
+```ts
+// Example, TRUE is in BOOLEAN, but BOOLEAN is not in TRUE.
+TRUE.extends(BOOLEAN); // true
+BOOLEAN.extends(TRUE); // false
+```
 
 #### Parameters
 
@@ -195,13 +233,15 @@ ___
 
 #### Defined in
 
-[Type.ts:259](https://github.com/flowi-dev/core/blob/0ba00f6/src/classes/Type.ts#L259)
+[Type.ts:362](https://github.com/flowi-dev/core/blob/1e17ede/src/classes/Type.ts#L362)
 
 ___
 
 ### serialize
 
 ▸ **serialize**(): `Object`
+
+The fallback function for serialization. Most types will override this function.
 
 #### Returns
 
@@ -219,13 +259,64 @@ ___
 
 #### Defined in
 
-[Type.ts:294](https://github.com/flowi-dev/core/blob/0ba00f6/src/classes/Type.ts#L294)
+[Type.ts:397](https://github.com/flowi-dev/core/blob/1e17ede/src/classes/Type.ts#L397)
 
 ___
 
 ### deserialize
 
 ▸ `Static` **deserialize**(`data`): [`Serializable`](Serializable.Serializable.md)
+
+Deserialize a type from a serialized object.
+
+```json
+# Serialized object
+{
+ * 	name: 'object',
+ * 	_: 'ObjectType',
+ * 	properties: {
+ * 	  username: {
+ * 	    name: 'string',
+ * 	    _: 'PrimitiveType',
+ * 	    validator: [Function (anonymous)]
+ * 	  },
+ * 	  password: {
+ * 	    name: 'string',
+ * 	    _: 'PrimitiveType',
+ * 	    validator: [Function (anonymous)]
+ * 	  },
+ * 	  age: {
+ * 	    name: 'integer',
+ * 	    _: 'PrimitiveType',
+ * 	    validator: [Function (anonymous)]
+ * 	  },
+ * 	  address: { name: 'address', _: 'ObjectType', properties: [Object] }
+ * }
+```
+
+```ts
+const deserialized = Serializable.deserialize({...});
+console.log(deserialized);
+// ObjectType {
+//   name: 'object',
+//   properties: {
+//     username: PrimitiveType { name: 'string', validator: [Function (anonymous)] },
+//     password: PrimitiveType { name: 'string', validator: [Function (anonymous)] },
+//     age: PrimitiveType { name: 'integer', validator: [Function (anonymous)] },
+//     address: ObjectType {
+//       name: 'address',
+//       properties: {
+//         street: PrimitiveType { name: 'string', validator: [Function (anonymous)] },
+//         city: PrimitiveType { name: 'string', validator: [Function (anonymous)] },
+//         coordinates: ArrayType {
+//           name: 'coordinates',
+//           elementType: PrimitiveType { name: 'number', validator: [Function (anonymous)] }
+//         }
+//       }
+//     }
+//   }
+// }
+```
 
 #### Parameters
 
@@ -245,13 +336,32 @@ ___
 
 #### Defined in
 
-[Serializable.ts:6](https://github.com/flowi-dev/core/blob/0ba00f6/src/classes/Serializable.ts#L6)
+[Serializable.ts:65](https://github.com/flowi-dev/core/blob/1e17ede/src/classes/Serializable.ts#L65)
 
 ___
 
 ### fromIntersect
 
 ▸ `Static` **fromIntersect**(`name`, `objects`): [`ObjectType`](Type.ObjectType.md)
+
+Create an object type from an intersection between two objects.
+```ts
+const a = new ObjectType('a', {
+	name: STRING,
+	age: NUMBER,
+});
+
+const b = new ObjectType('b', {
+	name: STRING,
+	job: STRING,
+});
+
+const c = ObjectType.fromIntersect('c', [a, b]);
+console.log(c.properties);
+// {
+// 	name: STRING,
+// }
+```
 
 #### Parameters
 
@@ -266,4 +376,4 @@ ___
 
 #### Defined in
 
-[Type.ts:214](https://github.com/flowi-dev/core/blob/0ba00f6/src/classes/Type.ts#L214)
+[Type.ts:298](https://github.com/flowi-dev/core/blob/1e17ede/src/classes/Type.ts#L298)

@@ -29,11 +29,12 @@ union.check(true); // false
 - [\_](Type.UnionType.md#_)
 - [name](Type.UnionType.md#name)
 - [types](Type.UnionType.md#types)
-- [catalog](Type.UnionType.md#catalog)
+- [cache](Type.UnionType.md#cache)
 
 ### Methods
 
 - [check](Type.UnionType.md#check)
+- [extend](Type.UnionType.md#extend)
 - [extends](Type.UnionType.md#extends)
 - [serialize](Type.UnionType.md#serialize)
 - [deserialize](Type.UnionType.md#deserialize)
@@ -58,7 +59,7 @@ union.check(true); // false
 
 #### Defined in
 
-[Type.ts:81](https://github.com/flowi-dev/core/blob/0ba00f6/src/classes/Type.ts#L81)
+[Type.ts:130](https://github.com/flowi-dev/core/blob/1e17ede/src/classes/Type.ts#L130)
 
 ## Properties
 
@@ -72,7 +73,7 @@ union.check(true); // false
 
 #### Defined in
 
-[Type.ts:80](https://github.com/flowi-dev/core/blob/0ba00f6/src/classes/Type.ts#L80)
+[Type.ts:129](https://github.com/flowi-dev/core/blob/1e17ede/src/classes/Type.ts#L129)
 
 ___
 
@@ -86,7 +87,7 @@ ___
 
 #### Defined in
 
-[Type.ts:82](https://github.com/flowi-dev/core/blob/0ba00f6/src/classes/Type.ts#L82)
+[Type.ts:131](https://github.com/flowi-dev/core/blob/1e17ede/src/classes/Type.ts#L131)
 
 ___
 
@@ -96,27 +97,39 @@ ___
 
 #### Defined in
 
-[Type.ts:83](https://github.com/flowi-dev/core/blob/0ba00f6/src/classes/Type.ts#L83)
+[Type.ts:132](https://github.com/flowi-dev/core/blob/1e17ede/src/classes/Type.ts#L132)
 
 ___
 
-### catalog
+### cache
 
-▪ `Static` **catalog**: `Map`<`string`, [`Serializable`](Serializable.Serializable.md)\>
+▪ `Static` **cache**: `Map`<`string`, [`Serializable`](Serializable.Serializable.md)\>
+
+The cache of all types that have been serialized and deserialized.
 
 #### Inherited from
 
-[BaseType](Type.BaseType.md).[catalog](Type.BaseType.md#catalog)
+[BaseType](Type.BaseType.md).[cache](Type.BaseType.md#cache)
 
 #### Defined in
 
-[Serializable.ts:4](https://github.com/flowi-dev/core/blob/0ba00f6/src/classes/Serializable.ts#L4)
+[Serializable.ts:11](https://github.com/flowi-dev/core/blob/1e17ede/src/classes/Serializable.ts#L11)
 
 ## Methods
 
 ### check
 
 ▸ **check**(`data`): `boolean`
+
+Checks if the given data is of this type.
+```ts
+STRING.check('hello'); // true
+STRING.check(1); // false
+
+BOOLEAN.check(true); // true
+BOOLEAN.check(1); // false
+BOOLEAN.check('hello'); // false
+```
 
 #### Parameters
 
@@ -134,13 +147,51 @@ ___
 
 #### Defined in
 
-[Type.ts:97](https://github.com/flowi-dev/core/blob/0ba00f6/src/classes/Type.ts#L97)
+[Type.ts:161](https://github.com/flowi-dev/core/blob/1e17ede/src/classes/Type.ts#L161)
+
+___
+
+### extend
+
+▸ **extend**(`type`): [`UnionType`](Type.UnionType.md)
+
+Extends the union with a new type, this will return a new union with the new type added.
+```ts
+const union = new UnionType('union', [STRING, NUMBER]);
+const extended = union.extend(BOOLEAN);
+
+extended.check('hello'); // true
+extended.check(1); // true
+extended.check(true); // true
+```
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `type` | [`BaseType`](Type.BaseType.md) |
+
+#### Returns
+
+[`UnionType`](Type.UnionType.md)
+
+#### Defined in
+
+[Type.ts:148](https://github.com/flowi-dev/core/blob/1e17ede/src/classes/Type.ts#L148)
 
 ___
 
 ### extends
 
 ▸ **extends**(`type`): `boolean`
+
+Checks if this type extends the given type.
+
+```ts
+// Example, TRUE is in BOOLEAN, but BOOLEAN is not in TRUE.
+TRUE.extends(BOOLEAN); // true
+BOOLEAN.extends(TRUE); // false
+```
 
 #### Parameters
 
@@ -158,13 +209,15 @@ ___
 
 #### Defined in
 
-[Type.ts:88](https://github.com/flowi-dev/core/blob/0ba00f6/src/classes/Type.ts#L88)
+[Type.ts:152](https://github.com/flowi-dev/core/blob/1e17ede/src/classes/Type.ts#L152)
 
 ___
 
 ### serialize
 
 ▸ **serialize**(): `Object`
+
+The fallback function for serialization. Most types will override this function.
 
 #### Returns
 
@@ -181,13 +234,64 @@ ___
 
 #### Defined in
 
-[Serializable.ts:43](https://github.com/flowi-dev/core/blob/0ba00f6/src/classes/Serializable.ts#L43)
+[Serializable.ts:105](https://github.com/flowi-dev/core/blob/1e17ede/src/classes/Serializable.ts#L105)
 
 ___
 
 ### deserialize
 
 ▸ `Static` **deserialize**(`data`): [`Serializable`](Serializable.Serializable.md)
+
+Deserialize a type from a serialized object.
+
+```json
+# Serialized object
+{
+ * 	name: 'object',
+ * 	_: 'ObjectType',
+ * 	properties: {
+ * 	  username: {
+ * 	    name: 'string',
+ * 	    _: 'PrimitiveType',
+ * 	    validator: [Function (anonymous)]
+ * 	  },
+ * 	  password: {
+ * 	    name: 'string',
+ * 	    _: 'PrimitiveType',
+ * 	    validator: [Function (anonymous)]
+ * 	  },
+ * 	  age: {
+ * 	    name: 'integer',
+ * 	    _: 'PrimitiveType',
+ * 	    validator: [Function (anonymous)]
+ * 	  },
+ * 	  address: { name: 'address', _: 'ObjectType', properties: [Object] }
+ * }
+```
+
+```ts
+const deserialized = Serializable.deserialize({...});
+console.log(deserialized);
+// ObjectType {
+//   name: 'object',
+//   properties: {
+//     username: PrimitiveType { name: 'string', validator: [Function (anonymous)] },
+//     password: PrimitiveType { name: 'string', validator: [Function (anonymous)] },
+//     age: PrimitiveType { name: 'integer', validator: [Function (anonymous)] },
+//     address: ObjectType {
+//       name: 'address',
+//       properties: {
+//         street: PrimitiveType { name: 'string', validator: [Function (anonymous)] },
+//         city: PrimitiveType { name: 'string', validator: [Function (anonymous)] },
+//         coordinates: ArrayType {
+//           name: 'coordinates',
+//           elementType: PrimitiveType { name: 'number', validator: [Function (anonymous)] }
+//         }
+//       }
+//     }
+//   }
+// }
+```
 
 #### Parameters
 
@@ -207,13 +311,39 @@ ___
 
 #### Defined in
 
-[Serializable.ts:6](https://github.com/flowi-dev/core/blob/0ba00f6/src/classes/Serializable.ts#L6)
+[Serializable.ts:65](https://github.com/flowi-dev/core/blob/1e17ede/src/classes/Serializable.ts#L65)
 
 ___
 
 ### fromIntersect
 
 ▸ `Static` **fromIntersect**(`name`, `unions`): [`UnionType`](Type.UnionType.md)
+
+Creates a union from the intersection of two unions.
+```ts
+const a = new UnionType('a', [STRING, TRUE]);
+const b = new UnionType('b', [STRING, FALSE]);
+
+const c = UnionType.fromIntersect('c', [a, b]);
+c.check('hello'); // true
+c.check(true); // false
+c.check(false); // false
+
+console.log(c.types); // [STRING] because TRUE and FALSE do not extend each other
+```
+
+```ts
+const a = new UnionType('a', [STRING, BOOLEAN, NUMBER]);
+const b = new UnionType('b', [TRUE, NULL]);
+
+const c = UnionType.fromIntersect('c', [a, b]);
+c.check('hello'); // false
+c.check(true); // true
+c.check(null); // false
+c.check(1); // false
+
+console.log(c.types); // [TRUE] because TRUE extends BOOLEAN
+```
 
 #### Parameters
 
@@ -228,4 +358,4 @@ ___
 
 #### Defined in
 
-[Type.ts:66](https://github.com/flowi-dev/core/blob/0ba00f6/src/classes/Type.ts#L66)
+[Type.ts:115](https://github.com/flowi-dev/core/blob/1e17ede/src/classes/Type.ts#L115)

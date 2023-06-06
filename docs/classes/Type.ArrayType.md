@@ -28,7 +28,7 @@ array.check(['hello', 1]); // false
 - [\_](Type.ArrayType.md#_)
 - [elementType](Type.ArrayType.md#elementtype)
 - [name](Type.ArrayType.md#name)
-- [catalog](Type.ArrayType.md#catalog)
+- [cache](Type.ArrayType.md#cache)
 
 ### Methods
 
@@ -56,7 +56,7 @@ array.check(['hello', 1]); // false
 
 #### Defined in
 
-[Type.ts:112](https://github.com/flowi-dev/core/blob/0ba00f6/src/classes/Type.ts#L112)
+[Type.ts:176](https://github.com/flowi-dev/core/blob/1e17ede/src/classes/Type.ts#L176)
 
 ## Properties
 
@@ -70,7 +70,7 @@ array.check(['hello', 1]); // false
 
 #### Defined in
 
-[Type.ts:111](https://github.com/flowi-dev/core/blob/0ba00f6/src/classes/Type.ts#L111)
+[Type.ts:175](https://github.com/flowi-dev/core/blob/1e17ede/src/classes/Type.ts#L175)
 
 ___
 
@@ -80,7 +80,7 @@ ___
 
 #### Defined in
 
-[Type.ts:114](https://github.com/flowi-dev/core/blob/0ba00f6/src/classes/Type.ts#L114)
+[Type.ts:178](https://github.com/flowi-dev/core/blob/1e17ede/src/classes/Type.ts#L178)
 
 ___
 
@@ -94,27 +94,39 @@ ___
 
 #### Defined in
 
-[Type.ts:113](https://github.com/flowi-dev/core/blob/0ba00f6/src/classes/Type.ts#L113)
+[Type.ts:177](https://github.com/flowi-dev/core/blob/1e17ede/src/classes/Type.ts#L177)
 
 ___
 
-### catalog
+### cache
 
-▪ `Static` **catalog**: `Map`<`string`, [`Serializable`](Serializable.Serializable.md)\>
+▪ `Static` **cache**: `Map`<`string`, [`Serializable`](Serializable.Serializable.md)\>
+
+The cache of all types that have been serialized and deserialized.
 
 #### Inherited from
 
-[BaseType](Type.BaseType.md).[catalog](Type.BaseType.md#catalog)
+[BaseType](Type.BaseType.md).[cache](Type.BaseType.md#cache)
 
 #### Defined in
 
-[Serializable.ts:4](https://github.com/flowi-dev/core/blob/0ba00f6/src/classes/Serializable.ts#L4)
+[Serializable.ts:11](https://github.com/flowi-dev/core/blob/1e17ede/src/classes/Serializable.ts#L11)
 
 ## Methods
 
 ### check
 
 ▸ **check**(`data`): `boolean`
+
+Checks if the given data is of this type.
+```ts
+STRING.check('hello'); // true
+STRING.check(1); // false
+
+BOOLEAN.check(true); // true
+BOOLEAN.check(1); // false
+BOOLEAN.check('hello'); // false
+```
 
 #### Parameters
 
@@ -132,13 +144,21 @@ ___
 
 #### Defined in
 
-[Type.ts:119](https://github.com/flowi-dev/core/blob/0ba00f6/src/classes/Type.ts#L119)
+[Type.ts:183](https://github.com/flowi-dev/core/blob/1e17ede/src/classes/Type.ts#L183)
 
 ___
 
 ### extends
 
 ▸ **extends**(`type`): `boolean`
+
+Checks if this type extends the given type.
+
+```ts
+// Example, TRUE is in BOOLEAN, but BOOLEAN is not in TRUE.
+TRUE.extends(BOOLEAN); // true
+BOOLEAN.extends(TRUE); // false
+```
 
 #### Parameters
 
@@ -156,13 +176,15 @@ ___
 
 #### Defined in
 
-[Type.ts:127](https://github.com/flowi-dev/core/blob/0ba00f6/src/classes/Type.ts#L127)
+[Type.ts:191](https://github.com/flowi-dev/core/blob/1e17ede/src/classes/Type.ts#L191)
 
 ___
 
 ### serialize
 
 ▸ **serialize**(): `Object`
+
+The fallback function for serialization. Most types will override this function.
 
 #### Returns
 
@@ -182,13 +204,64 @@ ___
 
 #### Defined in
 
-[Type.ts:139](https://github.com/flowi-dev/core/blob/0ba00f6/src/classes/Type.ts#L139)
+[Type.ts:203](https://github.com/flowi-dev/core/blob/1e17ede/src/classes/Type.ts#L203)
 
 ___
 
 ### deserialize
 
 ▸ `Static` **deserialize**(`data`): [`Serializable`](Serializable.Serializable.md)
+
+Deserialize a type from a serialized object.
+
+```json
+# Serialized object
+{
+ * 	name: 'object',
+ * 	_: 'ObjectType',
+ * 	properties: {
+ * 	  username: {
+ * 	    name: 'string',
+ * 	    _: 'PrimitiveType',
+ * 	    validator: [Function (anonymous)]
+ * 	  },
+ * 	  password: {
+ * 	    name: 'string',
+ * 	    _: 'PrimitiveType',
+ * 	    validator: [Function (anonymous)]
+ * 	  },
+ * 	  age: {
+ * 	    name: 'integer',
+ * 	    _: 'PrimitiveType',
+ * 	    validator: [Function (anonymous)]
+ * 	  },
+ * 	  address: { name: 'address', _: 'ObjectType', properties: [Object] }
+ * }
+```
+
+```ts
+const deserialized = Serializable.deserialize({...});
+console.log(deserialized);
+// ObjectType {
+//   name: 'object',
+//   properties: {
+//     username: PrimitiveType { name: 'string', validator: [Function (anonymous)] },
+//     password: PrimitiveType { name: 'string', validator: [Function (anonymous)] },
+//     age: PrimitiveType { name: 'integer', validator: [Function (anonymous)] },
+//     address: ObjectType {
+//       name: 'address',
+//       properties: {
+//         street: PrimitiveType { name: 'string', validator: [Function (anonymous)] },
+//         city: PrimitiveType { name: 'string', validator: [Function (anonymous)] },
+//         coordinates: ArrayType {
+//           name: 'coordinates',
+//           elementType: PrimitiveType { name: 'number', validator: [Function (anonymous)] }
+//         }
+//       }
+//     }
+//   }
+// }
+```
 
 #### Parameters
 
@@ -208,4 +281,4 @@ ___
 
 #### Defined in
 
-[Serializable.ts:6](https://github.com/flowi-dev/core/blob/0ba00f6/src/classes/Serializable.ts#L6)
+[Serializable.ts:65](https://github.com/flowi-dev/core/blob/1e17ede/src/classes/Serializable.ts#L65)
