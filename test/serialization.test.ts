@@ -153,6 +153,50 @@ describe('Serializing and deserializing object types', () => {
   });
 });
 
+describe("Serializing and deserializing nested objects", () => {
+  const OBJECT = new ObjectType('object', {
+    username: STRING,
+    password: STRING,
+    age: INTEGER,
+    address: new ObjectType('address', {
+      street: STRING,
+      city: STRING,
+      coordinates: new ArrayType('coordinates', NUMBER),
+    }),
+  });
+
+  const serialized = OBJECT.serialize();
+  console.log(serialized);
+  Serializable.cache.delete(OBJECT.name); // Remove the object from the cache
+  Serializable.cache.delete('address'); // Remove the object from the cache
+  Serializable.cache.delete('coordinates'); // Remove the object from the cache
+  const deserialized = Serializable.deserialize(serialized) as ObjectType;
+
+  it('should be the same', () => {
+    expect(deserialized).toMatchObject(OBJECT);
+  });
+
+  it('should retain the same check function', () => {
+    expect(deserialized.check({})).toBe(false);
+    expect(deserialized.check({ username: 'test' })).toBe(false);
+    expect(deserialized.check({ username: 'test', password: 'test' })).toBe(
+      false,
+    );
+    expect(
+      deserialized.check({
+        username: 'test',
+        password: 'test',
+        age: 20,
+        address: {
+          street: 'test',
+          city: 'test',
+          coordinates: [0, 0],
+        },
+      }),
+    ).toBe(true);
+  });
+});
+
 describe("Serializing and deserializing objects that aren't saved", () => {
   const OBJECT = new ObjectType('unsaved-object', {
     username: STRING,
@@ -160,7 +204,7 @@ describe("Serializing and deserializing objects that aren't saved", () => {
     age: INTEGER,
   });
 
-  Serializable.catalog.delete(OBJECT.name); // Remove the object from the catalog
+  Serializable.cache.delete(OBJECT.name); // Remove the object from the cache
 
   const serialized = OBJECT.serialize();
   const deserialized = Serializable.deserialize(serialized) as ObjectType;
@@ -173,7 +217,7 @@ describe("Serializing and deserializing objects that aren't saved", () => {
 describe("Serializing and deserializing unions that aren't saved", () => {
   const UNION = new UnionType('unsaved-union', [STRING, INTEGER]);
 
-  Serializable.catalog.delete(UNION.name); // Remove the union from the catalog
+  Serializable.cache.delete(UNION.name); // Remove the union from the cache
 
   const serialized = UNION.serialize();
   const deserialized = Serializable.deserialize(serialized) as UnionType;
@@ -192,8 +236,8 @@ describe("Serializing and deserializing arrays that aren't saved", () => {
     }),
   );
 
-  Serializable.catalog.delete(ARRAY.name); // Remove the array from the catalog
-  Serializable.catalog.delete(ARRAY.elementType.name); // Remove the element type from the catalog
+  Serializable.cache.delete(ARRAY.name); // Remove the array from the cache
+  Serializable.cache.delete(ARRAY.elementType.name); // Remove the element type from the cache
 
 	const serialized = ARRAY.serialize();
 	const deserialized = Serializable.deserialize(serialized); // Should not throw an error
@@ -207,7 +251,7 @@ describe("Serializing and deserializing arrays that aren't saved", () => {
 describe("Serializing and deserializing primitives that aren't saved should fail", () => {
   const UNSAVED = new PrimitiveType('unsaved', (data: any) => true);
 
-  Serializable.catalog.delete(UNSAVED.name); // Remove the primitive from the catalog;
+  Serializable.cache.delete(UNSAVED.name); // Remove the primitive from the cache;
 
   const serialized = UNSAVED.serialize();
 
