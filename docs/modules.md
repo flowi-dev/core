@@ -6,25 +6,18 @@
 
 ### Functions
 
-- [add](modules.md#add)
+- [a](modules.md#a)
 
 ## Functions
 
-### add
+### a
 
-▸ **add**(`a`, `b`): `number`
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `a` | `number` |
-| `b` | `number` |
+▸ **a**(): `void`
 
 #### Returns
 
-`number`
+`void`
 
 #### Defined in
 
-[index.ts:1](https://github.com/flowi-dev/core/blob/4856d62/src/index.ts#L1)
+[index.ts:1](https://github.com/flowi-dev/core/blob/8354fb1/src/index.ts#L1)
