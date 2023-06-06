@@ -5,9 +5,6 @@
 [Type](../modules/Type.md).ObjectType
 
 This type defines an object, an object is a type that contains a list of properties, each property has a name and a type.
-
-**`Example`**
-
 ```ts
 const UserObjType = new ObjectType('User', {
 	name: STRING,
@@ -19,9 +16,6 @@ UserObjType.check({ name: 'John', age: '1' }); // false
 ```
 
 Objects can also be nested.
-
-**`Example`**
-
 ```ts
 const UserObjType = new ObjectType('User', {
 	name: STRING,
@@ -59,6 +53,7 @@ const UserObjType = new ObjectType('User', {
 - [extends](Type.ObjectType.md#extends)
 - [serialize](Type.ObjectType.md#serialize)
 - [deserialize](Type.ObjectType.md#deserialize)
+- [fromIntersect](Type.ObjectType.md#fromintersect)
 
 ## Constructors
 
@@ -79,7 +74,7 @@ const UserObjType = new ObjectType('User', {
 
 #### Defined in
 
-[Type.ts:196](https://github.com/flowi-dev/core/blob/0537423/src/classes/Type.ts#L196)
+[Type.ts:244](https://github.com/flowi-dev/core/blob/0ba00f6/src/classes/Type.ts#L244)
 
 ## Properties
 
@@ -93,7 +88,7 @@ const UserObjType = new ObjectType('User', {
 
 #### Defined in
 
-[Type.ts:194](https://github.com/flowi-dev/core/blob/0537423/src/classes/Type.ts#L194)
+[Type.ts:242](https://github.com/flowi-dev/core/blob/0ba00f6/src/classes/Type.ts#L242)
 
 ___
 
@@ -107,7 +102,7 @@ ___
 
 #### Defined in
 
-[Type.ts:197](https://github.com/flowi-dev/core/blob/0537423/src/classes/Type.ts#L197)
+[Type.ts:245](https://github.com/flowi-dev/core/blob/0ba00f6/src/classes/Type.ts#L245)
 
 ___
 
@@ -117,7 +112,7 @@ ___
 
 #### Defined in
 
-[Type.ts:193](https://github.com/flowi-dev/core/blob/0537423/src/classes/Type.ts#L193)
+[Type.ts:241](https://github.com/flowi-dev/core/blob/0ba00f6/src/classes/Type.ts#L241)
 
 ___
 
@@ -131,7 +126,7 @@ ___
 
 #### Defined in
 
-[Serializable.ts:4](https://github.com/flowi-dev/core/blob/0537423/src/classes/Serializable.ts#L4)
+[Serializable.ts:4](https://github.com/flowi-dev/core/blob/0ba00f6/src/classes/Serializable.ts#L4)
 
 ## Methods
 
@@ -155,7 +150,7 @@ ___
 
 #### Defined in
 
-[Type.ts:232](https://github.com/flowi-dev/core/blob/0537423/src/classes/Type.ts#L232)
+[Type.ts:280](https://github.com/flowi-dev/core/blob/0ba00f6/src/classes/Type.ts#L280)
 
 ___
 
@@ -176,7 +171,7 @@ ___
 
 #### Defined in
 
-[Type.ts:204](https://github.com/flowi-dev/core/blob/0537423/src/classes/Type.ts#L204)
+[Type.ts:252](https://github.com/flowi-dev/core/blob/0ba00f6/src/classes/Type.ts#L252)
 
 ___
 
@@ -200,7 +195,7 @@ ___
 
 #### Defined in
 
-[Type.ts:211](https://github.com/flowi-dev/core/blob/0537423/src/classes/Type.ts#L211)
+[Type.ts:259](https://github.com/flowi-dev/core/blob/0ba00f6/src/classes/Type.ts#L259)
 
 ___
 
@@ -224,7 +219,7 @@ ___
 
 #### Defined in
 
-[Type.ts:246](https://github.com/flowi-dev/core/blob/0537423/src/classes/Type.ts#L246)
+[Type.ts:294](https://github.com/flowi-dev/core/blob/0ba00f6/src/classes/Type.ts#L294)
 
 ___
 
@@ -250,4 +245,25 @@ ___
 
 #### Defined in
 
-[Serializable.ts:6](https://github.com/flowi-dev/core/blob/0537423/src/classes/Serializable.ts#L6)
+[Serializable.ts:6](https://github.com/flowi-dev/core/blob/0ba00f6/src/classes/Serializable.ts#L6)
+
+___
+
+### fromIntersect
+
+▸ `Static` **fromIntersect**(`name`, `objects`): [`ObjectType`](Type.ObjectType.md)
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `name` | `string` |
+| `objects` | [[`ObjectType`](Type.ObjectType.md), [`ObjectType`](Type.ObjectType.md)] |
+
+#### Returns
+
+[`ObjectType`](Type.ObjectType.md)
+
+#### Defined in
+
+[Type.ts:214](https://github.com/flowi-dev/core/blob/0ba00f6/src/classes/Type.ts#L214)

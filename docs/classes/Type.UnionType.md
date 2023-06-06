@@ -5,9 +5,6 @@
 [Type](../modules/Type.md).UnionType
 
 This class defines unions, just like in TypeScript, a union is a type that can be one of the types in the union.
-
-**`Example`**
-
 ```ts
 const union = new UnionType('union', [STRING, NUMBER]);
 union.check('hello'); // true
@@ -40,6 +37,7 @@ union.check(true); // false
 - [extends](Type.UnionType.md#extends)
 - [serialize](Type.UnionType.md#serialize)
 - [deserialize](Type.UnionType.md#deserialize)
+- [fromIntersect](Type.UnionType.md#fromintersect)
 
 ## Constructors
 
@@ -60,7 +58,7 @@ union.check(true); // false
 
 #### Defined in
 
-[Type.ts:55](https://github.com/flowi-dev/core/blob/0537423/src/classes/Type.ts#L55)
+[Type.ts:81](https://github.com/flowi-dev/core/blob/0ba00f6/src/classes/Type.ts#L81)
 
 ## Properties
 
@@ -74,7 +72,7 @@ union.check(true); // false
 
 #### Defined in
 
-[Type.ts:54](https://github.com/flowi-dev/core/blob/0537423/src/classes/Type.ts#L54)
+[Type.ts:80](https://github.com/flowi-dev/core/blob/0ba00f6/src/classes/Type.ts#L80)
 
 ___
 
@@ -88,7 +86,7 @@ ___
 
 #### Defined in
 
-[Type.ts:56](https://github.com/flowi-dev/core/blob/0537423/src/classes/Type.ts#L56)
+[Type.ts:82](https://github.com/flowi-dev/core/blob/0ba00f6/src/classes/Type.ts#L82)
 
 ___
 
@@ -98,7 +96,7 @@ ___
 
 #### Defined in
 
-[Type.ts:57](https://github.com/flowi-dev/core/blob/0537423/src/classes/Type.ts#L57)
+[Type.ts:83](https://github.com/flowi-dev/core/blob/0ba00f6/src/classes/Type.ts#L83)
 
 ___
 
@@ -112,7 +110,7 @@ ___
 
 #### Defined in
 
-[Serializable.ts:4](https://github.com/flowi-dev/core/blob/0537423/src/classes/Serializable.ts#L4)
+[Serializable.ts:4](https://github.com/flowi-dev/core/blob/0ba00f6/src/classes/Serializable.ts#L4)
 
 ## Methods
 
@@ -136,7 +134,7 @@ ___
 
 #### Defined in
 
-[Type.ts:71](https://github.com/flowi-dev/core/blob/0537423/src/classes/Type.ts#L71)
+[Type.ts:97](https://github.com/flowi-dev/core/blob/0ba00f6/src/classes/Type.ts#L97)
 
 ___
 
@@ -160,7 +158,7 @@ ___
 
 #### Defined in
 
-[Type.ts:62](https://github.com/flowi-dev/core/blob/0537423/src/classes/Type.ts#L62)
+[Type.ts:88](https://github.com/flowi-dev/core/blob/0ba00f6/src/classes/Type.ts#L88)
 
 ___
 
@@ -183,7 +181,7 @@ ___
 
 #### Defined in
 
-[Serializable.ts:43](https://github.com/flowi-dev/core/blob/0537423/src/classes/Serializable.ts#L43)
+[Serializable.ts:43](https://github.com/flowi-dev/core/blob/0ba00f6/src/classes/Serializable.ts#L43)
 
 ___
 
@@ -209,4 +207,25 @@ ___
 
 #### Defined in
 
-[Serializable.ts:6](https://github.com/flowi-dev/core/blob/0537423/src/classes/Serializable.ts#L6)
+[Serializable.ts:6](https://github.com/flowi-dev/core/blob/0ba00f6/src/classes/Serializable.ts#L6)
+
+___
+
+### fromIntersect
+
+▸ `Static` **fromIntersect**(`name`, `unions`): [`UnionType`](Type.UnionType.md)
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `name` | `string` |
+| `unions` | [[`UnionType`](Type.UnionType.md), [`UnionType`](Type.UnionType.md)] |
+
+#### Returns
+
+[`UnionType`](Type.UnionType.md)
+
+#### Defined in
+
+[Type.ts:66](https://github.com/flowi-dev/core/blob/0ba00f6/src/classes/Type.ts#L66)

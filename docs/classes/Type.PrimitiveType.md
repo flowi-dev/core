@@ -6,6 +6,19 @@
 
 This class defines primitive types, such as string, number, boolean, etc.
 
+```ts
+const string = new PrimitiveType('string', (data: any) => typeof data === 'string');
+string.check('hello'); // true
+string.check(1); // false
+```
+
+You can create your own by defining a name and a validator function.
+```ts
+const myType = new PrimitiveType('myType', (data: any) => data === 'hello');
+myType.check('hello'); // true
+myType.check('world'); // false
+```
+
 ## Hierarchy
 
 - [`BaseType`](Type.BaseType.md)
@@ -51,7 +64,7 @@ This class defines primitive types, such as string, number, boolean, etc.
 
 #### Defined in
 
-[Type.ts:19](https://github.com/flowi-dev/core/blob/0537423/src/classes/Type.ts#L19)
+[Type.ts:32](https://github.com/flowi-dev/core/blob/0ba00f6/src/classes/Type.ts#L32)
 
 ## Properties
 
@@ -65,7 +78,7 @@ This class defines primitive types, such as string, number, boolean, etc.
 
 #### Defined in
 
-[Type.ts:18](https://github.com/flowi-dev/core/blob/0537423/src/classes/Type.ts#L18)
+[Type.ts:31](https://github.com/flowi-dev/core/blob/0ba00f6/src/classes/Type.ts#L31)
 
 ___
 
@@ -79,7 +92,7 @@ ___
 
 #### Defined in
 
-[Type.ts:20](https://github.com/flowi-dev/core/blob/0537423/src/classes/Type.ts#L20)
+[Type.ts:33](https://github.com/flowi-dev/core/blob/0ba00f6/src/classes/Type.ts#L33)
 
 ___
 
@@ -103,7 +116,7 @@ ___
 
 #### Defined in
 
-[Type.ts:21](https://github.com/flowi-dev/core/blob/0537423/src/classes/Type.ts#L21)
+[Type.ts:34](https://github.com/flowi-dev/core/blob/0ba00f6/src/classes/Type.ts#L34)
 
 ___
 
@@ -117,7 +130,7 @@ ___
 
 #### Defined in
 
-[Serializable.ts:4](https://github.com/flowi-dev/core/blob/0537423/src/classes/Serializable.ts#L4)
+[Serializable.ts:4](https://github.com/flowi-dev/core/blob/0ba00f6/src/classes/Serializable.ts#L4)
 
 ## Methods
 
@@ -141,7 +154,7 @@ ___
 
 #### Defined in
 
-[Type.ts:26](https://github.com/flowi-dev/core/blob/0537423/src/classes/Type.ts#L26)
+[Type.ts:39](https://github.com/flowi-dev/core/blob/0ba00f6/src/classes/Type.ts#L39)
 
 ___
 
@@ -165,7 +178,7 @@ ___
 
 #### Defined in
 
-[Type.ts:30](https://github.com/flowi-dev/core/blob/0537423/src/classes/Type.ts#L30)
+[Type.ts:43](https://github.com/flowi-dev/core/blob/0ba00f6/src/classes/Type.ts#L43)
 
 ___
 
@@ -188,7 +201,7 @@ ___
 
 #### Defined in
 
-[Serializable.ts:43](https://github.com/flowi-dev/core/blob/0537423/src/classes/Serializable.ts#L43)
+[Serializable.ts:43](https://github.com/flowi-dev/core/blob/0ba00f6/src/classes/Serializable.ts#L43)
 
 ___
 
@@ -214,4 +227,4 @@ ___
 
 #### Defined in
 
-[Serializable.ts:6](https://github.com/flowi-dev/core/blob/0537423/src/classes/Serializable.ts#L6)
+[Serializable.ts:6](https://github.com/flowi-dev/core/blob/0ba00f6/src/classes/Serializable.ts#L6)

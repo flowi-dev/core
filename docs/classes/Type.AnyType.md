@@ -5,9 +5,6 @@
 [Type](../modules/Type.md).AnyType
 
 This type simply acts as the `any` type in typescript, it will always return true when checking data.
-
-**`Example`**
-
 ```ts
 const any = new AnyType();
 any.check('hello'); // true
@@ -15,9 +12,6 @@ any.check(1); // true
 any.check(true); // true
 ```
 This type is useful when you want to allow any type of data.
-
-**`Example`**
-
 ```ts
 const type = new ObjectType('type', {
 	name: STRING,
@@ -64,7 +58,7 @@ type.check({ name: 'John', job: 1 }); // true
 
 #### Defined in
 
-[Type.ts:153](https://github.com/flowi-dev/core/blob/0537423/src/classes/Type.ts#L153)
+[Type.ts:176](https://github.com/flowi-dev/core/blob/0ba00f6/src/classes/Type.ts#L176)
 
 ## Properties
 
@@ -78,7 +72,7 @@ type.check({ name: 'John', job: 1 }); // true
 
 #### Defined in
 
-[Type.ts:150](https://github.com/flowi-dev/core/blob/0537423/src/classes/Type.ts#L150)
+[Type.ts:173](https://github.com/flowi-dev/core/blob/0ba00f6/src/classes/Type.ts#L173)
 
 ___
 
@@ -92,7 +86,7 @@ ___
 
 #### Defined in
 
-[Type.ts:151](https://github.com/flowi-dev/core/blob/0537423/src/classes/Type.ts#L151)
+[Type.ts:174](https://github.com/flowi-dev/core/blob/0ba00f6/src/classes/Type.ts#L174)
 
 ___
 
@@ -106,7 +100,7 @@ ___
 
 #### Defined in
 
-[Serializable.ts:4](https://github.com/flowi-dev/core/blob/0537423/src/classes/Serializable.ts#L4)
+[Serializable.ts:4](https://github.com/flowi-dev/core/blob/0ba00f6/src/classes/Serializable.ts#L4)
 
 ## Methods
 
@@ -130,7 +124,7 @@ ___
 
 #### Defined in
 
-[Type.ts:157](https://github.com/flowi-dev/core/blob/0537423/src/classes/Type.ts#L157)
+[Type.ts:180](https://github.com/flowi-dev/core/blob/0ba00f6/src/classes/Type.ts#L180)
 
 ___
 
@@ -154,7 +148,7 @@ ___
 
 #### Defined in
 
-[Type.ts:161](https://github.com/flowi-dev/core/blob/0537423/src/classes/Type.ts#L161)
+[Type.ts:184](https://github.com/flowi-dev/core/blob/0ba00f6/src/classes/Type.ts#L184)
 
 ___
 
@@ -177,7 +171,7 @@ ___
 
 #### Defined in
 
-[Serializable.ts:43](https://github.com/flowi-dev/core/blob/0537423/src/classes/Serializable.ts#L43)
+[Serializable.ts:43](https://github.com/flowi-dev/core/blob/0ba00f6/src/classes/Serializable.ts#L43)
 
 ___
 
@@ -203,4 +197,4 @@ ___
 
 #### Defined in
 
-[Serializable.ts:6](https://github.com/flowi-dev/core/blob/0537423/src/classes/Serializable.ts#L6)
+[Serializable.ts:6](https://github.com/flowi-dev/core/blob/0ba00f6/src/classes/Serializable.ts#L6)
