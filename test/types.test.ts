@@ -318,3 +318,84 @@ test("Test the 'any' type", () => {
   expect(NUMBER.extends(ANY)).toBe(false);
   expect(BOOLEAN.extends(ANY)).toBe(false);
 });
+
+test("Union intersections", () => {
+  const A = new UnionType('A', [STRING, NUMBER]);
+  const B = new UnionType('B', [NUMBER, BOOLEAN]);
+  const C = new UnionType('C', [STRING, TRUE]);
+
+  expect(UnionType.fromIntersect('A&B', [A, B]).types).toEqual([NUMBER]);
+  expect(UnionType.fromIntersect('A&C', [A, C]).types).toEqual([STRING]);
+  expect(UnionType.fromIntersect('B&C', [B, C]).types).toEqual([TRUE]);
+  expect(UnionType.fromIntersect('A&B&C', [A, UnionType.fromIntersect("B&C", [B,C])]).types).toEqual([]);
+
+})
+
+test("Object intersections", () => {
+
+  expect(ObjectType.fromIntersect('A&B', [new ObjectType('A', {
+    a: STRING,
+  }), new ObjectType("B", {
+    a: STRING,
+    b: TRUE
+  })]).properties).toMatchObject({
+    a: STRING,
+  });
+  
+  expect(ObjectType.fromIntersect('A&B', [new ObjectType('A', {
+    a: STRING,
+    b: TRUE
+  }), new ObjectType("B", {
+    a: STRING,
+  })]).properties).toMatchObject({
+    a: STRING,
+  });
+
+  expect(ObjectType.fromIntersect('A&B', [new ObjectType('A', {
+    a: BOOLEAN,
+  }), new ObjectType("B", {
+    a: TRUE,
+  })]).properties).toMatchObject({
+    a: TRUE,
+  });
+
+  expect(ObjectType.fromIntersect('A&B', [new ObjectType('A', {
+    a: BOOLEAN,
+  }), new ObjectType("B", {
+    a: STRING,
+  })]).properties).toMatchObject({
+  });
+
+  expect(ObjectType.fromIntersect('A&B', [new ObjectType('A', {
+    name: STRING,
+    job: new ObjectType('Job', {
+      title: STRING,
+      salary: NUMBER,
+    }),
+  }), new ObjectType("B", {
+    name: STRING,
+    job: new ObjectType('Job', {
+      title: STRING,
+    }),
+  })]).properties).toMatchObject({
+    name: STRING,
+    job: new ObjectType('job', {
+      title: STRING,
+    }),
+  });
+
+  expect(ObjectType.fromIntersect('A&B', [new ObjectType('A', {
+    name: STRING,
+    job: new ObjectType('Job', {
+      started: INTEGER,
+      salary: NUMBER,
+    }),
+  }), new ObjectType("B", {
+    name: STRING,
+    job: new ObjectType('Job', {
+      title: STRING,
+    }),
+  })]).properties).toMatchObject({
+    name: STRING,
+  });
+})

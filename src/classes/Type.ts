@@ -13,6 +13,19 @@ export abstract class BaseType extends Serializable {
 
 /**
  * This class defines primitive types, such as string, number, boolean, etc.
+ *
+ * ```ts
+ * const string = new PrimitiveType('string', (data: any) => typeof data === 'string');
+ * string.check('hello'); // true
+ * string.check(1); // false
+ * ```
+ *
+ * You can create your own by defining a name and a validator function.
+ * ```ts
+ * const myType = new PrimitiveType('myType', (data: any) => data === 'hello');
+ * myType.check('hello'); // true
+ * myType.check('world'); // false
+ * ```
  */
 export class PrimitiveType extends BaseType {
 	_ = PrimitiveType.name;
@@ -42,15 +55,28 @@ export class PrimitiveType extends BaseType {
 
 /**
  * This class defines unions, just like in TypeScript, a union is a type that can be one of the types in the union.
- * @example
  * ```ts
  * const union = new UnionType('union', [STRING, NUMBER]);
  * union.check('hello'); // true
  * union.check(1); // true
  * union.check(true); // false
  * ```
- */
+*/
 export class UnionType extends BaseType {
+	static fromIntersect(name: string, unions: [UnionType, UnionType]) {
+		// Only keep the types that are compatible with both unions
+		const flattened = [...unions[0].types, ...unions[1].types]
+			.filter((t, i, a) => a.indexOf(t) === i);
+		const newTypes: BaseType[] = [];
+		for (const t of flattened) {
+			if (t.extends(unions[0]) && t.extends(unions[1])) {
+				newTypes.push(t);
+			}
+		}
+
+		return new UnionType(name, newTypes);
+	}
+
 	_ = UnionType.name;
 	constructor(
 		public name: string,
@@ -75,7 +101,6 @@ export class UnionType extends BaseType {
 
 /**
  * This class defines arrays, an array is a type that contains a list of elements of a certain type.
- * @example
  * ```ts
  * const array = new ArrayType('array', STRING);
  * array.check(['hello', 'world']); // true
@@ -128,7 +153,6 @@ export class ArrayType extends BaseType {
 
 /**
  * This type simply acts as the `any` type in typescript, it will always return true when checking data.
- * @example
  * ```ts
  * const any = new AnyType();
  * any.check('hello'); // true
@@ -136,7 +160,6 @@ export class ArrayType extends BaseType {
  * any.check(true); // true
  * ```
  * This type is useful when you want to allow any type of data.
- * @example
  * ```ts
  * const type = new ObjectType('type', {
  * 	name: STRING,
@@ -165,7 +188,6 @@ export class AnyType extends BaseType {
 
 /**
  * This type defines an object, an object is a type that contains a list of properties, each property has a name and a type.
- * @example
  * ```ts
  * const UserObjType = new ObjectType('User', {
  * 	name: STRING,
@@ -177,7 +199,6 @@ export class AnyType extends BaseType {
  * ```
  *
  * Objects can also be nested.
- * @example
  * ```ts
  * const UserObjType = new ObjectType('User', {
  * 	name: STRING,
@@ -190,6 +211,33 @@ export class AnyType extends BaseType {
  * ```
  */
 export class ObjectType extends BaseType {
+	public static fromIntersect(name: string, objects: [ObjectType, ObjectType]) {
+		const a = objects[0];
+		const b = objects[1];
+
+		const properties: Record<string, BaseType> = {};
+
+		for (const key of Object.keys(a.properties)) {
+			if (!(key in b.properties)) {
+				continue;
+			}
+
+			const aProperty = a.properties[key];
+			const bProperty = b.properties[key];
+
+			if ('fromIntersect' in aProperty.constructor && 'fromIntersect' in bProperty.constructor && aProperty.constructor.name === bProperty.constructor.name) {
+				const intersection = aProperty.constructor as unknown as {fromIntersect: (name: string, objects: [BaseType, BaseType]) => BaseType};
+				properties[key] = intersection.fromIntersect(key, [aProperty, bProperty]);
+			} else if (aProperty.extends(bProperty) || bProperty.extends(aProperty)) {
+				properties[key] = aProperty.extends(bProperty) ? aProperty : bProperty;
+			} else {
+				continue;
+			}
+		}
+
+		return new ObjectType(name, properties);
+	}
+
 	properties: Record<string, BaseType>;
 	_ = ObjectType.name;
 
