@@ -1,23 +1,26 @@
+import {Serializable} from './Serializable';
 
-export abstract class Type {
+export abstract class BaseType extends Serializable {
+	public abstract _: string;
 	public abstract name: string;
-	public abstract extends(type: Type): boolean;
+	public abstract extends(type: BaseType): boolean;
 	public abstract check(data: any): boolean;
 }
 
-export class PrimitiveType extends Type {
+export class PrimitiveType extends BaseType {
+	_ = PrimitiveType.name;
 	constructor(
 		public name: string,
 		private readonly validator: (data: any) => boolean,
 	) {
-		super();
+		super(name);
 	}
 
 	public check(data: any): boolean {
 		return this.validator(data);
 	}
 
-	public extends(type: Type): boolean {
+	public extends(type: BaseType): boolean {
 		if (type === this) {
 			return true;
 		}
@@ -30,15 +33,16 @@ export class PrimitiveType extends Type {
 	}
 }
 
-export class UnionType extends Type {
+export class UnionType extends BaseType {
+	_ = UnionType.name;
 	constructor(
 		public name: string,
-		readonly types: Type[],
+		readonly types: BaseType[],
 	) {
-		super();
+		super(name);
 	}
 
-	public extends(type: Type): boolean {
+	public extends(type: BaseType): boolean {
 		if (type === this) {
 			return true;
 		}
@@ -52,22 +56,87 @@ export class UnionType extends Type {
 	}
 }
 
-export class ObjectType extends Type {
+export class ArrayType extends BaseType {
+	_ = ArrayType.name;
 	constructor(
 		public name: string,
-		readonly properties: Record<string, Type>,
+		readonly elementType: BaseType,
 	) {
-		super();
+		super(name);
 	}
 
-	public extend(name: string, properties: Record<string, Type>): ObjectType {
+	public check(data: any): boolean {
+		if (!Array.isArray(data)) {
+			return false;
+		}
+
+		return data.every(value => this.elementType.check(value));
+	}
+
+	public extends(type: BaseType): boolean {
+		if (type === this) {
+			return true;
+		}
+
+		if (type instanceof ArrayType) {
+			return this.elementType.extends(type.elementType);
+		}
+
+		return false;
+	}
+
+	override serialize(): {
+		name: string;
+		_: string;
+		elementType: {
+			name: string;
+			_: string;
+		};
+	} {
+		return {
+			...super.serialize(),
+			elementType: this.elementType.serialize(),
+		};
+	}
+}
+
+export class AnyType extends BaseType {
+	_ = AnyType.name;
+	public name = 'any';
+
+	constructor() {
+		super('any');
+	}
+
+	public check(data: any): boolean {
+		return true;
+	}
+
+	public extends(type: BaseType): boolean {
+		return true;
+	}
+}
+
+export class ObjectType extends BaseType {
+	properties: Record<string, BaseType>;
+	_ = ObjectType.name;
+
+	constructor(
+		public name: string,
+		properties: Record<string, BaseType>,
+	) {
+		super(name);
+		this.properties = properties;
+	}
+
+	public extend(name: string, properties: Record<string, BaseType>): ObjectType {
 		return new ObjectType(name, {
 			...this.properties,
 			...properties,
 		});
 	}
 
-	public extends(type: Type): boolean {
+	public extends(type: BaseType): boolean {
 		if (type === this) {
 			return true;
 		}
@@ -101,6 +170,20 @@ export class ObjectType extends Type {
 			return property.check(value);
 		});
 	}
+
+	override serialize(): {
+		name: string;
+		_: string;
+		properties: Record<string, {
+			name: string;
+			_: string;
+		}>;
+	} {
+		return {
+			...super.serialize(),
+			properties: Object.fromEntries(Object.entries(this.properties).map(([key, value]) => [key, value.serialize()])),
+		};
+	}
 }
 
 export class ObjectIntersectionType extends ObjectType {
@@ -108,7 +191,7 @@ export class ObjectIntersectionType extends ObjectType {
 		public name: string,
 		types: ObjectType[],
 	) {
-		const properties: Record<string, Type> = {};
+		const properties: Record<string, BaseType> = {};
 		for (const type of types) {
 			for (const key of Object.keys(type.properties)) {
 				const property = type.properties[key];
@@ -135,7 +218,7 @@ export class UnionIntersectionType extends UnionType {
 		public name: string,
 		types: UnionType[],
 	) {
-		const newTypes: Type[] = [];
+		const newTypes: BaseType[] = [];
 		for (const union of types) {
 			for (const type of union.types) {
 				if (types.every(u => u.types.some(t => type.extends(t)))) {
@@ -147,46 +230,5 @@ export class UnionIntersectionType extends UnionType {
 		}
 
 		super(name, newTypes);
-	}
-}
-
-export class ArrayType extends Type {
-	constructor(
-		public name: string,
-		private readonly type: Type,
-	) {
-		super();
-	}
-
-	public check(data: any): boolean {
-		if (!Array.isArray(data)) {
-			return false;
-		}
-
-		return data.every(value => this.type.check(value));
-	}
-
-	public extends(type: Type): boolean {
-		if (type === this) {
-			return true;
-		}
-
-		if (type instanceof ArrayType) {
-			return this.type.extends(type.type);
-		}
-
-		return false;
-	}
-}
-
-export class AnyType extends Type {
-	public name = 'any';
-
-	public check(data: any): boolean {
-		return true;
-	}
-
-	public extends(type: Type): boolean {
-		return true;
 	}
 }
