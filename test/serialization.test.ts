@@ -151,21 +151,28 @@ describe('Serializing and deserializing object types', () => {
 });
 
 describe("Serializing and deserializing nested objects", () => {
+
+  const COORDINATES = new ArrayType('coordinates', NUMBER)
+
+  const ADDRESS = new ObjectType('address', {
+    street: STRING,
+    city: STRING,
+    coordinates: COORDINATES
+  });
+  
+
   const OBJECT = new ObjectType('object', {
     username: STRING,
     password: STRING,
     age: INTEGER,
-    address: new ObjectType('address', {
-      street: STRING,
-      city: STRING,
-      coordinates: new ArrayType('coordinates', NUMBER),
-    }),
+    address: ADDRESS
   });
 
   const serialized = OBJECT.serialize();
-  Serializer.removeFromCache(OBJECT.name); // Remove the object from the cache
-  Serializer.removeFromCache('address'); // Remove the object from the cache
-  Serializer.removeFromCache('coordinates'); // Remove the object from the cache
+  Serializer.removeFromCache(OBJECT); // Remove the object from the cache
+  Serializer.removeFromCache(ADDRESS); // Remove the object from the cache
+  Serializer.removeFromCache(COORDINATES); // Remove the object from the cache
+
   const deserialized = Serializer.deserialize(serialized) as ObjectType;
 
   it('should be the same', () => {
@@ -203,7 +210,7 @@ describe("Serializing and deserializing objects that aren't saved", () => {
   const serialized = OBJECT.serialize();
   const deserialized = Serializer.deserialize(serialized) as ObjectType;
   
-    Serializer.removeFromCache(OBJECT.name); // Remove the object from the cache
+    Serializer.removeFromCache(OBJECT); // Remove the object from the cache
 
   it('should be the same', () => {
     expect(deserialized).toMatchObject(OBJECT);
@@ -216,7 +223,7 @@ describe("Serializing and deserializing unions that aren't saved", () => {
   const serialized = UNION.serialize();
   const deserialized = Serializer.deserialize(serialized) as UnionType;
   
-  Serializer.removeFromCache(UNION.name); // Remove the union from the cache
+  Serializer.removeFromCache(UNION); // Remove the union from the cache
   
   it('should be the same', () => {
     expect(deserialized).toMatchObject(UNION);
@@ -224,19 +231,23 @@ describe("Serializing and deserializing unions that aren't saved", () => {
 });
 
 describe("Serializing and deserializing arrays that aren't saved", () => {
+
+  const ELEMENT_TYPE = new ObjectType('unsaved-object', {
+    username: STRING,
+    password: STRING,
+  });
+
   const ARRAY = new ArrayType(
     'unsaved-array',
-    new ObjectType('unsaved-object', {
-      username: STRING,
-      password: STRING,
-    }),
+    ELEMENT_TYPE
   );
 
 	const serialized = ARRAY.serialize();
-	const deserialized = Serializer.deserialize(serialized); // Should not throw an error
 	
-  Serializer.removeFromCache(ARRAY.name); // Remove the array from the cache
-  Serializer.removeFromCache(ARRAY.elementType.name); // Remove the element type from the cache
+  Serializer.removeFromCache(ARRAY); // Remove the array from the cache
+  Serializer.removeFromCache(ELEMENT_TYPE); // Remove the element type from the cache
+  
+  const deserialized = Serializer.deserialize(serialized); // Should not throw an error
   
 	it('should be the same', () => {
 		expect(deserialized).toMatchObject(ARRAY);
@@ -248,7 +259,7 @@ describe("Serializing and deserializing primitives that aren't saved should fail
   const UNSAVED = new PrimitiveType('unsaved', (data: any) => true);
 
   const serialized = UNSAVED.serialize();
-  Serializer.removeFromCache(UNSAVED.name); // Remove the primitive from the cache;
+  Serializer.removeFromCache(UNSAVED); // Remove the primitive from the cache;
 
 
   // The reason it fails is that the validation function is not saved, so it can't be loaded
@@ -271,7 +282,7 @@ describe('Serializing and deserializing unions with objects', () => {
   const UNION = new UnionType('Union', [ObjA, ObjB]);
 
   const serialized = UNION.serialize();
-  Serializer.removeFromCache(UNION.name); // Remove the union from the cache
+  Serializer.removeFromCache(UNION); // Remove the union from the cache
 
   it('should be the same', () => {
     expect(Serializer.deserialize(serialized)).toMatchObject(UNION);

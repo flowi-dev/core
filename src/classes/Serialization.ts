@@ -23,8 +23,8 @@ export class Serializer {
 	/**
 	 * Deserializes a type from a json object. If the type is already in the cache, it will be retrieved from there. Otherwise, it will attempt to be created.
 	 */
-	public static deserialize(data: {name: string; _: string}): Serializable {
-		const saved = Serializer.cache.get(data.name);
+	public static deserialize(data: SerializableData): Serializable {
+		const saved = Serializer.cache.get(this.getKey(data));
 
 		if (!saved) {
 			switch (data._) {
@@ -56,18 +56,22 @@ export class Serializer {
 		return saved;
 	}
 
-	public static addToCache(name: string, type: Serializable): void {
-		Serializer.cache.set(name, type);
+	public static addToCache(instance: Serializable): void {
+		Serializer.cache.set(Serializer.getKey({name: instance.name, _: instance._}), instance);
 	}
 
-	public static removeFromCache(name: string): void {
-		Serializer.cache.delete(name);
+	public static removeFromCache(instance: Serializable): void {
+		Serializer.cache.delete(Serializer.getKey({name: instance.name, _: instance._}));
 	}
 
 	/**
-			 * The cache of all types that have been serialized and deserialized.
-			 */
+	 * The cache of all types that have been serialized and deserialized.
+	*/
 	protected static cache = new Map<string, Serializable>();
+
+	private static getKey(data: SerializableData): string {
+		return `${data._}:${data.name}`;
+	}
 }
 
 /**
@@ -78,7 +82,7 @@ export class Serializable extends SerializableData {
 
 	constructor(public readonly name: string) {
 		super();
-		Serializer.addToCache(name, this);
+		Serializer.addToCache(this);
 		this._ = this.constructor.name;
 	}
 
@@ -90,8 +94,8 @@ export class Serializable extends SerializableData {
 		_: string;
 	} {
 		// Update the cache
-		Serializer.removeFromCache(this.name);
-		Serializer.addToCache(this.name, this);
+		Serializer.removeFromCache(this);
+		Serializer.addToCache(this);
 
 		// Only keep the properties, not the methods and convert it to a basic object instead of a class
 		return {
