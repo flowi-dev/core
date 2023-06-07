@@ -84,7 +84,7 @@ const UserObjType = new ObjectType('User', {
 
 #### Defined in
 
-[Types.ts:338](https://github.com/flowi-dev/core/blob/98bdb45/src/classes/Types.ts#L338)
+[Types.ts:338](https://github.com/flowi-dev/core/blob/2e969af/src/classes/Types.ts#L338)
 
 ## Properties
 
@@ -100,7 +100,7 @@ The class name
 
 #### Defined in
 
-[Serialization.ts:77](https://github.com/flowi-dev/core/blob/98bdb45/src/classes/Serialization.ts#L77)
+[Serialization.ts:81](https://github.com/flowi-dev/core/blob/2e969af/src/classes/Serialization.ts#L81)
 
 ___
 
@@ -116,7 +116,7 @@ The identifier for the specific instance of the class
 
 #### Defined in
 
-[Types.ts:339](https://github.com/flowi-dev/core/blob/98bdb45/src/classes/Types.ts#L339)
+[Types.ts:339](https://github.com/flowi-dev/core/blob/2e969af/src/classes/Types.ts#L339)
 
 ___
 
@@ -126,7 +126,7 @@ ___
 
 #### Defined in
 
-[Types.ts:336](https://github.com/flowi-dev/core/blob/98bdb45/src/classes/Types.ts#L336)
+[Types.ts:336](https://github.com/flowi-dev/core/blob/2e969af/src/classes/Types.ts#L336)
 
 ## Methods
 
@@ -160,7 +160,7 @@ BOOLEAN.check('hello'); // false
 
 #### Defined in
 
-[Types.ts:394](https://github.com/flowi-dev/core/blob/98bdb45/src/classes/Types.ts#L394)
+[Types.ts:394](https://github.com/flowi-dev/core/blob/2e969af/src/classes/Types.ts#L394)
 
 ___
 
@@ -200,7 +200,7 @@ console.log(WorkingUserObjType.properties);
 
 #### Defined in
 
-[Types.ts:366](https://github.com/flowi-dev/core/blob/98bdb45/src/classes/Types.ts#L366)
+[Types.ts:366](https://github.com/flowi-dev/core/blob/2e969af/src/classes/Types.ts#L366)
 
 ___
 
@@ -232,7 +232,7 @@ BOOLEAN.extends(TRUE); // false
 
 #### Defined in
 
-[Types.ts:373](https://github.com/flowi-dev/core/blob/98bdb45/src/classes/Types.ts#L373)
+[Types.ts:373](https://github.com/flowi-dev/core/blob/2e969af/src/classes/Types.ts#L373)
 
 ___
 
@@ -258,7 +258,7 @@ The fallback function for serialization. Most types will override this function.
 
 #### Defined in
 
-[Types.ts:408](https://github.com/flowi-dev/core/blob/98bdb45/src/classes/Types.ts#L408)
+[Types.ts:408](https://github.com/flowi-dev/core/blob/2e969af/src/classes/Types.ts#L408)
 
 ___
 
@@ -298,4 +298,4 @@ console.log(c.properties);
 
 #### Defined in
 
-[Types.ts:309](https://github.com/flowi-dev/core/blob/98bdb45/src/classes/Types.ts#L309)
+[Types.ts:309](https://github.com/flowi-dev/core/blob/2e969af/src/classes/Types.ts#L309)

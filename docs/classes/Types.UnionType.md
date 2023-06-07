@@ -69,7 +69,7 @@ union.check(true); // false
 
 #### Defined in
 
-[Types.ts:134](https://github.com/flowi-dev/core/blob/98bdb45/src/classes/Types.ts#L134)
+[Types.ts:134](https://github.com/flowi-dev/core/blob/2e969af/src/classes/Types.ts#L134)
 
 ## Properties
 
@@ -85,7 +85,7 @@ The class name
 
 #### Defined in
 
-[Serialization.ts:77](https://github.com/flowi-dev/core/blob/98bdb45/src/classes/Serialization.ts#L77)
+[Serialization.ts:81](https://github.com/flowi-dev/core/blob/2e969af/src/classes/Serialization.ts#L81)
 
 ___
 
@@ -101,7 +101,7 @@ The identifier for the specific instance of the class
 
 #### Defined in
 
-[Types.ts:135](https://github.com/flowi-dev/core/blob/98bdb45/src/classes/Types.ts#L135)
+[Types.ts:135](https://github.com/flowi-dev/core/blob/2e969af/src/classes/Types.ts#L135)
 
 ___
 
@@ -111,7 +111,7 @@ ___
 
 #### Defined in
 
-[Types.ts:136](https://github.com/flowi-dev/core/blob/98bdb45/src/classes/Types.ts#L136)
+[Types.ts:136](https://github.com/flowi-dev/core/blob/2e969af/src/classes/Types.ts#L136)
 
 ## Methods
 
@@ -145,7 +145,7 @@ BOOLEAN.check('hello'); // false
 
 #### Defined in
 
-[Types.ts:165](https://github.com/flowi-dev/core/blob/98bdb45/src/classes/Types.ts#L165)
+[Types.ts:165](https://github.com/flowi-dev/core/blob/2e969af/src/classes/Types.ts#L165)
 
 ___
 
@@ -175,7 +175,7 @@ extended.check(true); // true
 
 #### Defined in
 
-[Types.ts:152](https://github.com/flowi-dev/core/blob/98bdb45/src/classes/Types.ts#L152)
+[Types.ts:152](https://github.com/flowi-dev/core/blob/2e969af/src/classes/Types.ts#L152)
 
 ___
 
@@ -207,7 +207,7 @@ BOOLEAN.extends(TRUE); // false
 
 #### Defined in
 
-[Types.ts:156](https://github.com/flowi-dev/core/blob/98bdb45/src/classes/Types.ts#L156)
+[Types.ts:156](https://github.com/flowi-dev/core/blob/2e969af/src/classes/Types.ts#L156)
 
 ___
 
@@ -232,7 +232,7 @@ The fallback function for serialization. Most types will override this function.
 
 #### Defined in
 
-[Serialization.ts:88](https://github.com/flowi-dev/core/blob/98bdb45/src/classes/Serialization.ts#L88)
+[Serialization.ts:92](https://github.com/flowi-dev/core/blob/2e969af/src/classes/Serialization.ts#L92)
 
 ___
 
@@ -286,4 +286,4 @@ console.log(c.types); // [TRUE] because TRUE extends BOOLEAN
 
 #### Defined in
 
-[Types.ts:120](https://github.com/flowi-dev/core/blob/98bdb45/src/classes/Types.ts#L120)
+[Types.ts:120](https://github.com/flowi-dev/core/blob/2e969af/src/classes/Types.ts#L120)

@@ -19,16 +19,14 @@ export declare class Serializer {
     /**
      * Deserializes a type from a json object. If the type is already in the cache, it will be retrieved from there. Otherwise, it will attempt to be created.
      */
-    static deserialize(data: {
-        name: string;
-        _: string;
-    }): Serializable;
-    static addToCache(name: string, type: Serializable): void;
-    static removeFromCache(name: string): void;
+    static deserialize(data: SerializableData): Serializable;
+    static addToCache(instance: Serializable): void;
+    static removeFromCache(instance: Serializable): void;
     /**
-             * The cache of all types that have been serialized and deserialized.
-             */
+     * The cache of all types that have been serialized and deserialized.
+    */
     protected static cache: Map<string, Serializable>;
+    private static getKey;
 }
 /**
  * This class defines instances that can be serialized and deserialized.

@@ -68,7 +68,7 @@ type.check({ name: 'John', job: 1 }); // true
 
 #### Defined in
 
-[Types.ts:247](https://github.com/flowi-dev/core/blob/98bdb45/src/classes/Types.ts#L247)
+[Types.ts:247](https://github.com/flowi-dev/core/blob/2e969af/src/classes/Types.ts#L247)
 
 ## Properties
 
@@ -84,7 +84,7 @@ The class name
 
 #### Defined in
 
-[Serialization.ts:77](https://github.com/flowi-dev/core/blob/98bdb45/src/classes/Serialization.ts#L77)
+[Serialization.ts:81](https://github.com/flowi-dev/core/blob/2e969af/src/classes/Serialization.ts#L81)
 
 ___
 
@@ -100,7 +100,7 @@ The identifier for the specific instance of the class
 
 #### Defined in
 
-[Types.ts:245](https://github.com/flowi-dev/core/blob/98bdb45/src/classes/Types.ts#L245)
+[Types.ts:245](https://github.com/flowi-dev/core/blob/2e969af/src/classes/Types.ts#L245)
 
 ## Methods
 
@@ -134,7 +134,7 @@ BOOLEAN.check('hello'); // false
 
 #### Defined in
 
-[Types.ts:251](https://github.com/flowi-dev/core/blob/98bdb45/src/classes/Types.ts#L251)
+[Types.ts:251](https://github.com/flowi-dev/core/blob/2e969af/src/classes/Types.ts#L251)
 
 ___
 
@@ -166,7 +166,7 @@ BOOLEAN.extends(TRUE); // false
 
 #### Defined in
 
-[Types.ts:255](https://github.com/flowi-dev/core/blob/98bdb45/src/classes/Types.ts#L255)
+[Types.ts:255](https://github.com/flowi-dev/core/blob/2e969af/src/classes/Types.ts#L255)
 
 ___
 
@@ -191,4 +191,4 @@ The fallback function for serialization. Most types will override this function.
 
 #### Defined in
 
-[Serialization.ts:88](https://github.com/flowi-dev/core/blob/98bdb45/src/classes/Serialization.ts#L88)
+[Serialization.ts:92](https://github.com/flowi-dev/core/blob/2e969af/src/classes/Serialization.ts#L92)

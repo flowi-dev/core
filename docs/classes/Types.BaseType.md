@@ -58,7 +58,7 @@ This class is abstract and should not be used directly.
 
 #### Defined in
 
-[Serialization.ts:79](https://github.com/flowi-dev/core/blob/98bdb45/src/classes/Serialization.ts#L79)
+[Serialization.ts:83](https://github.com/flowi-dev/core/blob/2e969af/src/classes/Serialization.ts#L83)
 
 ## Properties
 
@@ -74,7 +74,7 @@ The class name
 
 #### Defined in
 
-[Serialization.ts:77](https://github.com/flowi-dev/core/blob/98bdb45/src/classes/Serialization.ts#L77)
+[Serialization.ts:81](https://github.com/flowi-dev/core/blob/2e969af/src/classes/Serialization.ts#L81)
 
 ___
 
@@ -90,7 +90,7 @@ The identifier for the specific instance of the class
 
 #### Defined in
 
-[Serialization.ts:79](https://github.com/flowi-dev/core/blob/98bdb45/src/classes/Serialization.ts#L79)
+[Serialization.ts:83](https://github.com/flowi-dev/core/blob/2e969af/src/classes/Serialization.ts#L83)
 
 ## Methods
 
@@ -120,7 +120,7 @@ BOOLEAN.check('hello'); // false
 
 #### Defined in
 
-[Types.ts:32](https://github.com/flowi-dev/core/blob/98bdb45/src/classes/Types.ts#L32)
+[Types.ts:32](https://github.com/flowi-dev/core/blob/2e969af/src/classes/Types.ts#L32)
 
 ___
 
@@ -148,7 +148,7 @@ BOOLEAN.extends(TRUE); // false
 
 #### Defined in
 
-[Types.ts:19](https://github.com/flowi-dev/core/blob/98bdb45/src/classes/Types.ts#L19)
+[Types.ts:19](https://github.com/flowi-dev/core/blob/2e969af/src/classes/Types.ts#L19)
 
 ___
 
@@ -173,4 +173,4 @@ The fallback function for serialization. Most types will override this function.
 
 #### Defined in
 
-[Serialization.ts:88](https://github.com/flowi-dev/core/blob/98bdb45/src/classes/Serialization.ts#L88)
+[Serialization.ts:92](https://github.com/flowi-dev/core/blob/2e969af/src/classes/Serialization.ts#L92)

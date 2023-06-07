@@ -39,7 +39,7 @@ The class name
 
 #### Defined in
 
-[Serialization.ts:10](https://github.com/flowi-dev/core/blob/98bdb45/src/classes/Serialization.ts#L10)
+[Serialization.ts:10](https://github.com/flowi-dev/core/blob/2e969af/src/classes/Serialization.ts#L10)
 
 ___
 
@@ -51,4 +51,4 @@ The identifier for the specific instance of the class
 
 #### Defined in
 
-[Serialization.ts:14](https://github.com/flowi-dev/core/blob/98bdb45/src/classes/Serialization.ts#L14)
+[Serialization.ts:14](https://github.com/flowi-dev/core/blob/2e969af/src/classes/Serialization.ts#L14)

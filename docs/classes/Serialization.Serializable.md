@@ -47,7 +47,7 @@ This class defines instances that can be serialized and deserialized.
 
 #### Defined in
 
-[Serialization.ts:79](https://github.com/flowi-dev/core/blob/98bdb45/src/classes/Serialization.ts#L79)
+[Serialization.ts:83](https://github.com/flowi-dev/core/blob/2e969af/src/classes/Serialization.ts#L83)
 
 ## Properties
 
@@ -63,7 +63,7 @@ The class name
 
 #### Defined in
 
-[Serialization.ts:77](https://github.com/flowi-dev/core/blob/98bdb45/src/classes/Serialization.ts#L77)
+[Serialization.ts:81](https://github.com/flowi-dev/core/blob/2e969af/src/classes/Serialization.ts#L81)
 
 ___
 
@@ -79,7 +79,7 @@ The identifier for the specific instance of the class
 
 #### Defined in
 
-[Serialization.ts:79](https://github.com/flowi-dev/core/blob/98bdb45/src/classes/Serialization.ts#L79)
+[Serialization.ts:83](https://github.com/flowi-dev/core/blob/2e969af/src/classes/Serialization.ts#L83)
 
 ## Methods
 
@@ -100,4 +100,4 @@ The fallback function for serialization. Most types will override this function.
 
 #### Defined in
 
-[Serialization.ts:88](https://github.com/flowi-dev/core/blob/98bdb45/src/classes/Serialization.ts#L88)
+[Serialization.ts:92](https://github.com/flowi-dev/core/blob/2e969af/src/classes/Serialization.ts#L92)

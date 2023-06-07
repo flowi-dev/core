@@ -21,6 +21,7 @@ It stores a cache of all types that have been serialized and deserialized to eas
 
 - [addToCache](Serialization.Serializer.md#addtocache)
 - [deserialize](Serialization.Serializer.md#deserialize)
+- [getKey](Serialization.Serializer.md#getkey)
 - [removeFromCache](Serialization.Serializer.md#removefromcache)
 
 ## Constructors
@@ -39,20 +40,19 @@ The cache of all types that have been serialized and deserialized.
 
 #### Defined in
 
-[Serialization.ts:70](https://github.com/flowi-dev/core/blob/98bdb45/src/classes/Serialization.ts#L70)
+[Serialization.ts:70](https://github.com/flowi-dev/core/blob/2e969af/src/classes/Serialization.ts#L70)
 
 ## Methods
 
 ### addToCache
 
-▸ `Static` **addToCache**(`name`, `type`): `void`
+▸ `Static` **addToCache**(`instance`): `void`
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `name` | `string` |
-| `type` | [`Serializable`](Serialization.Serializable.md) |
+| `instance` | [`Serializable`](Serialization.Serializable.md) |
 
 #### Returns
 
@@ -60,7 +60,7 @@ The cache of all types that have been serialized and deserialized.
 
 #### Defined in
 
-[Serialization.ts:59](https://github.com/flowi-dev/core/blob/98bdb45/src/classes/Serialization.ts#L59)
+[Serialization.ts:59](https://github.com/flowi-dev/core/blob/2e969af/src/classes/Serialization.ts#L59)
 
 ___
 
@@ -74,9 +74,7 @@ Deserializes a type from a json object. If the type is already in the cache, it 
 
 | Name | Type |
 | :------ | :------ |
-| `data` | `Object` |
-| `data._` | `string` |
-| `data.name` | `string` |
+| `data` | [`SerializableData`](Serialization.SerializableData.md) |
 
 #### Returns
 
@@ -84,19 +82,39 @@ Deserializes a type from a json object. If the type is already in the cache, it 
 
 #### Defined in
 
-[Serialization.ts:26](https://github.com/flowi-dev/core/blob/98bdb45/src/classes/Serialization.ts#L26)
+[Serialization.ts:26](https://github.com/flowi-dev/core/blob/2e969af/src/classes/Serialization.ts#L26)
 
 ___
 
-### removeFromCache
+### getKey
 
-▸ `Static` **removeFromCache**(`name`): `void`
+▸ `Static` `Private` **getKey**(`data`): `string`
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `name` | `string` |
+| `data` | [`SerializableData`](Serialization.SerializableData.md) |
+
+#### Returns
+
+`string`
+
+#### Defined in
+
+[Serialization.ts:72](https://github.com/flowi-dev/core/blob/2e969af/src/classes/Serialization.ts#L72)
+
+___
+
+### removeFromCache
+
+▸ `Static` **removeFromCache**(`instance`): `void`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `instance` | [`Serializable`](Serialization.Serializable.md) |
 
 #### Returns
 
@@ -104,4 +122,4 @@ ___
 
 #### Defined in
 
-[Serialization.ts:63](https://github.com/flowi-dev/core/blob/98bdb45/src/classes/Serialization.ts#L63)
+[Serialization.ts:63](https://github.com/flowi-dev/core/blob/2e969af/src/classes/Serialization.ts#L63)
