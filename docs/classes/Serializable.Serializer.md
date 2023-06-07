@@ -39,7 +39,7 @@ The cache of all types that have been serialized and deserialized.
 
 #### Defined in
 
-[Serializable.ts:101](https://github.com/flowi-dev/core/blob/5b69dc5/src/classes/Serializable.ts#L101)
+[Serializable.ts:115](https://github.com/flowi-dev/core/blob/9f480f3/src/classes/Serializable.ts#L115)
 
 ## Methods
 
@@ -60,7 +60,7 @@ The cache of all types that have been serialized and deserialized.
 
 #### Defined in
 
-[Serializable.ts:90](https://github.com/flowi-dev/core/blob/5b69dc5/src/classes/Serializable.ts#L90)
+[Serializable.ts:104](https://github.com/flowi-dev/core/blob/9f480f3/src/classes/Serializable.ts#L104)
 
 ___
 
@@ -129,7 +129,7 @@ console.log(deserialized);
 
 #### Defined in
 
-[Serializable.ts:57](https://github.com/flowi-dev/core/blob/5b69dc5/src/classes/Serializable.ts#L57)
+[Serializable.ts:71](https://github.com/flowi-dev/core/blob/9f480f3/src/classes/Serializable.ts#L71)
 
 ___
 
@@ -149,4 +149,4 @@ ___
 
 #### Defined in
 
-[Serializable.ts:94](https://github.com/flowi-dev/core/blob/5b69dc5/src/classes/Serializable.ts#L94)
+[Serializable.ts:108](https://github.com/flowi-dev/core/blob/9f480f3/src/classes/Serializable.ts#L108)

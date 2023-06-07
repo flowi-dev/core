@@ -54,21 +54,23 @@ array.check(['hello', 1]); // false
 
 #### Defined in
 
-[Type.ts:176](https://github.com/flowi-dev/core/blob/5b69dc5/src/classes/Type.ts#L176)
+[Type.ts:170](https://github.com/flowi-dev/core/blob/9f480f3/src/classes/Type.ts#L170)
 
 ## Properties
 
 ### \_
 
-• **\_**: `string` = `ArrayType.name`
+• **\_**: `string`
 
-#### Overrides
+The class name
+
+#### Inherited from
 
 [BaseType](Type.BaseType.md).[_](Type.BaseType.md#_)
 
 #### Defined in
 
-[Type.ts:175](https://github.com/flowi-dev/core/blob/5b69dc5/src/classes/Type.ts#L175)
+[Serializable.ts:122](https://github.com/flowi-dev/core/blob/9f480f3/src/classes/Serializable.ts#L122)
 
 ___
 
@@ -78,7 +80,7 @@ ___
 
 #### Defined in
 
-[Type.ts:178](https://github.com/flowi-dev/core/blob/5b69dc5/src/classes/Type.ts#L178)
+[Type.ts:172](https://github.com/flowi-dev/core/blob/9f480f3/src/classes/Type.ts#L172)
 
 ___
 
@@ -86,13 +88,15 @@ ___
 
 • **name**: `string`
 
+The identifier for the specific instance of the class
+
 #### Inherited from
 
 [BaseType](Type.BaseType.md).[name](Type.BaseType.md#name)
 
 #### Defined in
 
-[Type.ts:177](https://github.com/flowi-dev/core/blob/5b69dc5/src/classes/Type.ts#L177)
+[Type.ts:171](https://github.com/flowi-dev/core/blob/9f480f3/src/classes/Type.ts#L171)
 
 ## Methods
 
@@ -126,7 +130,7 @@ BOOLEAN.check('hello'); // false
 
 #### Defined in
 
-[Type.ts:183](https://github.com/flowi-dev/core/blob/5b69dc5/src/classes/Type.ts#L183)
+[Type.ts:177](https://github.com/flowi-dev/core/blob/9f480f3/src/classes/Type.ts#L177)
 
 ___
 
@@ -158,7 +162,7 @@ BOOLEAN.extends(TRUE); // false
 
 #### Defined in
 
-[Type.ts:191](https://github.com/flowi-dev/core/blob/5b69dc5/src/classes/Type.ts#L191)
+[Type.ts:185](https://github.com/flowi-dev/core/blob/9f480f3/src/classes/Type.ts#L185)
 
 ___
 
@@ -186,4 +190,4 @@ The fallback function for serialization. Most types will override this function.
 
 #### Defined in
 
-[Type.ts:203](https://github.com/flowi-dev/core/blob/5b69dc5/src/classes/Type.ts#L203)
+[Type.ts:197](https://github.com/flowi-dev/core/blob/9f480f3/src/classes/Type.ts#L197)

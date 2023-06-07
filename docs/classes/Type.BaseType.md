@@ -58,27 +58,39 @@ This class is abstract and should not be used directly.
 
 #### Defined in
 
-[Serializable.ts:108](https://github.com/flowi-dev/core/blob/5b69dc5/src/classes/Serializable.ts#L108)
+[Serializable.ts:124](https://github.com/flowi-dev/core/blob/9f480f3/src/classes/Serializable.ts#L124)
 
 ## Properties
 
 ### \_
 
-• `Abstract` **\_**: `string`
+• **\_**: `string`
+
+The class name
+
+#### Inherited from
+
+[Serializable](Serializable.Serializable.md).[_](Serializable.Serializable.md#_)
 
 #### Defined in
 
-[Type.ts:8](https://github.com/flowi-dev/core/blob/5b69dc5/src/classes/Type.ts#L8)
+[Serializable.ts:122](https://github.com/flowi-dev/core/blob/9f480f3/src/classes/Serializable.ts#L122)
 
 ___
 
 ### name
 
-• `Abstract` **name**: `string`
+• **name**: `string`
+
+The identifier for the specific instance of the class
+
+#### Inherited from
+
+[Serializable](Serializable.Serializable.md).[name](Serializable.Serializable.md#name)
 
 #### Defined in
 
-[Type.ts:9](https://github.com/flowi-dev/core/blob/5b69dc5/src/classes/Type.ts#L9)
+[Serializable.ts:124](https://github.com/flowi-dev/core/blob/9f480f3/src/classes/Serializable.ts#L124)
 
 ## Methods
 
@@ -108,7 +120,7 @@ BOOLEAN.check('hello'); // false
 
 #### Defined in
 
-[Type.ts:33](https://github.com/flowi-dev/core/blob/5b69dc5/src/classes/Type.ts#L33)
+[Type.ts:30](https://github.com/flowi-dev/core/blob/9f480f3/src/classes/Type.ts#L30)
 
 ___
 
@@ -136,7 +148,7 @@ BOOLEAN.extends(TRUE); // false
 
 #### Defined in
 
-[Type.ts:20](https://github.com/flowi-dev/core/blob/5b69dc5/src/classes/Type.ts#L20)
+[Type.ts:17](https://github.com/flowi-dev/core/blob/9f480f3/src/classes/Type.ts#L17)
 
 ___
 
@@ -161,4 +173,4 @@ The fallback function for serialization. Most types will override this function.
 
 #### Defined in
 
-[Serializable.ts:115](https://github.com/flowi-dev/core/blob/5b69dc5/src/classes/Serializable.ts#L115)
+[Serializable.ts:133](https://github.com/flowi-dev/core/blob/9f480f3/src/classes/Serializable.ts#L133)

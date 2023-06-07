@@ -72,21 +72,23 @@ const UserObjType = new ObjectType('User', {
 
 #### Defined in
 
-[Type.ts:328](https://github.com/flowi-dev/core/blob/5b69dc5/src/classes/Type.ts#L328)
+[Type.ts:320](https://github.com/flowi-dev/core/blob/9f480f3/src/classes/Type.ts#L320)
 
 ## Properties
 
 ### \_
 
-• **\_**: `string` = `ObjectType.name`
+• **\_**: `string`
 
-#### Overrides
+The class name
+
+#### Inherited from
 
 [BaseType](Type.BaseType.md).[_](Type.BaseType.md#_)
 
 #### Defined in
 
-[Type.ts:326](https://github.com/flowi-dev/core/blob/5b69dc5/src/classes/Type.ts#L326)
+[Serializable.ts:122](https://github.com/flowi-dev/core/blob/9f480f3/src/classes/Serializable.ts#L122)
 
 ___
 
@@ -94,13 +96,15 @@ ___
 
 • **name**: `string`
 
+The identifier for the specific instance of the class
+
 #### Inherited from
 
 [BaseType](Type.BaseType.md).[name](Type.BaseType.md#name)
 
 #### Defined in
 
-[Type.ts:329](https://github.com/flowi-dev/core/blob/5b69dc5/src/classes/Type.ts#L329)
+[Type.ts:321](https://github.com/flowi-dev/core/blob/9f480f3/src/classes/Type.ts#L321)
 
 ___
 
@@ -110,7 +114,7 @@ ___
 
 #### Defined in
 
-[Type.ts:325](https://github.com/flowi-dev/core/blob/5b69dc5/src/classes/Type.ts#L325)
+[Type.ts:318](https://github.com/flowi-dev/core/blob/9f480f3/src/classes/Type.ts#L318)
 
 ## Methods
 
@@ -144,7 +148,7 @@ BOOLEAN.check('hello'); // false
 
 #### Defined in
 
-[Type.ts:384](https://github.com/flowi-dev/core/blob/5b69dc5/src/classes/Type.ts#L384)
+[Type.ts:376](https://github.com/flowi-dev/core/blob/9f480f3/src/classes/Type.ts#L376)
 
 ___
 
@@ -184,7 +188,7 @@ console.log(WorkingUserObjType.properties);
 
 #### Defined in
 
-[Type.ts:356](https://github.com/flowi-dev/core/blob/5b69dc5/src/classes/Type.ts#L356)
+[Type.ts:348](https://github.com/flowi-dev/core/blob/9f480f3/src/classes/Type.ts#L348)
 
 ___
 
@@ -216,7 +220,7 @@ BOOLEAN.extends(TRUE); // false
 
 #### Defined in
 
-[Type.ts:363](https://github.com/flowi-dev/core/blob/5b69dc5/src/classes/Type.ts#L363)
+[Type.ts:355](https://github.com/flowi-dev/core/blob/9f480f3/src/classes/Type.ts#L355)
 
 ___
 
@@ -242,7 +246,7 @@ The fallback function for serialization. Most types will override this function.
 
 #### Defined in
 
-[Type.ts:398](https://github.com/flowi-dev/core/blob/5b69dc5/src/classes/Type.ts#L398)
+[Type.ts:390](https://github.com/flowi-dev/core/blob/9f480f3/src/classes/Type.ts#L390)
 
 ___
 
@@ -282,4 +286,4 @@ console.log(c.properties);
 
 #### Defined in
 
-[Type.ts:298](https://github.com/flowi-dev/core/blob/5b69dc5/src/classes/Type.ts#L298)
+[Type.ts:291](https://github.com/flowi-dev/core/blob/9f480f3/src/classes/Type.ts#L291)
