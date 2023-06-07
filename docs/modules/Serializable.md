@@ -7,3 +7,4 @@
 ### Classes
 
 - [Serializable](../classes/Serializable.Serializable.md)
+- [Serializer](../classes/Serializable.Serializer.md)
