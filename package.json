@@ -8,7 +8,7 @@
     "test:badges": "npm run test:coverage  && jest-coverage-badges",
     "test": "npm run test:badges",
     "lint": "eslint --cache --fix  .",
-    "docs": "typedoc --plugin typedoc-plugin-markdown --out docs src/**/*",
+    "docs": "typedoc --out docs ./src/index.ts",
     "prebuild": "rimraf lib && npm run lint && npm run test",
     "postbuild": "npm run docs",
     "build:compile": "babel src --out-dir lib --extensions \".ts,.tsx\" --ignore \"**/*.test.tsx\" --copy-files",

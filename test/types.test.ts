@@ -8,6 +8,10 @@ import {
   INTEGER,
   STRING,
   ANY,
+  BIGINT,
+  DATE,
+  REGEXP,
+  SYMBOL
 } from '../src/primitives';
 import { UnionType, ObjectType, ArrayType } from '../src/classes/Types';
 
@@ -132,6 +136,49 @@ test('Check that types can be checked correctly', () => {
   expect(UNDEFINED.check(null)).toBe(true);
   expect(UNDEFINED.check([])).toBe(false);
   expect(UNDEFINED.check({})).toBe(false);
+
+  expect(ANY.check(true)).toBe(true);
+  expect(ANY.check(false)).toBe(true);
+  expect(ANY.check(1)).toBe(true);
+  expect(ANY.check(0.5)).toBe(true);
+  expect(ANY.check('true')).toBe(true);
+  expect(ANY.check(null)).toBe(true);
+  expect(ANY.check([])).toBe(true);
+  expect(ANY.check({})).toBe(true);
+
+  expect(DATE.check(true)).toBe(false);
+  expect(DATE.check(false)).toBe(false);
+  expect(DATE.check(1)).toBe(false);
+  expect(DATE.check(0.5)).toBe(false);
+  expect(DATE.check('true')).toBe(false);
+  expect(DATE.check(null)).toBe(false);
+  expect(DATE.check([])).toBe(false);
+  expect(DATE.check({})).toBe(false);
+  expect(DATE.check(new Date())).toBe(true);
+
+  expect(BIGINT.check(true)).toBe(false);
+  expect(BIGINT.check(false)).toBe(false);
+  expect(BIGINT.check(1)).toBe(false);
+  expect(BIGINT.check(0.5)).toBe(false);
+  expect(BIGINT.check('true')).toBe(false);
+  expect(BIGINT.check(null)).toBe(false);
+  expect(BIGINT.check([])).toBe(false);
+  expect(BIGINT.check({})).toBe(false);
+  expect(BIGINT.check(new Date())).toBe(false);
+  expect(BIGINT.check(BigInt(2123))).toBe(true);
+
+  expect(SYMBOL.check(true)).toBe(false);
+  expect(SYMBOL.check(false)).toBe(false);
+  expect(SYMBOL.check(1)).toBe(false);
+  expect(SYMBOL.check(0.5)).toBe(false);
+  expect(SYMBOL.check('true')).toBe(false);
+  expect(SYMBOL.check(null)).toBe(false);
+  expect(SYMBOL.check([])).toBe(false);
+  expect(SYMBOL.check({})).toBe(false);
+  expect(SYMBOL.check(new Date())).toBe(false);
+  expect(SYMBOL.check(BigInt(2123))).toBe(false);
+  expect(SYMBOL.check(Symbol())).toBe(true);
+
 });
 
 test('Check union types extend correctly', () => {

@@ -17,3 +17,18 @@ export const BIGINT = new PrimitiveType<bigint>('bigint', (data: any) => typeof 
 export const SYMBOL = new PrimitiveType<symbol>('symbol', (data: any) => typeof data === 'symbol');
 
 export const ANY = new AnyType();
+
+export const Primitives = {
+	TRUE,
+	FALSE,
+	BOOLEAN,
+	INTEGER,
+	NUMBER,
+	STRING,
+	UNDEFINED,
+	DATE,
+	REGEXP,
+	BIGINT,
+	SYMBOL,
+	ANY,
+};
