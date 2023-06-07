@@ -1,4 +1,4 @@
-import {Serializable} from './Serializable';
+import {Serializable} from './Serialization';
 
 /**
  * The base class that all types extend from, this provides the basic functionality that all types need. Such as serialization and deserialization and type checking.

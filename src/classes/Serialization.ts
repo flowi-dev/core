@@ -21,52 +21,7 @@ export abstract class SerializableData {
 // eslint-disable-next-line @typescript-eslint/no-extraneous-class
 export class Serializer {
 	/**
-	 * Deserialize a type from a serialized object.
-	 *
-	 * ```json
-	{
-		"name": "object",
-  	"_": "ObjectType",
-  	"properties": {
-			"username": {
-				"name": "string",
-  	    "_": "PrimitiveType",
-  	  },
-  	  "password": {
-				"name": "string",
-  	    "_": "PrimitiveType",
-  	  },
-  	  "age": {
-				"name": "integer",
-  	    "_": "PrimitiveType",
-  	  },
-  	  "address": { ... }
-		}
-		*```
-		*
-		* ```ts
-		const deserialized = Serializable.deserialize({...});
-		console.log(deserialized);
-		// ObjectType {
-			//   name: 'object',
-			//   properties: {
-				//     username: PrimitiveType { name: 'string', validator: [Function (anonymous)] },
-				//     password: PrimitiveType { name: 'string', validator: [Function (anonymous)] },
-				//     age: PrimitiveType { name: 'integer', validator: [Function (anonymous)] },
-				//     address: ObjectType {
-					//       name: 'address',
-					//       properties: {
-						//         street: PrimitiveType { name: 'string', validator: [Function (anonymous)] },
-						//         city: PrimitiveType { name: 'string', validator: [Function (anonymous)] },
-						//         coordinates: ArrayType {
-							//           name: 'coordinates',
-							//           elementType: PrimitiveType { name: 'number', validator: [Function (anonymous)] }
-							//         }
-							//       }
-							//     }
-	 //   }
-	 // }
-	 * ```
+	 * Deserializes a type from a json object. If the type is already in the cache, it will be retrieved from there. Otherwise, it will attempt to be created.
 	 */
 	public static deserialize(data: {name: string; _: string}): Serializable {
 		const saved = Serializer.cache.get(data.name);

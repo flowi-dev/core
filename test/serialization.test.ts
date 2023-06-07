@@ -10,7 +10,7 @@ import {
   TRUE,
   UnionType,
 } from '../src';
-import { Serializable, Serializer } from '../src/classes/Serializable';
+import { Serializable, Serializer } from '../src/classes/Serialization';
 
 describe('Saving a primitive as a string and loading it again', () => {
   it('should be the same', () => {
