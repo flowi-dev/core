@@ -4,8 +4,6 @@ import { Serializable } from './Serializable';
  * This class is abstract and should not be used directly.
  */
 export declare abstract class BaseType extends Serializable {
-    abstract _: string;
-    abstract name: string;
     /**
      * Checks if this type extends the given type.
      *
@@ -48,7 +46,6 @@ export declare abstract class BaseType extends Serializable {
 export declare class PrimitiveType extends BaseType {
     name: string;
     private readonly validator;
-    _: string;
     constructor(name: string, validator: (data: any) => boolean);
     check(data: any): boolean;
     extends(type: BaseType): boolean;
@@ -93,7 +90,6 @@ export declare class UnionType extends BaseType {
      * ```
      */
     static fromIntersect(name: string, unions: [UnionType, UnionType]): UnionType;
-    _: string;
     constructor(name: string, types: BaseType[]);
     /**
      * Extends the union with a new type, this will return a new union with the new type added.
@@ -121,7 +117,6 @@ export declare class UnionType extends BaseType {
 export declare class ArrayType extends BaseType {
     name: string;
     readonly elementType: BaseType;
-    _: string;
     constructor(name: string, elementType: BaseType);
     check(data: any): boolean;
     extends(type: BaseType): boolean;
@@ -153,7 +148,6 @@ export declare class ArrayType extends BaseType {
  * ```
  */
 export declare class AnyType extends BaseType {
-    _: string;
     name: string;
     constructor();
     check(data: any): boolean;
@@ -207,7 +201,6 @@ export declare class ObjectType extends BaseType {
      */
     static fromIntersect(name: string, objects: [ObjectType, ObjectType]): ObjectType;
     properties: Record<string, BaseType>;
-    _: string;
     constructor(name: string, properties: Record<string, BaseType>);
     /**
      * Extend an object type with new properties.

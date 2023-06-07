@@ -8,15 +8,22 @@ This class defines instances that can be serialized and deserialized.
 
 ## Hierarchy
 
-- **`Serializable`**
+- [`SerializableData`](Serializable.SerializableData.md)
 
-  ↳ [`BaseType`](Type.BaseType.md)
+  ↳ **`Serializable`**
+
+  ↳↳ [`BaseType`](Type.BaseType.md)
 
 ## Table of contents
 
 ### Constructors
 
 - [constructor](Serializable.Serializable.md#constructor)
+
+### Properties
+
+- [\_](Serializable.Serializable.md#_)
+- [name](Serializable.Serializable.md#name)
 
 ### Methods
 
@@ -34,9 +41,45 @@ This class defines instances that can be serialized and deserialized.
 | :------ | :------ |
 | `name` | `string` |
 
+#### Overrides
+
+[SerializableData](Serializable.SerializableData.md).[constructor](Serializable.SerializableData.md#constructor)
+
 #### Defined in
 
-[Serializable.ts:108](https://github.com/flowi-dev/core/blob/5b69dc5/src/classes/Serializable.ts#L108)
+[Serializable.ts:124](https://github.com/flowi-dev/core/blob/9f480f3/src/classes/Serializable.ts#L124)
+
+## Properties
+
+### \_
+
+• **\_**: `string`
+
+The class name
+
+#### Overrides
+
+[SerializableData](Serializable.SerializableData.md).[_](Serializable.SerializableData.md#_)
+
+#### Defined in
+
+[Serializable.ts:122](https://github.com/flowi-dev/core/blob/9f480f3/src/classes/Serializable.ts#L122)
+
+___
+
+### name
+
+• **name**: `string`
+
+The identifier for the specific instance of the class
+
+#### Inherited from
+
+[SerializableData](Serializable.SerializableData.md).[name](Serializable.SerializableData.md#name)
+
+#### Defined in
+
+[Serializable.ts:124](https://github.com/flowi-dev/core/blob/9f480f3/src/classes/Serializable.ts#L124)
 
 ## Methods
 
@@ -57,4 +100,4 @@ The fallback function for serialization. Most types will override this function.
 
 #### Defined in
 
-[Serializable.ts:115](https://github.com/flowi-dev/core/blob/5b69dc5/src/classes/Serializable.ts#L115)
+[Serializable.ts:133](https://github.com/flowi-dev/core/blob/9f480f3/src/classes/Serializable.ts#L133)

@@ -1,4 +1,17 @@
 /**
+ * Defines the required data for serialization.
+ */
+export declare abstract class SerializableData {
+    /**
+     * The class name
+     */
+    abstract _: string;
+    /**
+     * The identifier for the specific instance of the class
+     */
+    abstract name: string;
+}
+/**
  * This class is used to serialize and deserialize types.
  * It stores a cache of all types that have been serialized and deserialized to easily retrieve them.
  */
@@ -65,7 +78,9 @@ export declare class Serializer {
 /**
  * This class defines instances that can be serialized and deserialized.
  */
-export declare class Serializable {
+export declare class Serializable extends SerializableData {
+    name: string;
+    _: string;
     constructor(name: string);
     /**
      * The fallback function for serialization. Most types will override this function.

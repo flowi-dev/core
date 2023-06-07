@@ -57,21 +57,23 @@ union.check(true); // false
 
 #### Defined in
 
-[Type.ts:130](https://github.com/flowi-dev/core/blob/5b69dc5/src/classes/Type.ts#L130)
+[Type.ts:125](https://github.com/flowi-dev/core/blob/9f480f3/src/classes/Type.ts#L125)
 
 ## Properties
 
 ### \_
 
-• **\_**: `string` = `UnionType.name`
+• **\_**: `string`
 
-#### Overrides
+The class name
+
+#### Inherited from
 
 [BaseType](Type.BaseType.md).[_](Type.BaseType.md#_)
 
 #### Defined in
 
-[Type.ts:129](https://github.com/flowi-dev/core/blob/5b69dc5/src/classes/Type.ts#L129)
+[Serializable.ts:122](https://github.com/flowi-dev/core/blob/9f480f3/src/classes/Serializable.ts#L122)
 
 ___
 
@@ -79,13 +81,15 @@ ___
 
 • **name**: `string`
 
+The identifier for the specific instance of the class
+
 #### Inherited from
 
 [BaseType](Type.BaseType.md).[name](Type.BaseType.md#name)
 
 #### Defined in
 
-[Type.ts:131](https://github.com/flowi-dev/core/blob/5b69dc5/src/classes/Type.ts#L131)
+[Type.ts:126](https://github.com/flowi-dev/core/blob/9f480f3/src/classes/Type.ts#L126)
 
 ___
 
@@ -95,7 +99,7 @@ ___
 
 #### Defined in
 
-[Type.ts:132](https://github.com/flowi-dev/core/blob/5b69dc5/src/classes/Type.ts#L132)
+[Type.ts:127](https://github.com/flowi-dev/core/blob/9f480f3/src/classes/Type.ts#L127)
 
 ## Methods
 
@@ -129,7 +133,7 @@ BOOLEAN.check('hello'); // false
 
 #### Defined in
 
-[Type.ts:161](https://github.com/flowi-dev/core/blob/5b69dc5/src/classes/Type.ts#L161)
+[Type.ts:156](https://github.com/flowi-dev/core/blob/9f480f3/src/classes/Type.ts#L156)
 
 ___
 
@@ -159,7 +163,7 @@ extended.check(true); // true
 
 #### Defined in
 
-[Type.ts:148](https://github.com/flowi-dev/core/blob/5b69dc5/src/classes/Type.ts#L148)
+[Type.ts:143](https://github.com/flowi-dev/core/blob/9f480f3/src/classes/Type.ts#L143)
 
 ___
 
@@ -191,7 +195,7 @@ BOOLEAN.extends(TRUE); // false
 
 #### Defined in
 
-[Type.ts:152](https://github.com/flowi-dev/core/blob/5b69dc5/src/classes/Type.ts#L152)
+[Type.ts:147](https://github.com/flowi-dev/core/blob/9f480f3/src/classes/Type.ts#L147)
 
 ___
 
@@ -216,7 +220,7 @@ The fallback function for serialization. Most types will override this function.
 
 #### Defined in
 
-[Serializable.ts:115](https://github.com/flowi-dev/core/blob/5b69dc5/src/classes/Serializable.ts#L115)
+[Serializable.ts:133](https://github.com/flowi-dev/core/blob/9f480f3/src/classes/Serializable.ts#L133)
 
 ___
 
@@ -263,4 +267,4 @@ console.log(c.types); // [TRUE] because TRUE extends BOOLEAN
 
 #### Defined in
 
-[Type.ts:115](https://github.com/flowi-dev/core/blob/5b69dc5/src/classes/Type.ts#L115)
+[Type.ts:111](https://github.com/flowi-dev/core/blob/9f480f3/src/classes/Type.ts#L111)

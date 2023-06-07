@@ -62,21 +62,23 @@ myType.check('world'); // false
 
 #### Defined in
 
-[Type.ts:54](https://github.com/flowi-dev/core/blob/5b69dc5/src/classes/Type.ts#L54)
+[Type.ts:50](https://github.com/flowi-dev/core/blob/9f480f3/src/classes/Type.ts#L50)
 
 ## Properties
 
 ### \_
 
-• **\_**: `string` = `PrimitiveType.name`
+• **\_**: `string`
 
-#### Overrides
+The class name
+
+#### Inherited from
 
 [BaseType](Type.BaseType.md).[_](Type.BaseType.md#_)
 
 #### Defined in
 
-[Type.ts:53](https://github.com/flowi-dev/core/blob/5b69dc5/src/classes/Type.ts#L53)
+[Serializable.ts:122](https://github.com/flowi-dev/core/blob/9f480f3/src/classes/Serializable.ts#L122)
 
 ___
 
@@ -84,13 +86,15 @@ ___
 
 • **name**: `string`
 
+The identifier for the specific instance of the class
+
 #### Inherited from
 
 [BaseType](Type.BaseType.md).[name](Type.BaseType.md#name)
 
 #### Defined in
 
-[Type.ts:55](https://github.com/flowi-dev/core/blob/5b69dc5/src/classes/Type.ts#L55)
+[Type.ts:51](https://github.com/flowi-dev/core/blob/9f480f3/src/classes/Type.ts#L51)
 
 ___
 
@@ -114,7 +118,7 @@ ___
 
 #### Defined in
 
-[Type.ts:56](https://github.com/flowi-dev/core/blob/5b69dc5/src/classes/Type.ts#L56)
+[Type.ts:52](https://github.com/flowi-dev/core/blob/9f480f3/src/classes/Type.ts#L52)
 
 ## Methods
 
@@ -148,7 +152,7 @@ BOOLEAN.check('hello'); // false
 
 #### Defined in
 
-[Type.ts:61](https://github.com/flowi-dev/core/blob/5b69dc5/src/classes/Type.ts#L61)
+[Type.ts:57](https://github.com/flowi-dev/core/blob/9f480f3/src/classes/Type.ts#L57)
 
 ___
 
@@ -180,7 +184,7 @@ BOOLEAN.extends(TRUE); // false
 
 #### Defined in
 
-[Type.ts:65](https://github.com/flowi-dev/core/blob/5b69dc5/src/classes/Type.ts#L65)
+[Type.ts:61](https://github.com/flowi-dev/core/blob/9f480f3/src/classes/Type.ts#L61)
 
 ___
 
@@ -205,4 +209,4 @@ The fallback function for serialization. Most types will override this function.
 
 #### Defined in
 
-[Serializable.ts:115](https://github.com/flowi-dev/core/blob/5b69dc5/src/classes/Serializable.ts#L115)
+[Serializable.ts:133](https://github.com/flowi-dev/core/blob/9f480f3/src/classes/Serializable.ts#L133)
