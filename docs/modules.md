@@ -6,5 +6,5 @@
 
 ### Modules
 
-- [Serializable](modules/Serializable.md)
-- [Type](modules/Type.md)
+- [Serialization](modules/Serialization.md)
+- [Types](modules/Types.md)

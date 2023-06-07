@@ -1,4 +1,5 @@
-import { Serializable } from './Serializable';
+import { Serializable } from './Serialization';
+export type TypeToLiteral<T extends BaseType> = T extends PrimitiveType ? PrimitiveTypeToLiteral<T> : T extends AnyType ? any : T extends ArrayType ? ArrayTypeToLiteral<T> : T extends ObjectType ? ObjectTypeToLiteral<T> : T extends UnionType ? UnionTypeToLiteral<T> : never;
 /**
  * The base class that all types extend from, this provides the basic functionality that all types need. Such as serialization and deserialization and type checking.
  * This class is abstract and should not be used directly.
@@ -27,6 +28,7 @@ export declare abstract class BaseType extends Serializable {
      */
     abstract check(data: any): boolean;
 }
+export type PrimitiveTypeToLiteral<T extends PrimitiveType> = T extends PrimitiveType<infer U> ? U : never;
 /**
  * This class defines primitive types, such as string, number, boolean, etc.
  *
@@ -43,13 +45,16 @@ export declare abstract class BaseType extends Serializable {
  * myType.check('world'); // false
  * ```
  */
-export declare class PrimitiveType extends BaseType {
+export declare class PrimitiveType<_ = any> extends BaseType {
     name: string;
     private readonly validator;
     constructor(name: string, validator: (data: any) => boolean);
     check(data: any): boolean;
     extends(type: BaseType): boolean;
 }
+export type UnionTypeToLiteral<T extends UnionType> = T extends UnionType<infer U> ? {
+    [K in keyof U]: TypeToLiteral<U[K]>;
+}[number] : never;
 /**
  * This class defines unions, just like in TypeScript, a union is a type that can be one of the types in the union.
  * ```ts
@@ -59,9 +64,9 @@ export declare class PrimitiveType extends BaseType {
  * union.check(true); // false
  * ```
 */
-export declare class UnionType extends BaseType {
+export declare class UnionType<T extends readonly BaseType[] = readonly BaseType[]> extends BaseType {
     name: string;
-    readonly types: BaseType[];
+    readonly types: T;
     /**
      * Creates a union from the intersection of two unions.
      * ```ts
@@ -89,8 +94,8 @@ export declare class UnionType extends BaseType {
      * console.log(c.types); // [TRUE] because TRUE extends BOOLEAN
      * ```
      */
-    static fromIntersect(name: string, unions: [UnionType, UnionType]): UnionType;
-    constructor(name: string, types: BaseType[]);
+    static fromIntersect<A extends UnionType, B extends UnionType>(name: string, unions: [A, B]): UnionType<BaseType[]>;
+    constructor(name: string, types: T);
     /**
      * Extends the union with a new type, this will return a new union with the new type added.
      * ```ts
@@ -106,6 +111,7 @@ export declare class UnionType extends BaseType {
     extends(type: BaseType): boolean;
     check(data: any): boolean;
 }
+export type ArrayTypeToLiteral<T extends ArrayType> = T extends ArrayType<infer U> ? U : never;
 /**
  * This class defines arrays, an array is a type that contains a list of elements of a certain type.
  * ```ts
@@ -114,10 +120,10 @@ export declare class UnionType extends BaseType {
  * array.check(['hello', 1]); // false
  * ```
  */
-export declare class ArrayType extends BaseType {
+export declare class ArrayType<T extends BaseType[] = BaseType[]> extends BaseType {
     name: string;
-    readonly elementType: BaseType;
-    constructor(name: string, elementType: BaseType);
+    readonly elementType: T[number];
+    constructor(name: string, elementType: T[number]);
     check(data: any): boolean;
     extends(type: BaseType): boolean;
     serialize(): {
@@ -129,6 +135,7 @@ export declare class ArrayType extends BaseType {
         };
     };
 }
+export type AnyTypeToLiteral = any;
 /**
  * This type simply acts as the `any` type in typescript, it will always return true when checking data.
  * ```ts
@@ -147,12 +154,15 @@ export declare class ArrayType extends BaseType {
  * type.check({ name: 'John', job: 1 }); // true
  * ```
  */
-export declare class AnyType extends BaseType {
+export declare class AnyType<_ = any> extends BaseType {
     name: string;
     constructor();
     check(data: any): boolean;
-    extends(type: BaseType): boolean;
+    extends(data: BaseType): boolean;
 }
+export type ObjectTypeToLiteral<T extends ObjectType> = T extends ObjectType<infer U> ? {
+    [K in keyof U]: TypeToLiteral<U[K]>;
+} : never;
 /**
  * This type defines an object, an object is a type that contains a list of properties, each property has a name and a type.
  * ```ts
@@ -177,7 +187,7 @@ export declare class AnyType extends BaseType {
  * });
  * ```
  */
-export declare class ObjectType extends BaseType {
+export declare class ObjectType<T extends Record<string, BaseType> = Record<string, BaseType>> extends BaseType {
     name: string;
     /**
      * Create an object type from an intersection between two objects.
@@ -199,9 +209,9 @@ export declare class ObjectType extends BaseType {
      * // }
      * ```
      */
-    static fromIntersect(name: string, objects: [ObjectType, ObjectType]): ObjectType;
-    properties: Record<string, BaseType>;
-    constructor(name: string, properties: Record<string, BaseType>);
+    static fromIntersect(name: string, objects: [ObjectType, ObjectType]): ObjectType<Record<string, BaseType>>;
+    properties: T;
+    constructor(name: string, properties: T);
     /**
      * Extend an object type with new properties.
      * ```ts
@@ -234,4 +244,4 @@ export declare class ObjectType extends BaseType {
         }>;
     };
 }
-//# sourceMappingURL=Type.d.ts.map
+//# sourceMappingURL=Types.d.ts.map

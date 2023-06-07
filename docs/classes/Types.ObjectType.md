@@ -1,8 +1,8 @@
-[@flowi-dev/core](../README.md) / [Modules](../modules.md) / [Type](../modules/Type.md) / ObjectType
+[@flowi-dev/core](../README.md) / [Modules](../modules.md) / [Types](../modules/Types.md) / ObjectType
 
-# Class: ObjectType
+# Class: ObjectType<T\>
 
-[Type](../modules/Type.md).ObjectType
+[Types](../modules/Types.md).ObjectType
 
 This type defines an object, an object is a type that contains a list of properties, each property has a name and a type.
 ```ts
@@ -27,9 +27,15 @@ const UserObjType = new ObjectType('User', {
 });
 ```
 
+## Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `T` | extends `Record`<`string`, [`BaseType`](Types.BaseType.md)\> = `Record`<`string`, [`BaseType`](Types.BaseType.md)\> |
+
 ## Hierarchy
 
-- [`BaseType`](Type.BaseType.md)
+- [`BaseType`](Types.BaseType.md)
 
   ↳ **`ObjectType`**
 
@@ -37,42 +43,48 @@ const UserObjType = new ObjectType('User', {
 
 ### Constructors
 
-- [constructor](Type.ObjectType.md#constructor)
+- [constructor](Types.ObjectType.md#constructor)
 
 ### Properties
 
-- [\_](Type.ObjectType.md#_)
-- [name](Type.ObjectType.md#name)
-- [properties](Type.ObjectType.md#properties)
+- [\_](Types.ObjectType.md#_)
+- [name](Types.ObjectType.md#name)
+- [properties](Types.ObjectType.md#properties)
 
 ### Methods
 
-- [check](Type.ObjectType.md#check)
-- [extend](Type.ObjectType.md#extend)
-- [extends](Type.ObjectType.md#extends)
-- [serialize](Type.ObjectType.md#serialize)
-- [fromIntersect](Type.ObjectType.md#fromintersect)
+- [check](Types.ObjectType.md#check)
+- [extend](Types.ObjectType.md#extend)
+- [extends](Types.ObjectType.md#extends)
+- [serialize](Types.ObjectType.md#serialize)
+- [fromIntersect](Types.ObjectType.md#fromintersect)
 
 ## Constructors
 
 ### constructor
 
-• **new ObjectType**(`name`, `properties`)
+• **new ObjectType**<`T`\>(`name`, `properties`)
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `T` | extends `Record`<`string`, [`BaseType`](Types.BaseType.md)\> = `Record`<`string`, [`BaseType`](Types.BaseType.md)\> |
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
 | `name` | `string` |
-| `properties` | `Record`<`string`, [`BaseType`](Type.BaseType.md)\> |
+| `properties` | `T` |
 
 #### Overrides
 
-[BaseType](Type.BaseType.md).[constructor](Type.BaseType.md#constructor)
+[BaseType](Types.BaseType.md).[constructor](Types.BaseType.md#constructor)
 
 #### Defined in
 
-[Type.ts:320](https://github.com/flowi-dev/core/blob/9f480f3/src/classes/Type.ts#L320)
+[Types.ts:338](https://github.com/flowi-dev/core/blob/98bdb45/src/classes/Types.ts#L338)
 
 ## Properties
 
@@ -84,11 +96,11 @@ The class name
 
 #### Inherited from
 
-[BaseType](Type.BaseType.md).[_](Type.BaseType.md#_)
+[BaseType](Types.BaseType.md).[_](Types.BaseType.md#_)
 
 #### Defined in
 
-[Serializable.ts:122](https://github.com/flowi-dev/core/blob/9f480f3/src/classes/Serializable.ts#L122)
+[Serialization.ts:77](https://github.com/flowi-dev/core/blob/98bdb45/src/classes/Serialization.ts#L77)
 
 ___
 
@@ -100,21 +112,21 @@ The identifier for the specific instance of the class
 
 #### Inherited from
 
-[BaseType](Type.BaseType.md).[name](Type.BaseType.md#name)
+[BaseType](Types.BaseType.md).[name](Types.BaseType.md#name)
 
 #### Defined in
 
-[Type.ts:321](https://github.com/flowi-dev/core/blob/9f480f3/src/classes/Type.ts#L321)
+[Types.ts:339](https://github.com/flowi-dev/core/blob/98bdb45/src/classes/Types.ts#L339)
 
 ___
 
 ### properties
 
-• **properties**: `Record`<`string`, [`BaseType`](Type.BaseType.md)\>
+• **properties**: `T`
 
 #### Defined in
 
-[Type.ts:318](https://github.com/flowi-dev/core/blob/9f480f3/src/classes/Type.ts#L318)
+[Types.ts:336](https://github.com/flowi-dev/core/blob/98bdb45/src/classes/Types.ts#L336)
 
 ## Methods
 
@@ -144,17 +156,17 @@ BOOLEAN.check('hello'); // false
 
 #### Overrides
 
-[BaseType](Type.BaseType.md).[check](Type.BaseType.md#check)
+[BaseType](Types.BaseType.md).[check](Types.BaseType.md#check)
 
 #### Defined in
 
-[Type.ts:376](https://github.com/flowi-dev/core/blob/9f480f3/src/classes/Type.ts#L376)
+[Types.ts:394](https://github.com/flowi-dev/core/blob/98bdb45/src/classes/Types.ts#L394)
 
 ___
 
 ### extend
 
-▸ **extend**(`name`, `properties`): [`ObjectType`](Type.ObjectType.md)
+▸ **extend**(`name`, `properties`): [`ObjectType`](Types.ObjectType.md)<`Record`<`string`, [`BaseType`](Types.BaseType.md)\>\>
 
 Extend an object type with new properties.
 ```ts
@@ -180,15 +192,15 @@ console.log(WorkingUserObjType.properties);
 | Name | Type |
 | :------ | :------ |
 | `name` | `string` |
-| `properties` | `Record`<`string`, [`BaseType`](Type.BaseType.md)\> |
+| `properties` | `Record`<`string`, [`BaseType`](Types.BaseType.md)\> |
 
 #### Returns
 
-[`ObjectType`](Type.ObjectType.md)
+[`ObjectType`](Types.ObjectType.md)<`Record`<`string`, [`BaseType`](Types.BaseType.md)\>\>
 
 #### Defined in
 
-[Type.ts:348](https://github.com/flowi-dev/core/blob/9f480f3/src/classes/Type.ts#L348)
+[Types.ts:366](https://github.com/flowi-dev/core/blob/98bdb45/src/classes/Types.ts#L366)
 
 ___
 
@@ -208,7 +220,7 @@ BOOLEAN.extends(TRUE); // false
 
 | Name | Type |
 | :------ | :------ |
-| `type` | [`BaseType`](Type.BaseType.md) |
+| `type` | [`BaseType`](Types.BaseType.md) |
 
 #### Returns
 
@@ -216,11 +228,11 @@ BOOLEAN.extends(TRUE); // false
 
 #### Overrides
 
-[BaseType](Type.BaseType.md).[extends](Type.BaseType.md#extends)
+[BaseType](Types.BaseType.md).[extends](Types.BaseType.md#extends)
 
 #### Defined in
 
-[Type.ts:355](https://github.com/flowi-dev/core/blob/9f480f3/src/classes/Type.ts#L355)
+[Types.ts:373](https://github.com/flowi-dev/core/blob/98bdb45/src/classes/Types.ts#L373)
 
 ___
 
@@ -242,17 +254,17 @@ The fallback function for serialization. Most types will override this function.
 
 #### Overrides
 
-[BaseType](Type.BaseType.md).[serialize](Type.BaseType.md#serialize)
+[BaseType](Types.BaseType.md).[serialize](Types.BaseType.md#serialize)
 
 #### Defined in
 
-[Type.ts:390](https://github.com/flowi-dev/core/blob/9f480f3/src/classes/Type.ts#L390)
+[Types.ts:408](https://github.com/flowi-dev/core/blob/98bdb45/src/classes/Types.ts#L408)
 
 ___
 
 ### fromIntersect
 
-▸ `Static` **fromIntersect**(`name`, `objects`): [`ObjectType`](Type.ObjectType.md)
+▸ `Static` **fromIntersect**(`name`, `objects`): [`ObjectType`](Types.ObjectType.md)<`Record`<`string`, [`BaseType`](Types.BaseType.md)\>\>
 
 Create an object type from an intersection between two objects.
 ```ts
@@ -278,12 +290,12 @@ console.log(c.properties);
 | Name | Type |
 | :------ | :------ |
 | `name` | `string` |
-| `objects` | [[`ObjectType`](Type.ObjectType.md), [`ObjectType`](Type.ObjectType.md)] |
+| `objects` | [[`ObjectType`](Types.ObjectType.md)<`Record`<`string`, [`BaseType`](Types.BaseType.md)\>\>, [`ObjectType`](Types.ObjectType.md)<`Record`<`string`, [`BaseType`](Types.BaseType.md)\>\>] |
 
 #### Returns
 
-[`ObjectType`](Type.ObjectType.md)
+[`ObjectType`](Types.ObjectType.md)<`Record`<`string`, [`BaseType`](Types.BaseType.md)\>\>
 
 #### Defined in
 
-[Type.ts:291](https://github.com/flowi-dev/core/blob/9f480f3/src/classes/Type.ts#L291)
+[Types.ts:309](https://github.com/flowi-dev/core/blob/98bdb45/src/classes/Types.ts#L309)

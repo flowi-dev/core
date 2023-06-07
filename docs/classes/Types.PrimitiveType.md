@@ -1,8 +1,8 @@
-[@flowi-dev/core](../README.md) / [Modules](../modules.md) / [Type](../modules/Type.md) / PrimitiveType
+[@flowi-dev/core](../README.md) / [Modules](../modules.md) / [Types](../modules/Types.md) / PrimitiveType
 
-# Class: PrimitiveType
+# Class: PrimitiveType<_\>
 
-[Type](../modules/Type.md).PrimitiveType
+[Types](../modules/Types.md).PrimitiveType
 
 This class defines primitive types, such as string, number, boolean, etc.
 
@@ -19,9 +19,15 @@ myType.check('hello'); // true
 myType.check('world'); // false
 ```
 
+## Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `_` | `any` |
+
 ## Hierarchy
 
-- [`BaseType`](Type.BaseType.md)
+- [`BaseType`](Types.BaseType.md)
 
   ↳ **`PrimitiveType`**
 
@@ -29,25 +35,31 @@ myType.check('world'); // false
 
 ### Constructors
 
-- [constructor](Type.PrimitiveType.md#constructor)
+- [constructor](Types.PrimitiveType.md#constructor)
 
 ### Properties
 
-- [\_](Type.PrimitiveType.md#_)
-- [name](Type.PrimitiveType.md#name)
-- [validator](Type.PrimitiveType.md#validator)
+- [\_](Types.PrimitiveType.md#_)
+- [name](Types.PrimitiveType.md#name)
+- [validator](Types.PrimitiveType.md#validator)
 
 ### Methods
 
-- [check](Type.PrimitiveType.md#check)
-- [extends](Type.PrimitiveType.md#extends)
-- [serialize](Type.PrimitiveType.md#serialize)
+- [check](Types.PrimitiveType.md#check)
+- [extends](Types.PrimitiveType.md#extends)
+- [serialize](Types.PrimitiveType.md#serialize)
 
 ## Constructors
 
 ### constructor
 
-• **new PrimitiveType**(`name`, `validator`)
+• **new PrimitiveType**<`_`\>(`name`, `validator`)
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `_` | `any` |
 
 #### Parameters
 
@@ -58,11 +70,11 @@ myType.check('world'); // false
 
 #### Overrides
 
-[BaseType](Type.BaseType.md).[constructor](Type.BaseType.md#constructor)
+[BaseType](Types.BaseType.md).[constructor](Types.BaseType.md#constructor)
 
 #### Defined in
 
-[Type.ts:50](https://github.com/flowi-dev/core/blob/9f480f3/src/classes/Type.ts#L50)
+[Types.ts:55](https://github.com/flowi-dev/core/blob/98bdb45/src/classes/Types.ts#L55)
 
 ## Properties
 
@@ -74,11 +86,11 @@ The class name
 
 #### Inherited from
 
-[BaseType](Type.BaseType.md).[_](Type.BaseType.md#_)
+[BaseType](Types.BaseType.md).[_](Types.BaseType.md#_)
 
 #### Defined in
 
-[Serializable.ts:122](https://github.com/flowi-dev/core/blob/9f480f3/src/classes/Serializable.ts#L122)
+[Serialization.ts:77](https://github.com/flowi-dev/core/blob/98bdb45/src/classes/Serialization.ts#L77)
 
 ___
 
@@ -90,11 +102,11 @@ The identifier for the specific instance of the class
 
 #### Inherited from
 
-[BaseType](Type.BaseType.md).[name](Type.BaseType.md#name)
+[BaseType](Types.BaseType.md).[name](Types.BaseType.md#name)
 
 #### Defined in
 
-[Type.ts:51](https://github.com/flowi-dev/core/blob/9f480f3/src/classes/Type.ts#L51)
+[Types.ts:56](https://github.com/flowi-dev/core/blob/98bdb45/src/classes/Types.ts#L56)
 
 ___
 
@@ -118,7 +130,7 @@ ___
 
 #### Defined in
 
-[Type.ts:52](https://github.com/flowi-dev/core/blob/9f480f3/src/classes/Type.ts#L52)
+[Types.ts:57](https://github.com/flowi-dev/core/blob/98bdb45/src/classes/Types.ts#L57)
 
 ## Methods
 
@@ -148,11 +160,11 @@ BOOLEAN.check('hello'); // false
 
 #### Overrides
 
-[BaseType](Type.BaseType.md).[check](Type.BaseType.md#check)
+[BaseType](Types.BaseType.md).[check](Types.BaseType.md#check)
 
 #### Defined in
 
-[Type.ts:57](https://github.com/flowi-dev/core/blob/9f480f3/src/classes/Type.ts#L57)
+[Types.ts:62](https://github.com/flowi-dev/core/blob/98bdb45/src/classes/Types.ts#L62)
 
 ___
 
@@ -172,7 +184,7 @@ BOOLEAN.extends(TRUE); // false
 
 | Name | Type |
 | :------ | :------ |
-| `type` | [`BaseType`](Type.BaseType.md) |
+| `type` | [`BaseType`](Types.BaseType.md) |
 
 #### Returns
 
@@ -180,11 +192,11 @@ BOOLEAN.extends(TRUE); // false
 
 #### Overrides
 
-[BaseType](Type.BaseType.md).[extends](Type.BaseType.md#extends)
+[BaseType](Types.BaseType.md).[extends](Types.BaseType.md#extends)
 
 #### Defined in
 
-[Type.ts:61](https://github.com/flowi-dev/core/blob/9f480f3/src/classes/Type.ts#L61)
+[Types.ts:66](https://github.com/flowi-dev/core/blob/98bdb45/src/classes/Types.ts#L66)
 
 ___
 
@@ -205,8 +217,8 @@ The fallback function for serialization. Most types will override this function.
 
 #### Inherited from
 
-[BaseType](Type.BaseType.md).[serialize](Type.BaseType.md#serialize)
+[BaseType](Types.BaseType.md).[serialize](Types.BaseType.md#serialize)
 
 #### Defined in
 
-[Serializable.ts:133](https://github.com/flowi-dev/core/blob/9f480f3/src/classes/Serializable.ts#L133)
+[Serialization.ts:88](https://github.com/flowi-dev/core/blob/98bdb45/src/classes/Serialization.ts#L88)

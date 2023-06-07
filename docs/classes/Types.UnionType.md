@@ -1,8 +1,8 @@
-[@flowi-dev/core](../README.md) / [Modules](../modules.md) / [Type](../modules/Type.md) / UnionType
+[@flowi-dev/core](../README.md) / [Modules](../modules.md) / [Types](../modules/Types.md) / UnionType
 
-# Class: UnionType
+# Class: UnionType<T\>
 
-[Type](../modules/Type.md).UnionType
+[Types](../modules/Types.md).UnionType
 
 This class defines unions, just like in TypeScript, a union is a type that can be one of the types in the union.
 ```ts
@@ -12,9 +12,15 @@ union.check(1); // true
 union.check(true); // false
 ```
 
+## Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `T` | extends readonly [`BaseType`](Types.BaseType.md)[] = readonly [`BaseType`](Types.BaseType.md)[] |
+
 ## Hierarchy
 
-- [`BaseType`](Type.BaseType.md)
+- [`BaseType`](Types.BaseType.md)
 
   ↳ **`UnionType`**
 
@@ -22,42 +28,48 @@ union.check(true); // false
 
 ### Constructors
 
-- [constructor](Type.UnionType.md#constructor)
+- [constructor](Types.UnionType.md#constructor)
 
 ### Properties
 
-- [\_](Type.UnionType.md#_)
-- [name](Type.UnionType.md#name)
-- [types](Type.UnionType.md#types)
+- [\_](Types.UnionType.md#_)
+- [name](Types.UnionType.md#name)
+- [types](Types.UnionType.md#types)
 
 ### Methods
 
-- [check](Type.UnionType.md#check)
-- [extend](Type.UnionType.md#extend)
-- [extends](Type.UnionType.md#extends)
-- [serialize](Type.UnionType.md#serialize)
-- [fromIntersect](Type.UnionType.md#fromintersect)
+- [check](Types.UnionType.md#check)
+- [extend](Types.UnionType.md#extend)
+- [extends](Types.UnionType.md#extends)
+- [serialize](Types.UnionType.md#serialize)
+- [fromIntersect](Types.UnionType.md#fromintersect)
 
 ## Constructors
 
 ### constructor
 
-• **new UnionType**(`name`, `types`)
+• **new UnionType**<`T`\>(`name`, `types`)
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `T` | extends readonly [`BaseType`](Types.BaseType.md)[] = readonly [`BaseType`](Types.BaseType.md)[] |
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
 | `name` | `string` |
-| `types` | [`BaseType`](Type.BaseType.md)[] |
+| `types` | `T` |
 
 #### Overrides
 
-[BaseType](Type.BaseType.md).[constructor](Type.BaseType.md#constructor)
+[BaseType](Types.BaseType.md).[constructor](Types.BaseType.md#constructor)
 
 #### Defined in
 
-[Type.ts:125](https://github.com/flowi-dev/core/blob/9f480f3/src/classes/Type.ts#L125)
+[Types.ts:134](https://github.com/flowi-dev/core/blob/98bdb45/src/classes/Types.ts#L134)
 
 ## Properties
 
@@ -69,11 +81,11 @@ The class name
 
 #### Inherited from
 
-[BaseType](Type.BaseType.md).[_](Type.BaseType.md#_)
+[BaseType](Types.BaseType.md).[_](Types.BaseType.md#_)
 
 #### Defined in
 
-[Serializable.ts:122](https://github.com/flowi-dev/core/blob/9f480f3/src/classes/Serializable.ts#L122)
+[Serialization.ts:77](https://github.com/flowi-dev/core/blob/98bdb45/src/classes/Serialization.ts#L77)
 
 ___
 
@@ -85,21 +97,21 @@ The identifier for the specific instance of the class
 
 #### Inherited from
 
-[BaseType](Type.BaseType.md).[name](Type.BaseType.md#name)
+[BaseType](Types.BaseType.md).[name](Types.BaseType.md#name)
 
 #### Defined in
 
-[Type.ts:126](https://github.com/flowi-dev/core/blob/9f480f3/src/classes/Type.ts#L126)
+[Types.ts:135](https://github.com/flowi-dev/core/blob/98bdb45/src/classes/Types.ts#L135)
 
 ___
 
 ### types
 
-• `Readonly` **types**: [`BaseType`](Type.BaseType.md)[]
+• `Readonly` **types**: `T`
 
 #### Defined in
 
-[Type.ts:127](https://github.com/flowi-dev/core/blob/9f480f3/src/classes/Type.ts#L127)
+[Types.ts:136](https://github.com/flowi-dev/core/blob/98bdb45/src/classes/Types.ts#L136)
 
 ## Methods
 
@@ -129,17 +141,17 @@ BOOLEAN.check('hello'); // false
 
 #### Overrides
 
-[BaseType](Type.BaseType.md).[check](Type.BaseType.md#check)
+[BaseType](Types.BaseType.md).[check](Types.BaseType.md#check)
 
 #### Defined in
 
-[Type.ts:156](https://github.com/flowi-dev/core/blob/9f480f3/src/classes/Type.ts#L156)
+[Types.ts:165](https://github.com/flowi-dev/core/blob/98bdb45/src/classes/Types.ts#L165)
 
 ___
 
 ### extend
 
-▸ **extend**(`type`): [`UnionType`](Type.UnionType.md)
+▸ **extend**(`type`): [`UnionType`](Types.UnionType.md)<readonly [`BaseType`](Types.BaseType.md)[]\>
 
 Extends the union with a new type, this will return a new union with the new type added.
 ```ts
@@ -155,15 +167,15 @@ extended.check(true); // true
 
 | Name | Type |
 | :------ | :------ |
-| `type` | [`BaseType`](Type.BaseType.md) |
+| `type` | [`BaseType`](Types.BaseType.md) |
 
 #### Returns
 
-[`UnionType`](Type.UnionType.md)
+[`UnionType`](Types.UnionType.md)<readonly [`BaseType`](Types.BaseType.md)[]\>
 
 #### Defined in
 
-[Type.ts:143](https://github.com/flowi-dev/core/blob/9f480f3/src/classes/Type.ts#L143)
+[Types.ts:152](https://github.com/flowi-dev/core/blob/98bdb45/src/classes/Types.ts#L152)
 
 ___
 
@@ -183,7 +195,7 @@ BOOLEAN.extends(TRUE); // false
 
 | Name | Type |
 | :------ | :------ |
-| `type` | [`BaseType`](Type.BaseType.md) |
+| `type` | [`BaseType`](Types.BaseType.md) |
 
 #### Returns
 
@@ -191,11 +203,11 @@ BOOLEAN.extends(TRUE); // false
 
 #### Overrides
 
-[BaseType](Type.BaseType.md).[extends](Type.BaseType.md#extends)
+[BaseType](Types.BaseType.md).[extends](Types.BaseType.md#extends)
 
 #### Defined in
 
-[Type.ts:147](https://github.com/flowi-dev/core/blob/9f480f3/src/classes/Type.ts#L147)
+[Types.ts:156](https://github.com/flowi-dev/core/blob/98bdb45/src/classes/Types.ts#L156)
 
 ___
 
@@ -216,17 +228,17 @@ The fallback function for serialization. Most types will override this function.
 
 #### Inherited from
 
-[BaseType](Type.BaseType.md).[serialize](Type.BaseType.md#serialize)
+[BaseType](Types.BaseType.md).[serialize](Types.BaseType.md#serialize)
 
 #### Defined in
 
-[Serializable.ts:133](https://github.com/flowi-dev/core/blob/9f480f3/src/classes/Serializable.ts#L133)
+[Serialization.ts:88](https://github.com/flowi-dev/core/blob/98bdb45/src/classes/Serialization.ts#L88)
 
 ___
 
 ### fromIntersect
 
-▸ `Static` **fromIntersect**(`name`, `unions`): [`UnionType`](Type.UnionType.md)
+▸ `Static` **fromIntersect**<`A`, `B`\>(`name`, `unions`): [`UnionType`](Types.UnionType.md)<[`BaseType`](Types.BaseType.md)[]\>
 
 Creates a union from the intersection of two unions.
 ```ts
@@ -254,17 +266,24 @@ c.check(1); // false
 console.log(c.types); // [TRUE] because TRUE extends BOOLEAN
 ```
 
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `A` | extends [`UnionType`](Types.UnionType.md)<readonly [`BaseType`](Types.BaseType.md)[], `A`\> |
+| `B` | extends [`UnionType`](Types.UnionType.md)<readonly [`BaseType`](Types.BaseType.md)[], `B`\> |
+
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
 | `name` | `string` |
-| `unions` | [[`UnionType`](Type.UnionType.md), [`UnionType`](Type.UnionType.md)] |
+| `unions` | [`A`, `B`] |
 
 #### Returns
 
-[`UnionType`](Type.UnionType.md)
+[`UnionType`](Types.UnionType.md)<[`BaseType`](Types.BaseType.md)[]\>
 
 #### Defined in
 
-[Type.ts:111](https://github.com/flowi-dev/core/blob/9f480f3/src/classes/Type.ts#L111)
+[Types.ts:120](https://github.com/flowi-dev/core/blob/98bdb45/src/classes/Types.ts#L120)
