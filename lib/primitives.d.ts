@@ -11,4 +11,18 @@ export declare const REGEXP: PrimitiveType<RegExp>;
 export declare const BIGINT: PrimitiveType<bigint>;
 export declare const SYMBOL: PrimitiveType<symbol>;
 export declare const ANY: AnyType<any>;
+export declare const Primitives: {
+    TRUE: PrimitiveType<true>;
+    FALSE: PrimitiveType<false>;
+    BOOLEAN: UnionType<readonly [PrimitiveType<false>, PrimitiveType<true>]>;
+    INTEGER: PrimitiveType<number>;
+    NUMBER: UnionType<readonly [PrimitiveType<number>, PrimitiveType<number>]>;
+    STRING: PrimitiveType<string>;
+    UNDEFINED: PrimitiveType<undefined>;
+    DATE: PrimitiveType<Date>;
+    REGEXP: PrimitiveType<RegExp>;
+    BIGINT: PrimitiveType<bigint>;
+    SYMBOL: PrimitiveType<symbol>;
+    ANY: AnyType<any>;
+};
 //# sourceMappingURL=primitives.d.ts.map
