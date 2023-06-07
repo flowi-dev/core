@@ -1,6 +1,20 @@
 import {ObjectType, UnionType, ArrayType, type BaseType} from './Type';
 
 /**
+ * Defines the required data for serialization.
+ */
+export abstract class SerializableData {
+	/**
+	 * The class name
+	 */
+	abstract _: string;
+	/**
+	 * The identifier for the specific instance of the class
+	 */
+	abstract name: string;
+}
+
+/**
  * This class is used to serialize and deserialize types.
  * It stores a cache of all types that have been serialized and deserialized to easily retrieve them.
  */
@@ -104,9 +118,13 @@ export class Serializer {
 /**
  * This class defines instances that can be serialized and deserialized.
  */
-export class Serializable {
-	constructor(name: string) {
+export class Serializable extends SerializableData {
+	_: string;
+
+	constructor(public name: string) {
+		super();
 		Serializer.addToCache(name, this);
+		this._ = this.constructor.name;
 	}
 
 	/**

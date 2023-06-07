@@ -5,9 +5,6 @@ import {Serializable} from './Serializable';
  * This class is abstract and should not be used directly.
  */
 export abstract class BaseType extends Serializable {
-	public abstract _: string;
-	public abstract name: string;
-
 	/**
 	 * Checks if this type extends the given type.
 	 *
@@ -50,7 +47,6 @@ export abstract class BaseType extends Serializable {
  * ```
  */
 export class PrimitiveType extends BaseType {
-	_ = PrimitiveType.name;
 	constructor(
 		public name: string,
 		private readonly validator: (data: any) => boolean,
@@ -126,7 +122,6 @@ export class UnionType extends BaseType {
 		return new UnionType(name, newTypes);
 	}
 
-	_ = UnionType.name;
 	constructor(
 		public name: string,
 		readonly types: BaseType[],
@@ -172,7 +167,6 @@ export class UnionType extends BaseType {
  * ```
  */
 export class ArrayType extends BaseType {
-	_ = ArrayType.name;
 	constructor(
 		public name: string,
 		readonly elementType: BaseType,
@@ -234,7 +228,6 @@ export class ArrayType extends BaseType {
  * ```
  */
 export class AnyType extends BaseType {
-	_ = AnyType.name;
 	public name = 'any';
 
 	constructor() {
@@ -323,7 +316,6 @@ export class ObjectType extends BaseType {
 	}
 
 	properties: Record<string, BaseType>;
-	_ = ObjectType.name;
 
 	constructor(
 		public name: string,
