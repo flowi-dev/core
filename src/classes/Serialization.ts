@@ -1,4 +1,4 @@
-import {ObjectType, UnionType, ArrayType, type BaseType} from './Type';
+import {ObjectType, UnionType, ArrayType, type BaseType} from './Types';
 
 /**
  * Defines the required data for serialization.

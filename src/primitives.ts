@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-import {AnyType, PrimitiveType, UnionType} from './classes/Type';
+import {AnyType, PrimitiveType, UnionType} from './classes/Types';
 
 export const TRUE = new PrimitiveType('true', (data: any) => data === true);
 export const FALSE = new PrimitiveType('false', (data: any) => data === false);
