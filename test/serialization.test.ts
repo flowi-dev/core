@@ -10,13 +10,13 @@ import {
   TRUE,
   UnionType,
 } from '../src';
-import { Serializable } from '../src/classes/Serializable';
+import { Serializable, Serializer } from '../src/classes/Serializable';
 
 describe('Saving a primitive as a string and loading it again', () => {
   it('should be the same', () => {
     const primitive = STRING;
     const serialized = primitive.serialize();
-    const deserialized = PrimitiveType.deserialize(serialized);
+    const deserialized = Serializer.deserialize(serialized);
 
     expect(deserialized).toBe(primitive);
   });
@@ -103,7 +103,7 @@ describe('Saving a primitive as a string and loading it again', () => {
 
     for (const test of tests) {
       const serialized = test.primitive.serialize();
-      const deserialized = Serializable.deserialize(
+      const deserialized = Serializer.deserialize(
         serialized,
       ) as PrimitiveType;
 
@@ -122,7 +122,7 @@ describe('Saving a union as a string and loading it again', () => {
   const UNION = NUMBER;
 
   const serialized = UNION.serialize();
-  const deserialized = Serializable.deserialize(serialized) as UnionType;
+  const deserialized = Serializer.deserialize(serialized) as UnionType;
   it('should be the same', () => {
     expect(deserialized).toBe(UNION);
   });
@@ -146,7 +146,7 @@ describe('Serializing and deserializing object types', () => {
   });
 
   const serialized = OBJECT.serialize();
-  const deserialized = Serializable.deserialize(serialized) as ObjectType;
+  const deserialized = Serializer.deserialize(serialized) as ObjectType;
 
   it('should be the same', () => {
     expect(deserialized).toMatchObject(OBJECT);
@@ -167,10 +167,10 @@ describe("Serializing and deserializing nested objects", () => {
 
   const serialized = OBJECT.serialize();
   console.log(serialized);
-  Serializable.remove(OBJECT.name); // Remove the object from the cache
-  Serializable.remove('address'); // Remove the object from the cache
-  Serializable.remove('coordinates'); // Remove the object from the cache
-  const deserialized = Serializable.deserialize(serialized) as ObjectType;
+  Serializer.removeFromCache(OBJECT.name); // Remove the object from the cache
+  Serializer.removeFromCache('address'); // Remove the object from the cache
+  Serializer.removeFromCache('coordinates'); // Remove the object from the cache
+  const deserialized = Serializer.deserialize(serialized) as ObjectType;
 
   it('should be the same', () => {
     expect(deserialized).toMatchObject(OBJECT);
@@ -204,10 +204,10 @@ describe("Serializing and deserializing objects that aren't saved", () => {
     age: INTEGER,
   });
 
-  Serializable.remove(OBJECT.name); // Remove the object from the cache
+  Serializer.removeFromCache(OBJECT.name); // Remove the object from the cache
 
   const serialized = OBJECT.serialize();
-  const deserialized = Serializable.deserialize(serialized) as ObjectType;
+  const deserialized = Serializer.deserialize(serialized) as ObjectType;
 
   it('should be the same', () => {
     expect(deserialized).toMatchObject(OBJECT);
@@ -217,10 +217,10 @@ describe("Serializing and deserializing objects that aren't saved", () => {
 describe("Serializing and deserializing unions that aren't saved", () => {
   const UNION = new UnionType('unsaved-union', [STRING, INTEGER]);
 
-  Serializable.remove(UNION.name); // Remove the union from the cache
+  Serializer.removeFromCache(UNION.name); // Remove the union from the cache
 
   const serialized = UNION.serialize();
-  const deserialized = Serializable.deserialize(serialized) as UnionType;
+  const deserialized = Serializer.deserialize(serialized) as UnionType;
 
   it('should be the same', () => {
     expect(deserialized).toMatchObject(UNION);
@@ -236,11 +236,11 @@ describe("Serializing and deserializing arrays that aren't saved", () => {
     }),
   );
 
-  Serializable.remove(ARRAY.name); // Remove the array from the cache
-  Serializable.remove(ARRAY.elementType.name); // Remove the element type from the cache
+  Serializer.removeFromCache(ARRAY.name); // Remove the array from the cache
+  Serializer.removeFromCache(ARRAY.elementType.name); // Remove the element type from the cache
 
 	const serialized = ARRAY.serialize();
-	const deserialized = Serializable.deserialize(serialized); // Should not throw an error
+	const deserialized = Serializer.deserialize(serialized); // Should not throw an error
 	
 	it('should be the same', () => {
 		expect(deserialized).toMatchObject(ARRAY);
@@ -251,12 +251,12 @@ describe("Serializing and deserializing arrays that aren't saved", () => {
 describe("Serializing and deserializing primitives that aren't saved should fail", () => {
   const UNSAVED = new PrimitiveType('unsaved', (data: any) => true);
 
-  Serializable.remove(UNSAVED.name); // Remove the primitive from the cache;
+  Serializer.removeFromCache(UNSAVED.name); // Remove the primitive from the cache;
 
   const serialized = UNSAVED.serialize();
 
   // The reason it fails is that the validation function is not saved, so it can't be loaded
   it('should throw an error', () => {
-    expect(() => Serializable.deserialize(serialized)).toThrow();
+    expect(() => Serializer.deserialize(serialized)).toThrow();
   });
 });
