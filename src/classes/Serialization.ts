@@ -76,7 +76,7 @@ export class Serializer {
 export class Serializable extends SerializableData {
 	_: string;
 
-	constructor(public name: string) {
+	constructor(public readonly name: string) {
 		super();
 		Serializer.addToCache(name, this);
 		this._ = this.constructor.name;
@@ -89,6 +89,10 @@ export class Serializable extends SerializableData {
 		name: string;
 		_: string;
 	} {
+		// Update the cache
+		Serializer.removeFromCache(this.name);
+		Serializer.addToCache(this.name, this);
+
 		// Only keep the properties, not the methods and convert it to a basic object instead of a class
 		return {
 			name: this.constructor.name,

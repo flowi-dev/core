@@ -1,17 +1,15 @@
 import { expect, test } from '@jest/globals';
 import {
-  ArrayType,
-  ObjectType,
-  UnionType,
   TRUE,
   FALSE,
   BOOLEAN,
   NUMBER,
-  NULL,
+  UNDEFINED,
   INTEGER,
   STRING,
   ANY,
-} from '../src';
+} from '../src/primitives';
+import { UnionType, ObjectType, ArrayType } from '../src/classes/Types';
 
 test('Check that primitive types extend correctly', () => {
   expect(TRUE.extends(TRUE)).toBe(true);
@@ -20,7 +18,7 @@ test('Check that primitive types extend correctly', () => {
   expect(TRUE.extends(INTEGER)).toBe(false);
   expect(TRUE.extends(NUMBER)).toBe(false);
   expect(TRUE.extends(STRING)).toBe(false);
-  expect(TRUE.extends(NULL)).toBe(false);
+  expect(TRUE.extends(UNDEFINED)).toBe(false);
 
   expect(FALSE.extends(TRUE)).toBe(false);
   expect(FALSE.extends(FALSE)).toBe(true);
@@ -28,7 +26,7 @@ test('Check that primitive types extend correctly', () => {
   expect(FALSE.extends(INTEGER)).toBe(false);
   expect(FALSE.extends(NUMBER)).toBe(false);
   expect(FALSE.extends(STRING)).toBe(false);
-  expect(FALSE.extends(NULL)).toBe(false);
+  expect(FALSE.extends(UNDEFINED)).toBe(false);
 
   expect(BOOLEAN.extends(TRUE)).toBe(false);
   expect(BOOLEAN.extends(FALSE)).toBe(false);
@@ -36,7 +34,7 @@ test('Check that primitive types extend correctly', () => {
   expect(BOOLEAN.extends(INTEGER)).toBe(false);
   expect(BOOLEAN.extends(NUMBER)).toBe(false);
   expect(BOOLEAN.extends(STRING)).toBe(false);
-  expect(BOOLEAN.extends(NULL)).toBe(false);
+  expect(BOOLEAN.extends(UNDEFINED)).toBe(false);
 
   expect(INTEGER.extends(TRUE)).toBe(false);
   expect(INTEGER.extends(FALSE)).toBe(false);
@@ -44,7 +42,7 @@ test('Check that primitive types extend correctly', () => {
   expect(INTEGER.extends(INTEGER)).toBe(true);
   expect(INTEGER.extends(NUMBER)).toBe(true);
   expect(INTEGER.extends(STRING)).toBe(false);
-  expect(INTEGER.extends(NULL)).toBe(false);
+  expect(INTEGER.extends(UNDEFINED)).toBe(false);
 
   expect(NUMBER.extends(TRUE)).toBe(false);
   expect(NUMBER.extends(FALSE)).toBe(false);
@@ -52,7 +50,7 @@ test('Check that primitive types extend correctly', () => {
   expect(NUMBER.extends(INTEGER)).toBe(false);
   expect(NUMBER.extends(NUMBER)).toBe(true);
   expect(NUMBER.extends(STRING)).toBe(false);
-  expect(NUMBER.extends(NULL)).toBe(false);
+  expect(NUMBER.extends(UNDEFINED)).toBe(false);
 
   expect(STRING.extends(TRUE)).toBe(false);
   expect(STRING.extends(FALSE)).toBe(false);
@@ -60,15 +58,15 @@ test('Check that primitive types extend correctly', () => {
   expect(STRING.extends(INTEGER)).toBe(false);
   expect(STRING.extends(NUMBER)).toBe(false);
   expect(STRING.extends(STRING)).toBe(true);
-  expect(STRING.extends(NULL)).toBe(false);
+  expect(STRING.extends(UNDEFINED)).toBe(false);
 
-  expect(NULL.extends(TRUE)).toBe(false);
-  expect(NULL.extends(FALSE)).toBe(false);
-  expect(NULL.extends(BOOLEAN)).toBe(false);
-  expect(NULL.extends(INTEGER)).toBe(false);
-  expect(NULL.extends(NUMBER)).toBe(false);
-  expect(NULL.extends(STRING)).toBe(false);
-  expect(NULL.extends(NULL)).toBe(true);
+  expect(UNDEFINED.extends(TRUE)).toBe(false);
+  expect(UNDEFINED.extends(FALSE)).toBe(false);
+  expect(UNDEFINED.extends(BOOLEAN)).toBe(false);
+  expect(UNDEFINED.extends(INTEGER)).toBe(false);
+  expect(UNDEFINED.extends(NUMBER)).toBe(false);
+  expect(UNDEFINED.extends(STRING)).toBe(false);
+  expect(UNDEFINED.extends(UNDEFINED)).toBe(true);
 });
 
 test('Check that types can be checked correctly', () => {
@@ -126,14 +124,14 @@ test('Check that types can be checked correctly', () => {
   expect(STRING.check([])).toBe(false);
   expect(STRING.check({})).toBe(false);
 
-  expect(NULL.check(true)).toBe(false);
-  expect(NULL.check(false)).toBe(false);
-  expect(NULL.check(1)).toBe(false);
-  expect(NULL.check(0.5)).toBe(false);
-  expect(NULL.check('true')).toBe(false);
-  expect(NULL.check(null)).toBe(true);
-  expect(NULL.check([])).toBe(false);
-  expect(NULL.check({})).toBe(false);
+  expect(UNDEFINED.check(true)).toBe(false);
+  expect(UNDEFINED.check(false)).toBe(false);
+  expect(UNDEFINED.check(1)).toBe(false);
+  expect(UNDEFINED.check(0.5)).toBe(false);
+  expect(UNDEFINED.check('true')).toBe(false);
+  expect(UNDEFINED.check(null)).toBe(true);
+  expect(UNDEFINED.check([])).toBe(false);
+  expect(UNDEFINED.check({})).toBe(false);
 });
 
 test('Check union types extend correctly', () => {
@@ -256,7 +254,7 @@ test('Check that objects can be extended correctly', () => {
   expect(AdminObj.extends(AdminObj)).toBe(true);
   expect(UserObj.extends(UserObj)).toBe(true);
   expect(AdminObj.extends(STRING)).toBe(false);
-  expect(AdminObj.extends(NULL)).toBe(false);
+  expect(AdminObj.extends(UNDEFINED)).toBe(false);
 });
 
 test('Test array types', () => {
@@ -292,7 +290,7 @@ test('Test array types', () => {
   expect(STR_ARRAY.extends(STR_ARRAY)).toBe(true);
   expect(NUM_ARRAY.extends(NUM_ARRAY)).toBe(true);
   expect(STR_ARRAY.extends(STRING)).toBe(false);
-  expect(STR_ARRAY.extends(NULL)).toBe(false);
+  expect(STR_ARRAY.extends(UNDEFINED)).toBe(false);
   expect(UNION_ARRAY.extends(STR_ARRAY)).toBe(false);
 });
 
@@ -336,7 +334,7 @@ test("Union extension", () => {
   const B = A.extend(BOOLEAN);
 
   expect(B.types).toEqual([STRING, NUMBER, BOOLEAN]);
-  expect(B.extend(NULL).types).toEqual([STRING, NUMBER, BOOLEAN, NULL]);
+  expect(B.extend(UNDEFINED).types).toEqual([STRING, NUMBER, BOOLEAN, UNDEFINED]);
 })
 
 test("Object intersections", () => {
