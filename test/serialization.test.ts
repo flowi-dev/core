@@ -1,17 +1,11 @@
-import {
-  FALSE,
-  INTEGER,
-  UNDEFINED,
-  NUMBER,
-  STRING,
-  TRUE,
-} from '../src/primitives';
-import { Serializer } from '../src/classes/Serialization';
+
+import { Primitives } from '../src/primitives'
 import { PrimitiveType, UnionType, ObjectType, ArrayType } from '../src/classes/Types';
+import { Serializer } from '../src/classes/Serialization/Serializer';
 
 describe('Saving a primitive as a string and loading it again', () => {
   it('should be the same', () => {
-    const primitive = STRING;
+    const primitive = Primitives.STRING;
     const serialized = primitive.serialize();
     const deserialized = Serializer.deserialize(serialized);
 
@@ -25,7 +19,7 @@ describe('Saving a primitive as a string and loading it again', () => {
       invalid: any[];
     }[] = [
       {
-        primitive: TRUE,
+        primitive: Primitives.TRUE,
         valid: [true],
         invalid: [
           false,
@@ -42,7 +36,7 @@ describe('Saving a primitive as a string and loading it again', () => {
         ],
       },
       {
-        primitive: FALSE,
+        primitive: Primitives.FALSE,
         valid: [false],
         invalid: [
           true,
@@ -59,7 +53,7 @@ describe('Saving a primitive as a string and loading it again', () => {
         ],
       },
       {
-        primitive: INTEGER,
+        primitive: Primitives.INTEGER,
         valid: [0, 1, -1, 100, -100, 1000000, -1000000],
         invalid: [
           true,
@@ -75,12 +69,12 @@ describe('Saving a primitive as a string and loading it again', () => {
         ],
       },
       {
-        primitive: STRING,
+        primitive: Primitives.STRING,
         valid: ['true', 'false', '1', '0'],
         invalid: [true, false, 1, 0, null, undefined, {}, []],
       },
       {
-        primitive: UNDEFINED,
+        primitive: Primitives.UNDEFINED,
         valid: [null],
         invalid: [
           true,
@@ -116,7 +110,7 @@ describe('Saving a primitive as a string and loading it again', () => {
 });
 
 describe('Saving a union as a string and loading it again', () => {
-  const UNION = NUMBER;
+  const UNION = Primitives.NUMBER;
 
   const serialized = UNION.serialize();
   const deserialized = Serializer.deserialize(serialized) as UnionType;
@@ -137,9 +131,9 @@ describe('Saving a union as a string and loading it again', () => {
 
 describe('Serializing and deserializing object types', () => {
   const OBJECT = new ObjectType('object', {
-    username: STRING,
-    password: STRING,
-    age: INTEGER,
+    username: Primitives.STRING,
+    password: Primitives.STRING,
+    age: Primitives.INTEGER,
   });
 
   const serialized = OBJECT.serialize();
@@ -152,19 +146,19 @@ describe('Serializing and deserializing object types', () => {
 
 describe("Serializing and deserializing nested objects", () => {
 
-  const COORDINATES = new ArrayType('coordinates', NUMBER)
+  const COORDINATES = new ArrayType('coordinates', Primitives.NUMBER)
 
   const ADDRESS = new ObjectType('address', {
-    street: STRING,
-    city: STRING,
+    street: Primitives.STRING,
+    city: Primitives.STRING,
     coordinates: COORDINATES
   });
   
 
   const OBJECT = new ObjectType('object', {
-    username: STRING,
-    password: STRING,
-    age: INTEGER,
+    username: Primitives.STRING,
+    password: Primitives.STRING,
+    age: Primitives.INTEGER,
     address: ADDRESS
   });
 
@@ -202,9 +196,9 @@ describe("Serializing and deserializing nested objects", () => {
 
 describe("Serializing and deserializing objects that aren't saved", () => {
   const OBJECT = new ObjectType('unsaved-object', {
-    username: STRING,
-    password: STRING,
-    age: INTEGER,
+    username: Primitives.STRING,
+    password: Primitives.STRING,
+    age: Primitives.INTEGER,
   });
   
   const serialized = OBJECT.serialize();
@@ -218,7 +212,7 @@ describe("Serializing and deserializing objects that aren't saved", () => {
 });
 
 describe("Serializing and deserializing unions that aren't saved", () => {
-  const UNION = new UnionType('unsaved-union', [STRING, INTEGER]);
+  const UNION = new UnionType('unsaved-union', [Primitives.STRING, Primitives.INTEGER]);
 
   const serialized = UNION.serialize();
   const deserialized = Serializer.deserialize(serialized) as UnionType;
@@ -233,8 +227,8 @@ describe("Serializing and deserializing unions that aren't saved", () => {
 describe("Serializing and deserializing arrays that aren't saved", () => {
 
   const ELEMENT_TYPE = new ObjectType('unsaved-object', {
-    username: STRING,
-    password: STRING,
+    username: Primitives.STRING,
+    password: Primitives.STRING,
   });
 
   const ARRAY = new ArrayType(
@@ -272,11 +266,11 @@ describe("Serializing and deserializing primitives that aren't saved should fail
 
 describe('Serializing and deserializing unions with objects', () => {
   const ObjA = new ObjectType('ObjA', {
-    a: STRING,
+    a: Primitives.STRING,
   });
 
   const ObjB = new ObjectType('ObjB', {
-    b: STRING,
+    b: Primitives.STRING,
   });
 
   const UNION = new UnionType('Union', [ObjA, ObjB]);
