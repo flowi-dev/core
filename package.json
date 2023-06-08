@@ -7,7 +7,7 @@
     "test:coverage": "jest --coverage",
     "test:badges": "npm run test:coverage  && jest-coverage-badges",
     "test": "npm run test:badges",
-    "lint": "eslint --cache --fix  .",
+    "lint": "eslint --fix ./src",
     "docs": "typedoc --out docs ./src/index.ts",
     "prebuild": "rimraf lib && npm run lint && npm run test",
     "postbuild": "npm run docs",
