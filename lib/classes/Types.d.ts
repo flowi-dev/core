@@ -1,4 +1,4 @@
-import { Serializable } from './Serialization';
+import { Serializable } from './Serialization/Serializable';
 export type TypeToLiteral<T extends BaseType> = T extends PrimitiveType ? PrimitiveTypeToLiteral<T> : T extends AnyType ? any : T extends ArrayType ? ArrayTypeToLiteral<T> : T extends ObjectType ? ObjectTypeToLiteral<T> : T extends UnionType ? UnionTypeToLiteral<T> : never;
 /**
  * The base class that all types extend from, this provides the basic functionality that all types need. Such as serialization and deserialization and type checking.
