@@ -1,7 +1,7 @@
 
 import { Primitives } from '../src/primitives'
 import { PrimitiveType, UnionType, ObjectType, ArrayType } from '../src/classes/Types';
-import { Serializer } from '../src/classes/Serialization/Serializer';
+import { Serializer } from '../src/classes/Serializer';
 
 describe('Saving a primitive as a string and loading it again', () => {
   it('should be the same', () => {

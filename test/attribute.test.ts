@@ -1,6 +1,6 @@
 import { Primitives } from '../src/primitives';
-import { DataAttribute } from './../src/classes/block/Attribute';
-import { Block } from '../src/classes/block/Block';
+import { DataAttribute } from './../src/classes/Attribute';
+import { Block } from '../src/classes/Block';
 
 const testBlock = new Block('test-block');
 
