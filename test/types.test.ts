@@ -78,7 +78,7 @@ it('TRUE can be checked', () => {
   expect(Primitives.TRUE.check(1)).toBe(false);
   expect(Primitives.TRUE.check(0.5)).toBe(false);
   expect(Primitives.TRUE.check('true')).toBe(false);
-  expect(Primitives.TRUE.check(null)).toBe(false);
+  expect(Primitives.TRUE.check(undefined)).toBe(false);
   expect(Primitives.TRUE.check([])).toBe(false);
   expect(Primitives.TRUE.check({})).toBe(false);
 });
@@ -89,7 +89,7 @@ it('FALSE can be checked', () => {
   expect(Primitives.FALSE.check(1)).toBe(false);
   expect(Primitives.FALSE.check(0.5)).toBe(false);
   expect(Primitives.FALSE.check('true')).toBe(false);
-  expect(Primitives.FALSE.check(null)).toBe(false);
+  expect(Primitives.FALSE.check(undefined)).toBe(false);
   expect(Primitives.FALSE.check([])).toBe(false);
   expect(Primitives.FALSE.check({})).toBe(false);
 });
@@ -100,7 +100,7 @@ it('BOOLEAN can be checked', () => {
   expect(Primitives.BOOLEAN.check(1)).toBe(false);
   expect(Primitives.BOOLEAN.check(0.5)).toBe(false);
   expect(Primitives.BOOLEAN.check('true')).toBe(false);
-  expect(Primitives.BOOLEAN.check(null)).toBe(false);
+  expect(Primitives.BOOLEAN.check(undefined)).toBe(false);
   expect(Primitives.BOOLEAN.check([])).toBe(false);
   expect(Primitives.BOOLEAN.check({})).toBe(false);
 });
@@ -111,7 +111,7 @@ it('INTEGER can be checked', () => {
   expect(Primitives.INTEGER.check(1)).toBe(true);
   expect(Primitives.INTEGER.check(0.5)).toBe(false);
   expect(Primitives.INTEGER.check('true')).toBe(false);
-  expect(Primitives.INTEGER.check(null)).toBe(false);
+  expect(Primitives.INTEGER.check(undefined)).toBe(false);
   expect(Primitives.INTEGER.check([])).toBe(false);
   expect(Primitives.INTEGER.check({})).toBe(false);
 });
@@ -122,7 +122,7 @@ it('NUMBER can be checked', () => {
   expect(Primitives.NUMBER.check(1)).toBe(true);
   expect(Primitives.NUMBER.check(0.5)).toBe(true);
   expect(Primitives.NUMBER.check('true')).toBe(false);
-  expect(Primitives.NUMBER.check(null)).toBe(false);
+  expect(Primitives.NUMBER.check(undefined)).toBe(false);
   expect(Primitives.NUMBER.check([])).toBe(false);
   expect(Primitives.NUMBER.check({})).toBe(false);
 });
@@ -133,7 +133,7 @@ it('STRING can be checked', () => {
   expect(Primitives.STRING.check(1)).toBe(false);
   expect(Primitives.STRING.check(0.5)).toBe(false);
   expect(Primitives.STRING.check('true')).toBe(true);
-  expect(Primitives.STRING.check(null)).toBe(false);
+  expect(Primitives.STRING.check(undefined)).toBe(false);
   expect(Primitives.STRING.check([])).toBe(false);
   expect(Primitives.STRING.check({})).toBe(false);
 });
@@ -144,7 +144,7 @@ it('UNDEFINED can be checked', () => {
   expect(Primitives.UNDEFINED.check(1)).toBe(false);
   expect(Primitives.UNDEFINED.check(0.5)).toBe(false);
   expect(Primitives.UNDEFINED.check('true')).toBe(false);
-  expect(Primitives.UNDEFINED.check(null)).toBe(true);
+  expect(Primitives.UNDEFINED.check(undefined)).toBe(true);
   expect(Primitives.UNDEFINED.check([])).toBe(false);
   expect(Primitives.UNDEFINED.check({})).toBe(false);
 });
@@ -155,7 +155,7 @@ it('ANY can be checked', () => {
   expect(Primitives.ANY.check(1)).toBe(true);
   expect(Primitives.ANY.check(0.5)).toBe(true);
   expect(Primitives.ANY.check('true')).toBe(true);
-  expect(Primitives.ANY.check(null)).toBe(true);
+  expect(Primitives.ANY.check(undefined)).toBe(true);
   expect(Primitives.ANY.check([])).toBe(true);
   expect(Primitives.ANY.check({})).toBe(true);
 });
@@ -166,7 +166,7 @@ it('DATE can be checked', () => {
   expect(Primitives.DATE.check(1)).toBe(false);
   expect(Primitives.DATE.check(0.5)).toBe(false);
   expect(Primitives.DATE.check('true')).toBe(false);
-  expect(Primitives.DATE.check(null)).toBe(false);
+  expect(Primitives.DATE.check(undefined)).toBe(false);
   expect(Primitives.DATE.check([])).toBe(false);
   expect(Primitives.DATE.check({})).toBe(false);
   expect(Primitives.DATE.check(new Date())).toBe(true);
@@ -178,7 +178,7 @@ it('BIGINT can be checked', () => {
   expect(Primitives.BIGINT.check(1)).toBe(false);
   expect(Primitives.BIGINT.check(0.5)).toBe(false);
   expect(Primitives.BIGINT.check('true')).toBe(false);
-  expect(Primitives.BIGINT.check(null)).toBe(false);
+  expect(Primitives.BIGINT.check(undefined)).toBe(false);
   expect(Primitives.BIGINT.check([])).toBe(false);
   expect(Primitives.BIGINT.check({})).toBe(false);
   expect(Primitives.BIGINT.check(new Date())).toBe(false);
@@ -191,7 +191,7 @@ it('SYMBOL can be checked', () => {
   expect(Primitives.SYMBOL.check(1)).toBe(false);
   expect(Primitives.SYMBOL.check(0.5)).toBe(false);
   expect(Primitives.SYMBOL.check('true')).toBe(false);
-  expect(Primitives.SYMBOL.check(null)).toBe(false);
+  expect(Primitives.SYMBOL.check(undefined)).toBe(false);
   expect(Primitives.SYMBOL.check([])).toBe(false);
   expect(Primitives.SYMBOL.check({})).toBe(false);
   expect(Primitives.SYMBOL.check(new Date())).toBe(false);
@@ -278,7 +278,7 @@ it('Check that objects can be checked correctly', () => {
     }),
   ).toBe(false);
 
-  expect(UserObj.check(null)).toBe(false);
+  expect(UserObj.check(undefined)).toBe(false);
   expect(UserObj.check([])).toBe(false);
   expect(UserObj.check({})).toBe(false);
   expect(UserObj.check(1)).toBe(false);
@@ -345,7 +345,7 @@ it('Test array types', () => {
   expect(NUM_ARRAY.check([1, 2, 3])).toBe(true);
   expect(NUM_ARRAY.check([1, 2, '3'])).toBe(false);
   expect(NUM_ARRAY.check([1, 2, 3, '4'])).toBe(false);
-  expect(NUM_ARRAY.check([1, 2, 3, null])).toBe(false);
+  expect(NUM_ARRAY.check([1, 2, 3, undefined])).toBe(false);
   expect(NUM_ARRAY.check([1, 2, 3, undefined])).toBe(false);
   expect(NUM_ARRAY.check([1, 2, 3, true])).toBe(false);
   expect(NUM_ARRAY.check('Hello world!')).toBe(false);
@@ -355,7 +355,7 @@ it('Test array types', () => {
   expect(STR_ARRAY.check(['1', '2', '3'])).toBe(true);
   expect(STR_ARRAY.check(['1', '2', 3])).toBe(false);
   expect(STR_ARRAY.check(['1', '2', '3', 4])).toBe(false);
-  expect(STR_ARRAY.check(['1', '2', '3', null])).toBe(false);
+  expect(STR_ARRAY.check(['1', '2', '3', undefined])).toBe(false);
   expect(STR_ARRAY.check(['1', '2', '3', undefined])).toBe(false);
 
   const UNION_ARRAY = new ArrayType(
@@ -365,7 +365,7 @@ it('Test array types', () => {
   expect(UNION_ARRAY.check(['1', '2', '3'])).toBe(true);
   expect(UNION_ARRAY.check(['1', '2', 3])).toBe(true);
   expect(UNION_ARRAY.check(['1', '2', 3, 4])).toBe(true);
-  expect(UNION_ARRAY.check(['1', '2', 3, null])).toBe(false);
+  expect(UNION_ARRAY.check(['1', '2', 3, undefined])).toBe(false);
   expect(UNION_ARRAY.check(['1', '2', 3, undefined])).toBe(false);
 
   expect(STR_ARRAY.extends(NUM_ARRAY)).toBe(false);
@@ -382,7 +382,7 @@ it("Test the 'any' type", () => {
   expect(Primitives.ANY.check(1)).toBe(true);
   expect(Primitives.ANY.check(1.5)).toBe(true);
   expect(Primitives.ANY.check(true)).toBe(true);
-  expect(Primitives.ANY.check(null)).toBe(true);
+  expect(Primitives.ANY.check(undefined)).toBe(true);
   expect(Primitives.ANY.check(undefined)).toBe(true);
   expect(Primitives.ANY.check([])).toBe(true);
   expect(Primitives.ANY.check({})).toBe(true);

@@ -1,13 +1,14 @@
 import {Events} from './Events';
-import {Serializable} from './Serializable';
+import {Serializable, type SerializedData} from './Serializable';
 import {type BaseType} from './Types';
 import {type Block} from './Block';
+import {Serializer} from './Serializer';
 
 /**
  * The direction of the attribute. Inputs sit on the left side of the block, and outputs sit on the right side of the block.
  */
 export type AttributeDirection = 'input' | 'output';
-export type AttributeName = `${string}-attribute`;
+export type AttributeName = string;
 export type InferAttributeName<T extends Attribute<any>> = T extends Attribute<
 infer N
 >
@@ -38,7 +39,8 @@ export type AttributeEvents = {
 export class Attribute<
 	N extends AttributeName = AttributeName,
 	Io extends AttributeDirection = AttributeDirection,
-> extends Serializable {
+	S extends Record<string, any> = Record<string, unknown>,
+> extends Serializable<S & Required<AttributeOptions>> {
 	/**
    * This is used to emit and listen to events.
    */
@@ -87,7 +89,7 @@ export class Attribute<
 	private _block?: Block;
 
 	constructor(public readonly name: N, options: AttributeOptions<Io>) {
-		super(name);
+		super();
 		this._label = options.label ?? name;
 		this.direction = options.direction;
 
@@ -97,6 +99,16 @@ export class Attribute<
 
 	public setParent(block: Block | undefined) {
 		this._block = block;
+	}
+
+	public override serialize(): SerializedData<S & Required<AttributeOptions>> {
+		return {
+			...super.serialize(),
+			label: this.label,
+			hideLabel: this.hideLabel,
+			hidePin: this.hidePin,
+			direction: this.direction,
+		} as unknown as SerializedData<S & Required<AttributeOptions>>;
 	}
 }
 
@@ -115,7 +127,9 @@ export class DataAttribute<
 	N extends AttributeName,
 	T extends BaseType,
 	Io extends AttributeDirection = AttributeDirection,
-> extends Attribute<N> {
+> extends Attribute<N, Io, {
+		datatype: {_: string};
+	}> {
 	/**
    * The type of data that this attribute holds.
    */
@@ -125,7 +139,24 @@ export class DataAttribute<
 		super(name, options);
 		this.datatype = options.datatype;
 	}
+
+	public override serialize(): ReturnType<Attribute['serialize']> & {
+		datatype: ReturnType<BaseType['serialize']>;
+	} {
+		return {
+			...super.serialize(),
+			datatype: this.datatype.serialize(),
+		};
+	}
 }
+
+DataAttribute.register<DataAttribute<any, any, any>>(data => new DataAttribute(data.label, {
+	datatype: Serializer.deserialize<BaseType>(data.datatype),
+	direction: data.direction,
+	label: data.label,
+	hideLabel: data.hideLabel,
+	hidePin: data.hidePin,
+}));
 
 export type ExecutionAttributeOptions = Partial<AttributeOptions>;
 

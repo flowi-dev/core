@@ -1,34 +1,21 @@
-import {Serializer, SerializableData} from './Serializer';
+import {Serializer} from './Serializer';
+
+export type SerializedData<T extends Record<string, any> = Record<string, unknown>> = {
+	_: string;
+} & T;
+export type DeserializeFunction<T extends Record<string, any> = Record<string, unknown>> = (data: SerializedData<T>) => T;
 
 /**
  * This class defines instances that can be serialized and deserialized.
- */
-export class Serializable extends SerializableData {
-	/** @hidden */
-	_: string;
-
-	constructor(public readonly name: string) {
-		super();
-		Serializer.addToCache(this);
-		this._ = this.constructor.name;
+*/
+export class Serializable<T extends Record<string, any> = Record<string, unknown>> {
+	public static register<T extends Serializable>(deserialize: Parameters<typeof Serializer.register<T>>[1]) {
+		Serializer.register(this as unknown as new () => T, deserialize);
 	}
 
-	/**
-	 * The fallback function for serialization. Most types will override this function.
-	 */
-	public serialize(): {
-		name: string;
-		_: string;
-	} {
-		// Update the cache
-		Serializer.removeFromCache(this);
-		Serializer.addToCache(this);
-
-		// Only keep the properties, not the methods and convert it to a basic object instead of a class
+	public serialize(): SerializedData<T> {
 		return {
-			name: this.constructor.name,
 			_: this.constructor.name,
-			...Object.fromEntries(Object.entries(this).filter(([key]) => !key.startsWith('_')).map(([key, value]) => [key, value])),
-		};
+		} as unknown as SerializedData<T>;
 	}
 }

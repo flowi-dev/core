@@ -1,17 +1,90 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import {AnyType, PrimitiveType, UnionType} from './classes/Types';
 
-const TRUE = new PrimitiveType<true>('true', (data: any) => data === true);
-const FALSE = new PrimitiveType<false>('false', (data: any) => data === false);
+class PrimitiveTrue extends PrimitiveType<true> {
+	constructor() {
+		super('true', (data: any) => data === true);
+	}
+}
+PrimitiveTrue.register(() => new PrimitiveTrue());
+const TRUE = new PrimitiveTrue();
+
+class PrimitiveFalse extends PrimitiveType<false> {
+	constructor() {
+		super('false', (data: any) => data === false);
+	}
+}
+PrimitiveFalse.register(() => new PrimitiveFalse());
+const FALSE = new PrimitiveFalse();
+
 const BOOLEAN = new UnionType('boolean', [FALSE, TRUE] as const);
-const INTEGER = new PrimitiveType<number>('integer', (data: any) => typeof data === 'number' && !isNaN(data) && data % 1 === 0);
-const NUMBER = new UnionType('number', [new PrimitiveType<number>('float', (data: any) => typeof data === 'number' && !isNaN(data)), INTEGER] as const);
-const STRING = new PrimitiveType<string>('string', (data: any) => typeof data === 'string');
-const UNDEFINED = new PrimitiveType<undefined>('undefined', (data: any) => data === null);
-const DATE = new PrimitiveType<Date>('date', (data: any) => data instanceof Date);
-const REGEXP = new PrimitiveType<RegExp>('regexp', (data: any) => data instanceof RegExp);
-const BIGINT = new PrimitiveType<bigint>('bigint', (data: any) => typeof data === 'bigint');
-const SYMBOL = new PrimitiveType<symbol>('symbol', (data: any) => typeof data === 'symbol');
+
+class PrimitiveInteger extends PrimitiveType<number> {
+	constructor() {
+		super('integer', (data: any) => typeof data === 'number' && !isNaN(data) && data % 1 === 0);
+	}
+}
+PrimitiveInteger.register(() => new PrimitiveInteger());
+const INTEGER = new PrimitiveInteger();
+
+class PrimitiveFloat extends PrimitiveType<number> {
+	constructor() {
+		super('float', (data: any) => typeof data === 'number' && !isNaN(data));
+	}
+}
+PrimitiveFloat.register(() => new PrimitiveFloat());
+const FLOAT = new PrimitiveFloat();
+
+const NUMBER = new UnionType('number', [FLOAT, INTEGER] as const);
+
+class PrimitiveString extends PrimitiveType<string> {
+	constructor() {
+		super('string', (data: any) => typeof data === 'string');
+	}
+}
+PrimitiveString.register(() => new PrimitiveString());
+const STRING = new PrimitiveString();
+
+class PrimitiveUndefined extends PrimitiveType<undefined> {
+	constructor() {
+		super('undefined', (data: any) => data === undefined);
+	}
+}
+PrimitiveUndefined.register(() => new PrimitiveUndefined());
+const UNDEFINED = new PrimitiveUndefined();
+
+class PrimitiveDate extends PrimitiveType<Date> {
+	constructor() {
+		super('date', (data: any) => data instanceof Date);
+	}
+}
+PrimitiveDate.register(() => new PrimitiveDate());
+const DATE = new PrimitiveDate();
+
+class PrimitiveRegExp extends PrimitiveType<RegExp> {
+	constructor() {
+		super('regexp', (data: any) => data instanceof RegExp);
+	}
+}
+PrimitiveRegExp.register(() => new PrimitiveRegExp());
+const REGEXP = new PrimitiveRegExp();
+
+class PrimitiveBigInt extends PrimitiveType<bigint> {
+	constructor() {
+		super('bigint', (data: any) => typeof data === 'bigint');
+	}
+}
+PrimitiveBigInt.register(() => new PrimitiveBigInt());
+const BIGINT = new PrimitiveBigInt();
+
+class PrimitiveSymbol extends PrimitiveType<symbol> {
+	constructor() {
+		super('symbol', (data: any) => typeof data === 'symbol');
+	}
+}
+PrimitiveSymbol.register(() => new PrimitiveSymbol());
+const SYMBOL = new PrimitiveSymbol();
+
 const ANY = new AnyType();
 
 // eslint-disable-next-line @typescript-eslint/no-extraneous-class

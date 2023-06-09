@@ -1,6 +1,7 @@
 import { Primitives } from '../src/primitives';
 import { Attribute, DataAttribute } from './../src/classes/Attribute';
-import { Block } from '../src/classes/Block';
+import { Block, BlockOptions } from '../src/classes/Block';
+import { Serializer } from '../src/classes/Serializer';
 
 const testBlock = new Block('test-block');
 
@@ -20,6 +21,17 @@ it('should emit an event when label is changed', () => {
 
 	expect(callback).toHaveBeenCalledWith('new label');
 });
+
+it('should emit an event when position is changed', () => {
+	const callback = jest.fn();
+
+	testBlock.events.on('change:position', callback);
+
+	testBlock.position = { x: 1, y: 2 };
+	
+	expect(callback).toHaveBeenCalledWith({ x: 1, y: 2 });
+});
+
 
 it('should be able to get the label', () => {
 	expect(testBlock.label).toBe('new label');
