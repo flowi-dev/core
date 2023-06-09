@@ -1,12 +1,12 @@
 import { Events } from './Events';
-import { Serializable } from './Serializable';
+import { Serializable, type SerializedData } from './Serializable';
 import { type BaseType } from './Types';
 import { type Block } from './Block';
 /**
  * The direction of the attribute. Inputs sit on the left side of the block, and outputs sit on the right side of the block.
  */
 export type AttributeDirection = 'input' | 'output';
-export type AttributeName = `${string}-attribute`;
+export type AttributeName = string;
 export type InferAttributeName<T extends Attribute<any>> = T extends Attribute<infer N> ? N : never;
 export type InferAttributeType<T extends DataAttribute<any, BaseType>> = T extends DataAttribute<any, infer T> ? T : never;
 export type AttributeOptions<Io extends AttributeDirection = AttributeDirection> = {
@@ -23,7 +23,7 @@ export type AttributeEvents = {
 /**
  * An attribute is a property of a block.
  */
-export declare class Attribute<N extends AttributeName = AttributeName, Io extends AttributeDirection = AttributeDirection> extends Serializable {
+export declare class Attribute<N extends AttributeName = AttributeName, Io extends AttributeDirection = AttributeDirection, S extends Record<string, any> = Record<string, unknown>> extends Serializable<S & Required<AttributeOptions>> {
     readonly name: N;
     /**
    * This is used to emit and listen to events.
@@ -51,13 +51,14 @@ export declare class Attribute<N extends AttributeName = AttributeName, Io exten
     /**
      * Get the block that this attribute belongs to.
      */
-    get parent(): Block<`${string}-block`, {}> | undefined;
+    get parent(): Block<{}> | undefined;
     /**
    * Stores a reference to the block that this attribute belongs to.
    */
     private _block?;
     constructor(name: N, options: AttributeOptions<Io>);
     setParent(block: Block | undefined): void;
+    serialize(): SerializedData<S & Required<AttributeOptions>>;
 }
 export type DataAttributeOptions<T extends BaseType, Io extends AttributeDirection> = {
     datatype: T;
@@ -66,12 +67,19 @@ export type DataAttributeOptions<T extends BaseType, Io extends AttributeDirecti
 /**
  * An attribute that holds data.
  */
-export declare class DataAttribute<N extends AttributeName, T extends BaseType, Io extends AttributeDirection = AttributeDirection> extends Attribute<N> {
+export declare class DataAttribute<N extends AttributeName, T extends BaseType, Io extends AttributeDirection = AttributeDirection> extends Attribute<N, Io, {
+    datatype: {
+        _: string;
+    };
+}> {
     /**
    * The type of data that this attribute holds.
    */
     datatype: BaseType;
     constructor(name: N, options: DataAttributeOptions<T, Io>);
+    serialize(): ReturnType<Attribute['serialize']> & {
+        datatype: ReturnType<BaseType['serialize']>;
+    };
 }
 export type ExecutionAttributeOptions = Partial<AttributeOptions>;
 /**

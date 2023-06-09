@@ -1,10 +1,10 @@
-import { Serializable } from './Serializable';
+import { Serializable, SerializedData } from './Serializable';
 export type TypeToLiteral<T extends BaseType> = T extends PrimitiveType ? PrimitiveTypeToLiteral<T> : T extends AnyType ? any : T extends ArrayType ? ArrayTypeToLiteral<T> : T extends ObjectType ? ObjectTypeToLiteral<T> : T extends UnionType ? UnionTypeToLiteral<T> : never;
 /**
  * The base class that all types extend from, this provides the basic functionality that all types need. Such as serialization and deserialization and type checking.
  * This class is abstract and should not be used directly.
  */
-export declare abstract class BaseType extends Serializable {
+export declare abstract class BaseType<T extends Record<string, any> = Record<string, unknown>> extends Serializable<T> {
     /**
      * Checks if this type extends the given type.
      *
@@ -64,7 +64,10 @@ export type UnionTypeToLiteral<T extends UnionType> = T extends UnionType<infer 
  * union.check(true); // false
  * ```
 */
-export declare class UnionType<T extends readonly BaseType[] = readonly BaseType[]> extends BaseType {
+export declare class UnionType<T extends readonly BaseType[] = readonly BaseType[]> extends BaseType<{
+    types: Array<ReturnType<BaseType['serialize']>>;
+    name: string;
+}> {
     name: string;
     readonly types: T;
     /**
@@ -94,7 +97,7 @@ export declare class UnionType<T extends readonly BaseType[] = readonly BaseType
      * console.log(c.types); // [TRUE] because TRUE extends BOOLEAN
      * ```
      */
-    static fromIntersect<A extends UnionType, B extends UnionType>(name: string, unions: [A, B]): UnionType<BaseType[]>;
+    static fromIntersect<A extends UnionType, B extends UnionType>(name: string, unions: [A, B]): UnionType<BaseType<Record<string, unknown>>[]>;
     constructor(name: string, types: T);
     /**
      * Extends the union with a new type, this will return a new union with the new type added.
@@ -110,6 +113,11 @@ export declare class UnionType<T extends readonly BaseType[] = readonly BaseType
     extend(type: BaseType): UnionType;
     extends(type: BaseType): boolean;
     check(data: any): boolean;
+    serialize(): {
+        name: string;
+        types: SerializedData<Record<string, unknown>>[];
+        _: string;
+    };
 }
 export type ArrayTypeToLiteral<T extends ArrayType> = T extends ArrayType<infer U> ? U : never;
 /**
@@ -120,19 +128,19 @@ export type ArrayTypeToLiteral<T extends ArrayType> = T extends ArrayType<infer 
  * array.check(['hello', 1]); // false
  * ```
  */
-export declare class ArrayType<T extends BaseType[] = BaseType[]> extends BaseType {
+export declare class ArrayType<T extends BaseType[] = BaseType[]> extends BaseType<{
+    elementType: ReturnType<BaseType['serialize']>;
+    name: string;
+}> {
     name: string;
     readonly elementType: T[number];
     constructor(name: string, elementType: T[number]);
     check(data: any): boolean;
     extends(type: BaseType): boolean;
     serialize(): {
-        name: string;
+        elementType: SerializedData<Record<string, unknown>>;
         _: string;
-        elementType: {
-            name: string;
-            _: string;
-        };
+        name: string;
     };
 }
 export type AnyTypeToLiteral = any;
@@ -156,9 +164,8 @@ export type AnyTypeToLiteral = any;
  */
 export declare class AnyType<_ = any> extends BaseType {
     name: string;
-    constructor();
-    check(data: any): boolean;
-    extends(data: BaseType): boolean;
+    check(_: any): boolean;
+    extends(_: BaseType): boolean;
 }
 export type ObjectTypeToLiteral<T extends ObjectType> = T extends ObjectType<infer U> ? {
     [K in keyof U]: TypeToLiteral<U[K]>;
@@ -187,7 +194,10 @@ export type ObjectTypeToLiteral<T extends ObjectType> = T extends ObjectType<inf
  * });
  * ```
  */
-export declare class ObjectType<T extends Record<string, BaseType> = Record<string, BaseType>> extends BaseType {
+export declare class ObjectType<T extends Record<string, BaseType> = Record<string, BaseType>> extends BaseType<{
+    properties: Record<string, ReturnType<BaseType['serialize']>>;
+    name: string;
+}> {
     name: string;
     /**
      * Create an object type from an intersection between two objects.
@@ -209,7 +219,7 @@ export declare class ObjectType<T extends Record<string, BaseType> = Record<stri
      * // }
      * ```
      */
-    static fromIntersect(name: string, objects: [ObjectType, ObjectType]): ObjectType<Record<string, BaseType>>;
+    static fromIntersect(name: string, objects: [ObjectType, ObjectType]): ObjectType<Record<string, BaseType<Record<string, unknown>>>>;
     properties: T;
     constructor(name: string, properties: T);
     /**
@@ -236,12 +246,11 @@ export declare class ObjectType<T extends Record<string, BaseType> = Record<stri
     extends(type: BaseType): boolean;
     check(data: any): boolean;
     serialize(): {
-        name: string;
+        properties: {
+            [k: string]: SerializedData<Record<string, unknown>>;
+        };
         _: string;
-        properties: Record<string, {
-            name: string;
-            _: string;
-        }>;
+        name: string;
     };
 }
 //# sourceMappingURL=Types.d.ts.map
