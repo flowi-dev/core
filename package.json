@@ -82,5 +82,9 @@
   "pre-commit": [
     "bump:patch",
     "lint"
+  ],
+  "files": [
+    "/lib",
+    "/src"
   ]
 }
