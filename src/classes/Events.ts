@@ -5,7 +5,7 @@
  * ```ts
  * type MyEvents = {
  * 	'event-1': [string, number];
- *  'event-2': [boolean];
+ * 	'event-2': [boolean];
  * };
  *
  * const events = new Events<MyEvents>();

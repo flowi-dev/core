@@ -34,6 +34,19 @@ export type AttributeEvents = {
 
 /**
  * An attribute is a property of a block.
+ *
+ * ```ts
+ * const attribute = new Attribute('myAttribute', {
+ * 	label: 'My Attribute',
+ * 	direction: 'input',
+ * });
+ *
+ * // You can listen to events on the attribute.
+ * attribute.events.on('change:label', (newLabel) => {
+ * 	console.log(newLabel);
+ * });
+ *
+ *
  */
 
 export class Attribute<
@@ -122,6 +135,13 @@ export type DataAttributeOptions<
 
 /**
  * An attribute that holds data.
+ *
+ * ```ts
+ * const attribute = new DataAttribute('myAttribute', {
+ * 	label: 'My Attribute',
+ * 	direction: 'input',
+ * 	datatype: Primitives.STRING,
+ * });
  */
 export class DataAttribute<
 	N extends AttributeName,

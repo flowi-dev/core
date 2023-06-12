@@ -13,6 +13,35 @@ export class Serializer {
 		this._register.set(type.name, deserialize);
 	}
 
+	/**
+	 * Serializes an instance of a class.
+	 *
+	 * ```ts
+	 *
+	 * const mySerializable = new MySerializable('foo', 42);
+	 * const serialized = mySerializable.serialize();
+	 *
+	 * console.log(serialized);
+	 *
+	 * // Output:
+	 * // {
+	 * // 	_: 'MySerializable',
+	 * // 	foo: 'foo',
+	 * // 	bar: 42,
+	 * // }
+	 *
+	 * const deserialized = Serializer.deserialize(serialized);
+	 *
+	 * console.log(deserialized);
+	 *
+	 * // Output:
+	 * // MySerializable {
+	 * // 	foo: 'foo',
+	 * // 	bar: 42,
+	 * // }
+	 *
+	 * ```
+	 */
 	public static deserialize<T extends Serializable>(data: ReturnType<T['serialize']>): T {
 		const deserialize = this._register.get(data._);
 		if (!deserialize) {
