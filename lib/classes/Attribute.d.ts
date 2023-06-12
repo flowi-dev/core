@@ -22,6 +22,19 @@ export type AttributeEvents = {
 };
 /**
  * An attribute is a property of a block.
+ *
+ * ```ts
+ * const attribute = new Attribute('myAttribute', {
+ * 	label: 'My Attribute',
+ * 	direction: 'input',
+ * });
+ *
+ * // You can listen to events on the attribute.
+ * attribute.events.on('change:label', (newLabel) => {
+ * 	console.log(newLabel);
+ * });
+ *
+ *
  */
 export declare class Attribute<N extends AttributeName = AttributeName, Io extends AttributeDirection = AttributeDirection, S extends Record<string, any> = Record<string, unknown>> extends Serializable<S & Required<AttributeOptions>> {
     readonly name: N;
@@ -66,6 +79,13 @@ export type DataAttributeOptions<T extends BaseType, Io extends AttributeDirecti
 } & AttributeOptions<Io>;
 /**
  * An attribute that holds data.
+ *
+ * ```ts
+ * const attribute = new DataAttribute('myAttribute', {
+ * 	label: 'My Attribute',
+ * 	direction: 'input',
+ * 	datatype: Primitives.STRING,
+ * });
  */
 export declare class DataAttribute<N extends AttributeName, T extends BaseType, Io extends AttributeDirection = AttributeDirection> extends Attribute<N, Io, {
     datatype: {
